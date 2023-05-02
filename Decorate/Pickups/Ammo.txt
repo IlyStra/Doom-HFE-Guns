@@ -1,0 +1,182 @@
+Actor BackpackSpawner : Randomspawner replaces Backpack 
+{
+DropItem "BackpackWithToolz", 255, 25
+DropItem "BackPackWithoutToolz", 255, 75
+}
+
+Actor BackPackWithToolz 
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItemEx("UACBackPack", 5, 0, 0, 0, 0, 0, 0,SXF_TRANSFERSPECIAL|SXF_TRANSFERPOINTERS, 0, tid) 
+		TNT1 A 1 A_SpawnItemEx("UACTOOLZ", -5, 0, 0, 0, 0, 0, 0,SXF_TRANSFERSPECIAL|SXF_TRANSFERPOINTERS, 0, tid) 
+		Goto Death
+	Death:
+		TNT1 A -1 //Wait to be picked up
+		Stop
+	}
+}
+
+Actor BackPackWithoutToolz 
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItemEx("UACBackPack", 0, 0, 0, 0, 0, 0, 0,SXF_TRANSFERSPECIAL|SXF_TRANSFERPOINTERS, 0, tid) 
+		Goto Death
+	Death:
+		TNT1 A -1 //Wait to be picked up
+		Stop
+	}
+}
+
+Actor UACBackPack : BackpackItem 
+{
+  Inventory.PickupSound "DSBACK"
+  Inventory.PickupMessage "Picked up an Ammo Backpack!"
+  +COUNTITEM
+  +INVENTORY.ALWAYSPICKUP
+  States
+  {
+  Spawn:
+    BPAK A -1
+    stop
+  }
+}
+
+ACTOR BLTClip : Ammo Replaces Clip
+{
+  Inventory.PickupMessage "Picked up a Bullet Mag." 
+  Inventory.Amount 15
+  Inventory.MaxAmount 300
+  Ammo.BackpackAmount 30
+  Ammo.BackpackMaxAmount 600
+  Inventory.Icon "CLIPA0"
+  Inventory.PickupSound "MEPICK"
+  States
+  {
+  Spawn:
+    CLIP A -1
+    Stop
+  }
+}
+
+ACTOR BLTpack : BLTClip replaces ClipBox
+{
+  Inventory.PickupMessage "Picked up a Bullet Box." 
+  Inventory.Amount 60
+  Inventory.PickupSound "MEPICK"
+  States
+  {
+  Spawn:
+    AMMO A -1
+    Stop
+  }
+}
+
+ACTOR ShotShell : Ammo replaces Shell
+{
+  Inventory.PickupMessage "Picked up four 12 Gauge shells." 
+  Inventory.Amount 4
+  Inventory.MaxAmount 50
+  Ammo.BackpackAmount 8
+  Ammo.BackpackMaxAmount 100
+  Inventory.Icon "SHELA0"
+  Inventory.PickupSound "MEPICK"
+  States
+  {
+  Spawn:
+    SHEL A -1
+    Stop
+  }
+}
+
+ACTOR ShellPac : ShotShell replaces Shellbox
+{
+  Inventory.PickupMessage "Picked up a 12 Gauge shell box." 
+  Inventory.Amount 12
+  Inventory.PickupSound "MEPICK"
+  States
+  {
+  Spawn:
+    SBOX A -1
+    Stop
+  }
+}
+
+Actor ExploAmmoSpawner : Randomspawner replaces RocketAmmo 
+{
+DropItem "UACRocketAmmo", 255, 50
+DropItem "GrenadeAmmo", 255, 25
+}
+
+Actor ExploAmmoBoxSpawner : Randomspawner replaces RocketBox 
+{
+DropItem "UACRocketPac", 255, 50
+DropItem "GrenadeBox", 255, 25
+}
+
+
+ACTOR UACRocketAmmo : Ammo 
+{
+  Inventory.PickupMessage "Picked up a rocket." 
+  Inventory.Amount 1
+  Inventory.MaxAmount 50
+  Ammo.BackpackAmount 5
+  Ammo.BackpackMaxAmount 150
+  Inventory.Icon "ROCKA0"
+  Inventory.PickupSound "MEPICK"
+  States
+  {
+  Spawn:
+    ROCK A -1
+    Stop
+  }
+}
+
+ACTOR UACRocketPac : UACRocketAmmo 
+{
+  Inventory.PickupMessage "Picked up a Explosives box." 
+  Inventory.Amount 15
+  Inventory.PickupSound "MEPICK"
+  Scale 0.65
+  States
+  {
+  Spawn:
+    rBOX A -1
+    Stop
+  }
+}
+
+Actor UACPlasmaAmmo : Ammo replaces Cell 
+{
+    Inventory.PickupMessage "Picked up a energy cell."
+    Inventory.Amount 20
+    Inventory.MaxAmount 300
+    Ammo.BackpackAmount 20
+    Ammo.BackpackMaxAmount 600
+    Inventory.Icon "CELLA0"
+	Inventory.PickupSound "MEPICK"
+    States
+    {
+    Spawn:
+        CELL ABCDE 4
+        Loop
+    }
+}
+
+Actor UACPlasmaAmmoPack : UACPlasmaAmmo replaces CellPack
+{
+    Inventory.PickupMessage "Picked up a energy cellpack."
+    Inventory.Amount 100
+	Inventory.PickupSound "MEPICK"
+    States
+    {
+    Spawn:
+        CELP ABCDE 4
+        Loop
+    }
+}

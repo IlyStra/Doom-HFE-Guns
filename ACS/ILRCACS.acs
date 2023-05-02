@@ -1,0 +1,7 @@
+#library "ILRCACS"
+#include "zcommon.acs"
+
+Script "HFEGS_SinAngle" (Int Val)
+{
+	SetResultValue(Sin(Val/360));
+}

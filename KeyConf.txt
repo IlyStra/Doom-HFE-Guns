@@ -1,0 +1,6 @@
+AddKeySection "HFEG(aka HFEW) Binds" HFEG_Binds
+
+	AddMenuKey "Toggle FlashLight" "HFEG_FlashLightToggle"
+	Alias HFEG_FlashLightToggle "Pukename HFEG_Flashlight always; wait 4"
+
+	AddMenuKey "Call UAC Marines(Follow)" "Pukename HFEG_CallUMR always; wait 4"

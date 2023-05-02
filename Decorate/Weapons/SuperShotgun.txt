@@ -1,0 +1,586 @@
+///TOZ-2055
+///Often used by Russian bartenders, this shotgun
+///offers a nice lack of the head.
+
+///Stevens 81 "Rockatansky" shotgun
+///Paying tribute to a Australian policeman\war hero with (arguably) Eastern European descent,
+///This shotgun is used well for creating walls of flames, or making some barbecue.
+
+///Angrox 15-32 "Phoenix" shotgun
+///Aside from dragon's breath shots, this fucking monster of a shotgun.
+///shoots four to two napalm "flares".
+///BE VERY CARFUL WITH THAT WEAPON.
+
+
+ACTOR SuperShotgunSpawner : CustomInventory
+{
+	Inventory.Icon "TNT1A0"
+	Inventory.PickupSound "GUNPI"
+	Inventory.PickupMessage "You got the super shotgun!"
+	Scale 0.25
+	States
+	{
+	Spawn:
+		DBPI A -1
+		Stop
+	Pickup:
+	    TNT1 A 0 A_JumpIfInventory("SuperShotgun3", 1, "Ammo")
+		TNT1 A 0 A_JumpIfInventory("SuperShotgun2", 1, "Ammo")
+		TNT1 A 0 A_JumpIfInventory("SuperShotgun1", 1, "Ammo")
+		TNT1 A 0 A_GiveInventory("SuperShotgun1")
+		Stop
+	Ammo:
+		TNT1 A 0 A_GiveInventory("ShotShell", 12)
+		Stop
+	}
+}
+
+ACTOR SSGMAG1 : Ammo
+{
+  Inventory.Amount 0
+  Inventory.MaxAmount 2
+  Ammo.BackpackAmount 0
+  Ammo.BackpackMaxAmount 2
+  +IGNORESKILL
+}
+
+ACTOR SSGMAG2 : Ammo
+{
+  Inventory.Amount 0
+  Inventory.MaxAmount 2
+  Ammo.BackpackAmount 0
+  Ammo.BackpackMaxAmount 2
+  +IGNORESKILL
+}
+
+ACTOR SSGMAG3 : Ammo
+{
+  Inventory.Amount 0
+  Inventory.MaxAmount 4
+  Ammo.BackpackAmount 0
+  Ammo.BackpackMaxAmount 4
+  +IGNORESKILL
+}
+
+ACTOR SuperShotgun1 : UacWeapon 
+{
+  +Ammo_Optional
+  +Alt_Ammo_Optional
+  +WEAPON.ALT_USES_BOTH
+  Weapon.SelectionOrder 1300
+  Weapon.UpSound "GUNDRA"
+  Weapon.AmmoType "SSGMAG1"
+  Weapon.AmmoUse 1
+  Weapon.AmmoUse2 0
+  Weapon.AmmoGive2 12
+  Weapon.AmmoType2 "ShotShell"
+  Inventory.PickupMessage "You got the Super Shotgun!"
+  Obituary "%o's face was blasted by %k's Super Shotgun."
+  Tag "TOZ-2055 Double Barrel Shotgun"
+  States
+  {
+  Ready:
+    TNT1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
+    DB1G A 1 A_WeaponReady(WRF_AllowReload|WRF_AllowZoom)
+    Loop
+  Upgrade:
+    TNT1 A 0 A_PlaySound("WEAPUP",64)
+	TNT1 A 1 A_Print("Upgraded to level 2!\n\nDRAGON'S BREATH+",5,"SMALLFONT")
+	TNT1 A 0 A_GiveInventory("SuperShotgun2")
+    TNT1 A 0 A_TakeInventory("UpgradeToken",9)
+	TNT1 A 0 A_SelectWeapon ("SuperShotgun2")
+	TNT1 A 0 A_TakeInventory("SuperShotgun1")
+	TNT1 A 1
+	Goto Ready
+  Deselect:
+    DB1G A 1 Offset(0, 34)  
+	DB1G A 1 Offset(0, 47)
+	DB1G A 1 Offset(0, 69)
+	DB1G A 1 Offset(0, 100)
+    DB1G A 1 A_Lower
+    Wait
+  Select:
+    DB1G A 1 Offset(0, 100)
+	DB1G A 1 Offset(0, 69)
+	DB1G A 1 Offset(0, 47)
+	DB1G A 1 Offset(0, 34)    
+    DB1G A 1 A_Raise
+    Wait
+  Fire:
+    TNT1 A 0 A_JumpIfNoAmmo("Reload")
+	TNT1 A 0 A_JumpIfInventory("SSGMAG1", 2, "FireAll")
+	TNT1 A 0 A_JumpIfInventory("SSGMAG1", 1, "FireRight")
+	Goto Ready
+  FireAll:
+	TNT1 AA 0 A_FireBullets (4.6, 4.6, 12, 8, "UacBulletPuff")
+	TNT1 AA 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 3, 2, 0,frandom(-5, 5))
+    TNT1 A 0 A_PlaySound ("SSGFIR2", CHAN_WEAPON)
+	TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_Setpitch(pitch-4)
+	TNT1 A 0 A_Zoomfactor(0.98)
+    DB1F A 1 Bright A_GunFlash
+	TNT1 A 0 A_Quake(6,4,0,90,"")
+	TNT1 A 0 A_Zoomfactor(1.0)
+    DB1F B 2 Bright 
+	DB1G A 2 Offset(45,65)
+	DB1G A 2 Offset(40,60)
+	DB1G A 2 Offset(35,55)
+	DB1G A 1 Offset(30,50)
+	DB1G A 1 Offset(25,45)
+	DB1G A 1 Offset(15,40)
+	DB1G A 1 Offset(10,35)
+	DB1G A 1 Offset(5,35)
+	DB1G A 1 Offset(0,35)
+    DB1G A 1 A_Refire
+    Goto Ready
+  AltFire:
+    TNT1 A 0 A_JumpIfNoAmmo("Reload")
+	TNT1 A 0 A_JumpIfInventory("SSGMAG1", 2, "FireLeft")
+	TNT1 A 0 A_JumpIfInventory("SSGMAG1", 1, "FireRight")
+	Goto Ready
+  FireLeft:
+	TNT1 A 0 A_FireBullets (3.6, 3.6, 12, 8, "UacBulletPuff")
+	TNT1 A 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 3, 2, 0,frandom(-5, 5))
+    TNT1 A 0 A_PlaySound ("SSGFIR", CHAN_WEAPON)
+	TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_Setpitch(pitch-3)
+	TNT1 A 0 A_Zoomfactor(0.98)
+    DB1F C 1 Bright A_GunFlash
+	TNT1 A 0 A_Quake(4,4,0,90,"")
+	TNT1 A 0 A_Zoomfactor(1.0)
+    DB1F D 2 Bright 
+	DB1G A 2 Offset(45,65)
+	DB1G A 2 Offset(35,60)
+	DB1G A 2 Offset(25,55)
+	DB1G A 1 Offset(15,45)
+	DB1G A 1 Offset(10,40)
+	DB1G A 1 Offset(5,35)
+	DB1G A 1 Offset(0,35)
+    DB1G A 1 A_Refire
+    Goto Ready
+  FireRight:	
+	TNT1 A 0 A_FireBullets (3.6, 3.6, 12, 8, "UacBulletPuff")
+	TNT1 A 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 3, 2, 0,frandom(-5, 5))
+    TNT1 A 0 A_PlaySound ("SSGFIR", CHAN_WEAPON)
+	TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_Setpitch(pitch-3)
+	TNT1 A 0 A_Zoomfactor(0.98)
+    DB1F E 1 Bright A_GunFlash
+	TNT1 A 0 A_Quake(4,4,0,90,"")
+	TNT1 A 0 A_Zoomfactor(1.0)
+    DB1F F 2 Bright 
+	DB1G A 2 Offset(45,65)
+	DB1G A 2 Offset(35,60)
+	DB1G A 2 Offset(25,55)
+	DB1G A 1 Offset(15,45)
+	DB1G A 1 Offset(10,40)
+	DB1G A 1 Offset(5,35)
+	DB1G A 1 Offset(0,35)
+    DB1G A 1 A_Refire
+    Goto Ready
+  Reload:
+    TNT1 A 0 A_JumpIfInventory("SSGMAG1",2,"Ready")
+	DB1G A 0 A_JumpIfInventory("ShotShell", 1, "ReloadWork")
+	TNT1 A 0 A_PlaySound("DEKLIK", CHAN_WEAPON)
+   	DB1G A 8 
+	Goto Ready
+  ReloadWork:
+	DB1S A 2 Offset(-5,35)
+	DB1S B 2 Offset(-10,40)
+	DB1S C 2 Offset(-15,45)
+	DB1S D 2 Offset(-16,46)
+	DB1S E 2 Offset(-16,46)
+	DB1R A 2 Offset(-17,47)
+	TNT1 A 0 A_PlaySound ("SSGOPN", CHAN_BODY)
+	TNT1 AA 0 A_FireCustomMissile("UACshotguncasing_spawner",0,0,random(-8,-10),4,0)
+	DB1R B 2 Offset(-18,48)
+	DB1R C 2 Offset(-18,50)
+	DB1R D 2 Offset(-18,52)
+	DB1R E 2 Offset(-18,52)
+	DB1R F 2 Offset(-18,52)
+	DB1R G 2 Offset(-18,52)
+	TNT1 A 0 A_PlaySound ("SSGIN", CHAN_BODY)
+	DB1R H 2 Offset(-18,52)
+	DB1R I 2 Offset(-18,52)
+	DB1R L 2 Offset(-18,50)
+	DB1R M 2 Offset(-18,48)
+	TNT1 A 0 A_PlaySound ("SSGCLO", CHAN_BODY)
+	DB1R A 2 Offset(-17,47)
+	DB1S E 2 Offset(-16,46)
+	DB1S D 2 Offset(-16,46)
+	DB1S C 2 Offset(-15,45)
+	DB1S B 2 Offset(-10,40)
+	DB1S A 2 Offset(-5,35)
+   ReloadLoop:
+     TNT1 A 0 A_TakeInventory("Shotshell", 1)
+	 TNT1 A 0 A_GiveInventory("SSGMAG1", 1)
+	 TNT1 A 0 A_JumpIfInventory("SSGMAG1", 2, "Ready")
+	 TNT1 A 0 A_JumpIfInventory("Shotshell", 1, "ReloadLoop")
+	 Goto Ready	 
+  Flash:
+    TNT1 A 3 Bright A_Light1
+    TNT1 A 2 Bright A_Light2
+    Goto LightDone
+  Spawn:
+    DBPU A -1
+    Stop
+  }
+}
+
+ACTOR SuperShotgun2 : UacWeapon 
+{
+  +Ammo_Optional
+  +Alt_Ammo_Optional
+  +WEAPON.ALT_USES_BOTH
+  +WEAPON.CheatNotWeapon
+  Weapon.SelectionOrder 1300
+  Weapon.UpSound "GUNDRA"
+  Weapon.AmmoType "SSGMAG2"
+  Weapon.AmmoUse 1
+  Weapon.AmmoUse2 0
+  Weapon.AmmoGive2 12
+  Weapon.AmmoType2 "ShotShell"
+  Inventory.PickupMessage "You got the Super Shotgun!"
+  Obituary "%o's face was blasted by %k's Super Shotgun."
+  Tag "Stevens 81 ''Rockatansky'' Shotgun"
+  States
+  {
+  Ready:
+    TNT1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
+    DB2G A 1 A_WeaponReady(WRF_AllowReload|WRF_AllowZoom)
+    Loop
+  Upgrade:
+    TNT1 A 0 A_PlaySound("WEAPUP",64)
+	TNT1 A 1 A_Print("Upgraded to level 3!\n\nNAPALM+",5,"SMALLFONT")
+	TNT1 A 0 A_GiveInventory("SuperShotgun3")
+    TNT1 A 0 A_TakeInventory("UpgradeToken",9)
+	TNT1 A 0 A_SelectWeapon ("SuperShotgun3")
+	TNT1 A 0 A_TakeInventory("SuperShotgun2")
+	TNT1 A 1
+	Goto Ready
+  Deselect:
+    DB2G A 1 Offset(0, 34)  
+	DB2G A 1 Offset(0, 47)
+	DB2G A 1 Offset(0, 69)
+	DB2G A 1 Offset(0, 100)
+    DB2G A 1 A_Lower
+    Wait
+  Select:
+    DB2G A 1 Offset(0, 100)
+	DB2G A 1 Offset(0, 69)
+	DB2G A 1 Offset(0, 47)
+	DB2G A 1 Offset(0, 34)    
+    DB2G A 1 A_Raise
+    Wait
+  Fire:
+    TNT1 A 0 A_JumpIfNoAmmo("Reload")
+	TNT1 A 0 A_JumpIfInventory("SSGMAG2", 2, "FireAll")
+	TNT1 A 0 A_JumpIfInventory("SSGMAG2", 1, "FireRight")
+	Goto Ready
+  Fireall:
+	TNT1 AA 0 A_FireBullets (4.6, 4.6, 12, 12, "UacDBBulletPuff")
+	TNT1 AA 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 3, 2, 0,frandom(-5, 5))
+    TNT1 A 0 A_PlaySound ("SSGFIR2", CHAN_WEAPON)
+	TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_Setpitch(pitch-4)
+	TNT1 A 0 A_Zoomfactor(0.98)
+    DB2F A 1 Bright A_GunFlash
+	TNT1 A 0 A_Quake(6,4,0,90,"")
+	TNT1 A 0 A_Zoomfactor(1.0)
+    DB2F B 2 Bright 
+	DB2R D 2 Offset(45,65)
+	DB2R C 2 Offset(40,60)
+	DB2R B 2 Offset(35,55)
+	DB2R A 1 Offset(30,50)
+	DB2G A 1 Offset(25,45)
+	DB2G A 1 Offset(15,40)
+	DB2G A 1 Offset(10,35)
+	DB2G A 1 Offset(5,35)
+	DB2G A 1 Offset(0,35)
+    DB2G A 1 A_Refire
+    Goto Ready
+  AltFire:
+    TNT1 A 0 A_JumpIfNoAmmo("Reload")
+	TNT1 A 0 A_JumpIfInventory("SSGMAG2", 2, "FireLeft")
+	TNT1 A 0 A_JumpIfInventory("SSGMAG2", 1, "FireRight")
+	Goto Ready
+  FireLeft:
+	TNT1 A 0 A_FireBullets (3.6, 3.6, 12, 12, "UacDBBulletPuff")
+	TNT1 A 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 3, 2, 0,frandom(-5, 5))
+    TNT1 A 0 A_PlaySound ("SSGFIR", CHAN_WEAPON)
+	TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_Setpitch(pitch-3)
+	TNT1 A 0 A_Zoomfactor(0.98)
+    DB2F C 1 Bright A_GunFlash
+	TNT1 A 0 A_Quake(4,4,0,90,"")
+	TNT1 A 0 A_Zoomfactor(1.0)
+    DB2F D 2 Bright 
+	DB2R D 2 Offset(45,65)
+	DB2R C 2 Offset(35,60)
+	DB2R B 2 Offset(25,55)
+	DB2R A 1 Offset(15,45)
+	DB2G A 1 Offset(10,40)
+	DB2G A 1 Offset(5,35)
+	DB2G A 1 Offset(0,35)
+    DB2G A 1 A_Refire
+    Goto Ready
+  FireRight:	
+	TNT1 A 0 A_FireBullets (3.6, 3.6, 12, 12, "UacDBBulletPuff")
+	TNT1 A 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 3, 2, 0,frandom(-5, 5))
+    TNT1 A 0 A_PlaySound ("SSGFIR", CHAN_WEAPON)
+	TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_Setpitch(pitch-3)
+	TNT1 A 0 A_Zoomfactor(0.98)
+    DB2F E 1 Bright A_GunFlash
+	TNT1 A 0 A_Quake(4,4,0,90,"")
+	TNT1 A 0 A_Zoomfactor(1.0)
+    DB2F F 2 Bright 
+	DB2R D 2 Offset(45,65)
+	DB2R C 2 Offset(35,60)
+	DB2R B 2 Offset(25,55)
+	DB2R A 1 Offset(15,45)
+	DB2G A 1 Offset(10,40)
+	DB2G A 1 Offset(5,35)
+	DB2G A 1 Offset(0,35)
+    DB2G A 1 A_Refire
+    Goto Ready
+  Reload:
+    TNT1 A 0 A_JumpIfInventory("SSGMAG2",2,"Ready")
+	DB2G A 0 A_JumpIfInventory("ShotShell", 1, "ReloadWork")
+	TNT1 A 0 A_PlaySound("DEKLIK", CHAN_WEAPON)
+   	DB2G A 8 
+	Goto Ready
+  ReloadWork:
+	DB2R A 2 Offset(-5,35)
+	DB2R B 2 Offset(-10,40)
+	DB2R C 2 Offset(-15,45)
+	DB2R D 2 Offset(-16,46)
+	DB2R E 2 Offset(-16,46)
+	DB2R A 2 Offset(-17,47)
+	TNT1 A 0 A_PlaySound ("SSGOPN", CHAN_BODY)
+	TNT1 AA 0 A_FireCustomMissile("UACdragonsbreathcasing_spawner",0,0,random(-8,-10),4,0)
+	DB2R F 2 Offset(-18,48)
+	DB2R G 2 Offset(-18,50)
+	DB2R H 2 Offset(-18,52)
+	DB2R I 2 Offset(-18,52)
+	DB2R J 2 Offset(-18,52)
+	DB2R K 2 Offset(-18,52)
+	TNT1 A 0 A_PlaySound ("SSGIN", CHAN_BODY)
+	DB2R L 2 Offset(-18,52)
+	DB2R M 2 Offset(-18,52)
+	DB2R N 2 Offset(-18,50)
+	DB2R O 2 Offset(-18,48)
+	DB2R P 2 Offset(-17,47)
+	DB2R Q 2 Offset(-16,46)
+	DB2R R 2 Offset(-16,46)
+	TNT1 A 0 A_PlaySound ("SSGCLO", CHAN_BODY)
+	DB2R D 2 Offset(-16,46)
+	DB2R C 2 Offset(-15,45)
+	DB2R B 2 Offset(-10,40)
+	DB2R A 2 Offset(-5,35)
+   ReloadLoop:
+     TNT1 A 0 A_TakeInventory("Shotshell", 1)
+	 TNT1 A 0 A_GiveInventory("SSGMAG2", 1)
+	 TNT1 A 0 A_JumpIfInventory("SSGMAG2", 2, "Ready")
+	 TNT1 A 0 A_JumpIfInventory("Shotshell", 1, "ReloadLoop")
+	 Goto Ready	 
+  Flash:
+    TNT1 A 3 Bright A_Light1
+    TNT1 A 2 Bright A_Light2
+    Goto LightDone
+  Spawn:
+    DBPU A -1
+    Stop
+  }
+}
+
+ACTOR SuperShotgun3 : UacWeapon 
+{
+  +Ammo_Optional
+  +Alt_Ammo_Optional
+  +WEAPON.ALT_USES_BOTH
+  +WEAPON.CheatNotWeapon
+  Weapon.SelectionOrder 1300
+  Weapon.UpSound "GUNDRA"
+  Weapon.AmmoType "SSGMAG3"
+  Weapon.AmmoUse 1
+  Weapon.AmmoUse2 0
+  Weapon.AmmoGive2 12
+  Weapon.AmmoType2 "ShotShell"
+  Inventory.PickupMessage "You got the Super Shotgun!"
+  Obituary "%o's face was blasted by %k's Super Shotgun."
+  Tag "Angrox 15-32 ''Phoenix'' Shotgun"
+  States
+  {
+  Ready:
+    TNT1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
+    DB3G A 1 A_WeaponReady(WRF_AllowReload|WRF_AllowZoom)
+    Loop
+  Upgrade:
+	TNT1 A 1 A_Print("THE WEAPON IS ALREADY UPGRADED TO THE MAX LEVEL!",5,"SMALLFONT")
+	TNT1 A 0 A_GiveInventory("UACTOOLZ", 1)
+    TNT1 A 0 A_TakeInventory("UpgradeToken",9)
+	TNT1 A 1
+	Goto Ready
+  Deselect:
+    DB3G A 1 Offset(0, 34)  
+	DB3G A 1 Offset(0, 47)
+	DB3G A 1 Offset(0, 69)
+	DB3G A 1 Offset(0, 100)
+    DB3G A 1 A_Lower
+    Wait
+  Select:
+    DB3G A 1 Offset(0, 100)
+	DB3G A 1 Offset(0, 69)
+	DB3G A 1 Offset(0, 47)
+	DB3G A 1 Offset(0, 34)    
+    DB3G A 1 A_Raise
+    Wait
+  Fire:
+    TNT1 A 0 A_JumpIfNoAmmo("Reload")
+	TNT1 A 0 A_JumpIfInventory("SSGMAG3", 4, "FireAll")
+	TNT1 A 0 A_JumpIfInventory("SSGMAG3", 2, "FireRight")
+	Goto Ready
+  FireAll:
+	TNT1 AAAA 0 A_FireBullets (4.6, 4.6, 12, 12, "UacDBBulletPuff")
+	TNT1 AAAA 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 3, 2, 0,frandom(-5, 5))
+	TNT1 AA 0 A_FireCustomMissile("UACSSGL3Projectile", frandom(-4, 4), 0, 3, 2, 0,frandom(-2, 2))
+	TNT1 AA 0 A_FireCustomMissile("UACSSGL3Projectile", frandom(-4, 4), 0, 3, 0, 0,frandom(-2, 2))
+    TNT1 A 0 A_PlaySound ("SSGFIR3", CHAN_WEAPON)
+	TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_Setpitch(pitch-6)
+	TNT1 A 0 A_Zoomfactor(0.98)
+    DB3F A 1 Bright A_GunFlash
+	TNT1 A 0 A_Quake(8,4,0,90,"")
+	TNT1 A 0 A_Zoomfactor(1.0)
+    DB3F B 2 Bright 
+	DB3G A 2 Offset(55,75)
+	DB3G A 2 Offset(50,70)
+	DB3G A 2 Offset(45,65)
+	DB3G A 1 Offset(40,60)
+	DB3G A 1 Offset(35,55)
+	DB3G A 1 Offset(30,50)
+	DB3G A 1 Offset(25,45)
+	DB3G A 1 Offset(15,40)
+	DB3G A 1 Offset(10,35)
+	DB3G A 1 Offset(5,35)
+	DB3G A 1 Offset(0,35)
+    DB3G A 1 A_Refire
+    Goto Ready
+  AltFire:
+    TNT1 A 0 A_JumpIfNoAmmo("Reload")
+	TNT1 A 0 A_JumpIfInventory("SSGMAG3", 4, "FireLeft")
+	TNT1 A 0 A_JumpIfInventory("SSGMAG3", 2, "FireRight")
+	Goto Ready
+  FireLeft:
+	TNT1 AA 0 A_FireBullets (3.6, 3.6, 12, 12, "UacDBBulletPuff")
+	TNT1 AA 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 3, 2, 0,frandom(-5, 5))
+	TNT1 AA 0 A_FireCustomMissile("UACSSGL3Projectile", frandom(-4, 4), 0, 3, 0, 0,frandom(-2, 2))
+    TNT1 A 0 A_PlaySound ("SSGFIR2", CHAN_WEAPON)
+	TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_Setpitch(pitch-4)
+	TNT1 A 0 A_Zoomfactor(0.98)
+    DB3F C 1 Bright A_GunFlash
+	TNT1 A 0 A_Quake(6,4,0,90,"")
+	TNT1 A 0 A_Zoomfactor(1.0)
+    DB3F D 2 Bright 
+	DB3G A 2 Offset(45,65)
+	DB3G A 2 Offset(35,60)
+	DB3G A 2 Offset(25,55)
+	DB3G A 1 Offset(15,45)
+	DB3G A 1 Offset(10,40)
+	DB3G A 1 Offset(5,35)
+	DB3G A 1 Offset(0,35)
+    DB3G A 1 A_Refire
+    Goto Ready
+  FireRight:	
+	TNT1 AA 0 A_FireBullets (3.6, 3.6, 12, 12, "UacDBBulletPuff")
+	TNT1 AA 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 3, 2, 0,frandom(-5, 5))
+	TNT1 AA 0 A_FireCustomMissile("UACSSGL3Projectile", frandom(-4, 4), 0, 3, 0, 0,frandom(-2, 2))
+    TNT1 A 0 A_PlaySound ("SSGFIR2", CHAN_WEAPON)
+	TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_Setpitch(pitch-4)
+	TNT1 A 0 A_Zoomfactor(0.98)
+    DB3F E 1 Bright A_GunFlash
+	TNT1 A 0 A_Quake(6,4,0,90,"")
+	TNT1 A 0 A_Zoomfactor(1.0)
+    DB3F F 2 Bright 
+	DB3G A 2 Offset(45,65)
+	DB3G A 2 Offset(35,60)
+	DB3G A 2 Offset(25,55)
+	DB3G A 1 Offset(15,45)
+	DB3G A 1 Offset(10,40)
+	DB3G A 1 Offset(5,35)
+	DB3G A 1 Offset(0,35)
+    DB3G A 1 A_Refire
+    Goto Ready
+  Reload:
+    TNT1 A 0 A_JumpIfInventory("SSGMAG3",4,"Ready")
+	DB3G A 0 A_JumpIfInventory("ShotShell", 1, "ReloadWork")
+	TNT1 A 0 A_PlaySound("DEKLIK", CHAN_WEAPON)
+   	DB3G A 8 
+	Goto Ready
+  ReloadWork:
+    DB3G A 1 Offset(-5,35)
+	DB3G A 1 Offset(-10,45)
+	DB3G A 1 Offset(-15,55)
+	DB3G A 1 Offset(-15,65)
+	DB3G A 1 Offset(-20,75)
+	DB3G A 1 Offset(-20,85)
+	DB3G A 1 Offset(-20,95)
+	DB3G A 1 Offset(-20,100)
+	TNT1 A 2
+	TNT1 A 0 A_PlaySound ("SSGOPN3", CHAN_BODY)
+	TNT1 AA 0 A_FireCustomMissile("UACdragonsbreathcasing_spawner",0,0,random(-8,-10),4,0)
+	TNT1 AA 0 A_FireCustomMissile("UACdragonsbreathcasing_spawner",0,0,random(-8,-10),2,0)
+	DB3R A 2 Offset(-3,55)
+	DB3R A 2 Offset(-5,50)
+	DB3R A 2 Offset(-10,45)
+	DB3R A 2 Offset(-10,40)
+	DB3R B 2 Offset(-10,40)
+	DB3R C 2 Offset(-11,40)
+	DB3R D 2 Offset(-12,40)
+    TNT1 A 0 A_PlaySound ("SSGIN3", CHAN_BODY)
+	DB3R E 2 Offset(-13,40)
+	DB3R F 2 Offset(-13,40)
+	DB3R G 2 Offset(-13,40)
+	DB3R H 2 Offset(-13,40)
+	DB3R I 2 Offset(-13,40)
+	DB3R J 2 Offset(-13,40)
+	DB3R K 2 Offset(-13,40)
+	DB3R L 2 Offset(-13,40)
+	DB3R M 2 Offset(-13,40)
+    TNT1 A 0 A_PlaySound ("SSGIN3", CHAN_BODY)
+	DB3R N 2 Offset(-13,40)
+	DB3R O 2 Offset(-13,40)
+	DB3R P 2 Offset(-12,40)
+	DB3R Q 2 Offset(-11,40)
+	DB3R Q 2 Offset(-10,40)
+	DB3R Q 2 Offset(-10,45)
+	DB3R Q 2 Offset(-5,50)
+	DB3R Q 2 Offset(-3,55)
+	TNT1 A 2
+	TNT1 A 0 A_PlaySound ("SSGCLO3", CHAN_BODY)
+    DB3G A 1 Offset(-20,100)
+	DB3G A 1 Offset(-20,95)
+	DB3G A 1 Offset(-20,85)
+	DB3G A 1 Offset(-20,75)
+	DB3G A 1 Offset(-15,65)
+	DB3G A 1 Offset(-15,55)
+	DB3G A 1 Offset(-10,45)
+	DB3G A 1 Offset(-5,35)
+   ReloadLoop:
+     TNT1 A 0 A_TakeInventory("Shotshell", 1)
+	 TNT1 A 0 A_GiveInventory("SSGMAG3", 1)
+	 TNT1 A 0 A_JumpIfInventory("SSGMAG3", 4, "Ready")
+	 TNT1 A 0 A_JumpIfInventory("Shotshell", 1, "ReloadLoop")
+	 Goto Ready	 
+  Flash:
+    TNT1 A 3 Bright A_Light1
+    TNT1 A 2 Bright A_Light2
+    Goto LightDone
+  Spawn:
+    DBPU A -1
+    Stop
+  }
+}

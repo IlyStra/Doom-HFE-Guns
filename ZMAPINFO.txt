@@ -1,0 +1,84 @@
+gameinfo
+{
+	NoRandomPlayerClass = True
+	PlayerClasses = "UACPlayer"
+	Titlepage = "TITLE01"
+    QuitMessages = "Chickening out? bwak bwak bwak!?", 
+	"Come on, you will reach the top level of destruction.", 
+	"In the end, there will be only you.", 
+	"Are you sure you are the good guy?", 
+	"Leave this shit. You killed enough.",
+	"Leaving the world isn't scary as it sounds.",
+	"Are you enjoying this?",
+	"This isn't the thing you should do in real life.",
+	"Killed 200 people today? Maybe more?",
+	"Leave this shit. You already painted the town red.",
+	"Cleaned up the streets enough?",
+	"Who's delusional, you or them?",
+	"The world's still gonna end without you.",
+	"Vgavnonah.",
+	"FUBAR.",
+	"Rozpierdolony.",
+	"Zajebany.",
+	"Twoj pociag juz dawno odjechal.",
+	"Sluchaj, jak znasz jezyk polski, to przeczytaj - juz wystarczajaco rozjebales ich. idz kimac.",
+	"You are a cruel motherfucker.",
+	"You shouldn't end it like this.",
+	"You are lifeless, just like them."
+}
+
+map TITLEMAP lookup "TMAP"
+{
+	music = "HEAVY1"
+}
+ClearSkills
+skill bobo
+{
+	AutoUseHealth
+	AmmoFactor = 2
+	DamageFactor = 0.5
+	EasyBossBrain
+	SpawnFilter = Baby
+	Name = "As banal as stabbing someone"
+	Key = "i"
+}
+
+skill ez
+{
+	EasyBossBrain
+	SpawnFilter = Easy
+	Name = "As easy as pulling the trigger"
+	Key = "h"
+}
+
+skill normalasfuck
+{
+	SpawnFilter = Normal
+	Key = "h"
+	Name = "As normal as shooting everyone"
+	DefaultSkill
+}
+
+skill ultrafun
+{
+	SpawnFilter = Hard
+	Name = "As hard as committing a warcrime"
+	Key = "u"
+}
+
+skill fuckingtough
+{
+	AmmoFactor = 2
+	FastMonsters
+	DisableCheats
+	RespawnTime = 12
+	SpawnFilter = Nightmare
+	Name = "As fucking impossible as being death itself "
+	MustConfirm
+	Key = "n"
+}
+
+Map TITLEMAP "HFEG Titlemap"
+{
+	Sky1 = "HFTMSK0"
+}

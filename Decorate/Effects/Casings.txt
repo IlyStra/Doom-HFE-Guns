@@ -1,0 +1,239 @@
+actor UACpistolcasing_spawner {
+	speed 15
+	PROJECTILE
+	+NOCLIP
+	+CLIENTSIDEONLY
+	states{
+		spawn:
+			TNT1 A 0
+			TNT1 A 1 A_SpawnItemEx("UACpistolcasing", 0, 3,-3, 1, random(4,5), random(1,2), 150) 
+			stop
+	}
+}
+actor UACrevolvercasing_spawner {
+	speed 15
+	PROJECTILE
+	+NOCLIP
+	+CLIENTSIDEONLY
+	states{
+		spawn:
+			TNT1 A 0
+			TNT1 A 1 A_SpawnItemEx("UACpistolcasing", 0, 3,-3, 1, random(0,5), random(1,2), 0) 
+			stop
+	}
+}
+
+ACTOR UACpistolcasing
+{
+   Radius 2
+   Height 4
+   Speed 15
+   Scale 0.15
+   WallBounceSound "PISCAS"
+   BounceSound "PISCAS"
+   DeathSound "PISCAS"
+   PROJECTILE
+   +FORCEXYBILLBOARD
+   -NOGRAVITY
+   +BOUNCEONACTORS
+   +BOUNCEONCEILINGS
+   +DONTSPLASH
+   +CLIENTSIDEONLY
+   Gravity 0.75
+   BounceType Doom
+   BounceCount 6
+   BounceFactor 0.66
+   DamageType Nope
+   States
+   {
+   Spawn:
+	  TNT1 A 0 
+      PICA A 1
+      Goto Roflcopter
+   Roflcopter:
+      PICA ABCDE 1 
+      Loop
+   Death:
+      TNT1 A 0
+	  TNT1 A 0 A_Jump(256,"Death1","Death2")
+   Death1:
+      PICA BBB 1 
+	  PICA B 15 A_Fadeout(0.1)
+      Wait
+   Death2:
+      PICA EEE 1 
+	  PICA E 15 A_Fadeout(0.1)
+      Wait
+   }
+}
+
+actor UACriflecasing_spawner {
+	speed 15
+	PROJECTILE
+	+NOCLIP
+	+CLIENTSIDEONLY
+	states{
+		spawn:
+			TNT1 A 0
+			TNT1 A 1 A_SpawnItemEx("UACriflecasing", 0, 3, 3, 1, random(4,5), random(1,2), 0) 
+			stop
+	}
+}
+
+ACTOR UACriflecasing
+{
+   Radius 2
+   Height 4
+   Speed 15
+   Scale 0.15
+   WallBounceSound "RIFCAS"
+   BounceSound "RIFCAS"
+   DeathSound "RIFCAS"
+   PROJECTILE
+   -NOGRAVITY
+   +FORCEXYBILLBOARD
+   +BOUNCEONACTORS
+   +BOUNCEONCEILINGS
+   +DONTSPLASH
+   +CLIENTSIDEONLY
+   Gravity 0.75
+   BounceType Doom
+   BounceCount 6
+   BounceFactor 0.66
+   DamageType Nope
+   States
+   {
+   Spawn:
+	  TNT1 A 0
+      RICA A 1
+      Goto Roflcopter
+   Roflcopter:
+      RICA ABCDEF 1 
+      Loop
+   Death:
+      TNT1 A 0
+	  TNT1 A 0 A_Jump(256,"Death1","Death2")
+   Death1:
+      RICA AAA 1 
+	  RICA A 15 A_Fadeout(0.1)
+      Wait
+   Death2:
+      RICA DDD 1 
+	  RICA D 15 A_Fadeout(0.1)
+      Wait
+   }
+}
+
+actor UACshotguncasing_spawner {
+	speed 15
+	PROJECTILE
+	+NOCLIP
+	+CLIENTSIDEONLY
+	states{
+		spawn:
+			TNT1 A 0
+			TNT1 A 1 A_SpawnItemEx("UACshotguncasing", 0, 24, -3, 1, random(4,5), random(1,2), 0) 
+			stop
+	}
+}
+
+ACTOR UACshotguncasing
+{
+   Radius 2
+   Height 4
+   Speed 10
+   Scale 0.15
+   WallBounceSound "SHOCAS"
+   BounceSound "SHOCAS"
+   DeathSound "SHOCAS"
+   PROJECTILE
+   -NOGRAVITY
+   +FORCEXYBILLBOARD
+   +BOUNCEONACTORS
+   +BOUNCEONCEILINGS
+   +DONTSPLASH
+   +CLIENTSIDEONLY
+   Gravity 0.75
+   BounceType Doom
+   BounceCount 6
+   BounceFactor 0.66
+   DamageType Nope
+   States
+   {
+   Spawn:
+	  TNT1 A 0 
+      SHCA A 1
+      Goto Roflcopter
+   Roflcopter:
+      SHCA ABCDEFGH 1 
+      Loop
+   Death:
+      TNT1 A 0
+	  TNT1 A 0 A_Jump(256,"Death1","Death2")
+   Death1:
+      SHCA DDD 1 
+	  SHCA D 15 A_Fadeout(0.1)
+      Wait
+   Death2:
+      SHCA HHH 1  
+	  SHCA H 15 A_Fadeout(0.1)
+      Wait
+   }
+}
+
+actor UACdragonsbreathcasing_spawner {
+	speed 15
+	PROJECTILE
+	+NOCLIP
+	+CLIENTSIDEONLY
+	states{
+		spawn:
+			TNT1 A 0
+			TNT1 A 1 A_SpawnItemEx("UACdragonsbreathcasing", 0, 24, -3, 1, random(4,5), random(1,2), 0) 
+			stop
+	}
+}
+
+ACTOR UACdragonsbreathcasing
+{
+   Radius 2
+   Height 4
+   Speed 10
+   Scale 0.15
+   WallBounceSound "SHOCAS"
+   BounceSound "SHOCAS"
+   DeathSound "SHOCAS"
+   PROJECTILE
+   -NOGRAVITY
+   +FORCEXYBILLBOARD
+   +BOUNCEONACTORS
+   +BOUNCEONCEILINGS
+   +DONTSPLASH
+   +CLIENTSIDEONLY
+   Gravity 0.75
+   BounceType Doom
+   BounceCount 6
+   BounceFactor 0.66
+   DamageType Nope
+   States
+   {
+   Spawn:
+	  TNT1 A 0 
+      DBCA A 1
+      Goto Roflcopter
+   Roflcopter:
+      DBCA ABCDEFGH 1 
+      Loop
+   Death:
+      TNT1 A 0
+	  TNT1 A 0 A_Jump(256,"Death1","Death2")
+   Death1:
+      DBCA DDD 1 
+	  DBCA D 15 A_Fadeout(0.1)
+      Wait
+   Death2:
+      DBCA HHH 1  
+	  DBCA H 15 A_Fadeout(0.1)
+      Wait
+   }
+}

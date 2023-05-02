@@ -1,0 +1,25 @@
+///Starting code stuff
+#include "Decorate/Player"
+#include "Decorate/WeaponBase"
+///Effects
+#include "Decorate/Effects/Casings"
+#include "Decorate/Effects/Ballistics"
+#include "Decorate/Effects/Explosions"
+#include "Decorate/Effects/Flames"
+///Pickups
+#include "Decorate/Upgrades"
+#include "Decorate/Pickups/Ammo"
+///Weapons
+#include "Decorate/Weapons/Spawners"
+#include "Decorate/Weapons/Grenades"
+#include "Decorate/Weapons/Fist"
+#include "Decorate/Weapons/Pistol"
+#include "Decorate/Weapons/Uzi"
+#include "Decorate/Weapons/Revolver"
+#include "Decorate/Weapons/Shotgun"
+#include "Decorate/Weapons/SuperShotgun"
+#include "Decorate/Weapons/MachineGun"
+//Il Str
+#include "Decorate/Weapons/Rockets.dec"
+#include "Decorate/Weapons/RemakedFire.dec"
+#include "Decorate/Other.dec"

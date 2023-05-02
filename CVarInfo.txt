@@ -1,0 +1,2 @@
+User Bool HFEGC_SilentTMap = False;
+Server Bool HFEGC_UMREnable = True;

@@ -1,0 +1,63 @@
+height 32;
+monospacefonts true, "0";
+
+statusbar fullscreen, fullscreenoffsets // ZDoom HUD
+{
+    InInventory UACTOOLZ, 1
+	{
+	drawimage "HUDTUL", 233, -19;
+	}
+	IsSelected MachineGun3
+	{
+	drawnumber 3, SMALLFONT, white, "UACROCKETAMMO", alignment(right), 173, -22;
+	}
+	//health	
+	drawimage "HELFA0", 33, -39;
+	drawnumber 2147483647, BIGFONT, red, health, drawshadow, 82, -39;
+
+	//armor
+	drawimage "RMORA0", 33, -19;
+	drawnumber 2147483647, BIGFONT, blue, armor, drawshadow, 82, -19;
+
+	//ammo 'n' weppins
+	drawnumber 3, SMALLFONT, green, ammo1, alignment(right), 114, -28;
+	drawstring SMALLFONT, white, "/", 123, -28;
+	drawstring SMALLFONT, white, weapontag, 170, -50;
+	drawnumber 3,SMALLFONT, darkgreen, ammo1capacity, alignment(left), 124, -28;	
+	drawnumber 3, SMALLFONT, white, ammo2, alignment(right), 173, -28;
+	
+	
+	//KEYS
+	DrawKeyBar 100, horizontal, 9, 95, -16;
+	
+	//KILLS,ITEMS,SECRETS
+	DrawString SMALLFONT, RED, "K", 541, -39;
+	drawnumber 5, CONFONT, untranslated, kills, alignment(right), 585, -39;  
+	drawstring CONFONT, white, "/", 595, -39;
+	drawnumber 5, CONFONT, untranslated, monsters, alignment(right), 628, -39;
+	
+	DrawString SMALLFONT, GOLD, "I", 541, -29;
+	drawnumber 3, CONFONT, untranslated, items, alignment(right), 585, -29;  
+	drawstring CONFONT, white, "/", 595, -29;
+	drawnumber 3, CONFONT, untranslated, totalitems, alignment(right), 628, -29;
+	
+	DrawString SMALLFONT, LIGHTBLUE, "S", 541, -19;
+	drawnumber 3, CONFONT, untranslated, secrets, alignment(right), 585, -19;  
+	drawstring CONFONT, white, "/", 595, -19;
+	drawnumber 3, CONFONT, untranslated, totalsecrets, alignment(right), 628, -19;
+}
+
+statusbar normal 
+{
+drawstring SMALLFONT, white, "Switch to fullscreen hud.", 0, 0;
+}
+
+statusbar inventory // Standard bar overlay (ZDoom Addition)
+{
+	drawinventorybar Doom, 7, INDEXFONT, 50, 170;
+}
+
+statusbar inventoryfullscreen, fullscreenoffsets // ZDoom HUD overlay.
+{
+	drawinventorybar Doom, translucent, 7, INDEXFONT, -106+center, -31;
+}

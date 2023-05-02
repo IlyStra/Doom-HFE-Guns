@@ -1,0 +1,446 @@
+///"FaceCrusher" Knuckles
+///You have them, you smash a face with it.
+
+///D-23 hand chainsaw
+///doesn't use fuel, uses batteries.
+///good for Evil Dead and Chainsaw Man fanboys.
+
+actor Fist1 : UACWeapon
+{
+  Game Doom
+  Weapon.Kickback 100
+  Weapon.SelectionOrder 1000
+  Weapon.SlotNumber 1
+  Inventory.PickupMessage "Umm... Fists"
+  Tag "''Facecrusher'' titanium knuckles"
+  +inventory.undroppable
+  +NOALERT
+  +WEAPON.MELEEWEAPON
+  +AMMO_OPTIONAL
+  Obituary "%o was beaten down by %k. "
+  States
+  {
+  Spawn:
+    TNT1 A -1
+    Loop
+  Ready:
+    TNT1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
+    BK1I A 1 A_WeaponReady(WRF_ALLOWZOOM)
+    loop
+  Upgrade:
+    TNT1 A 0 A_PlaySound("WEAPUP",64)
+	TNT1 A 1 A_Print("Upgraded to level 2!\n\nCHAINSAW+",5,"SMALLFONT")
+	TNT1 A 0 A_GiveInventory("Fist2")
+    TNT1 A 0 A_TakeInventory("UpgradeToken",9)
+	TNT1 A 0 A_SelectWeapon ("Fist2")
+	TNT1 A 0 A_TakeInventory("Fist1")
+	TNT1 A 1
+	Goto Ready
+  Refocus:
+	BK1I E 1 A_WeaponReady
+    BK1I D 1 A_WeaponReady
+	BK1I C 1 A_WeaponReady
+	BK1I B 1 A_WeaponReady
+	BK1I A 1 A_WeaponReady
+	Goto Ready
+  Deselect:
+    BK1I A 1 Offset (0,35) A_TakeInventory("UACFistToken")
+	BK1I A 1 Offset (0,50)
+	BK1I A 1 Offset (00,75)
+	BK1I A 1 Offset (0,80)
+    BK1I A 1 A_Lower
+    Wait
+  Select: 
+    BK1I A 1 Offset (0,80)
+	BK1I A 1 Offset (0,75)
+	BK1I A 1 Offset (0,50)
+	BK1I A 1 Offset (0,35)
+    BK1I A 1 A_Raise
+    Wait
+  Fire:
+    BK1I A 1 
+	BK1I B 1 
+	BK1I C 1 
+	BK1I D 1 
+	BK1I E 1 
+  Hold: 
+  Punch1:
+    TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"Punch1Berserk")
+	TNT1 A 0 A_JumpIfInventory("UACFistToken",1,"Punch2")
+    TNT1 A 0 A_Playsound("BLUSWI",1,1,0)
+    BK1L A 1 A_GiveInventory("UACFistToken")
+	BK1L B 1
+	BK1L C 1
+	BK1L D 1 A_CustomPunch(15, 1, 0, "UnarmedHit", 65)
+	BK1L E 2 
+	BK1L F 2 
+    TNT1 A 0 A_Refire
+	goto Refocus
+  Punch2:
+    TNT1 A 0 A_Playsound("BLUSWI",1,1,0)
+	BK1R A 1 A_TakeInventory("UACFistToken")
+	BK1R B 1
+	BK1R C 1
+	BK1R D 1 A_CustomPunch(15, 1, 0, "UnarmedHit", 65)
+	BK1R E 2 
+	BK1R F 2
+    TNT1 A 0 A_Refire
+	goto Refocus
+  Punch1Berserk:
+	TNT1 A 0 A_JumpIfInventory("UACFistToken",1,"Punch2Berserk")
+    TNT1 A 0 A_Playsound("BLUSWI",1,1,0)
+    BK1L A 1 A_GiveInventory("UACFistToken")
+	BK1L B 1
+	BK1L C 1
+	BK1L D 1 A_CustomPunch(20 * 15, 1, 0, "UnarmedHit", 65)
+	BK1L E 1 
+	BK1L F 1 
+    TNT1 A 0 A_Refire
+	goto Refocus
+  Punch2Berserk:
+    TNT1 A 0 A_Playsound("BLUSWI",1,1,0)
+	BK1R A 1 A_TakeInventory("UACFistToken")
+	BK1R B 1
+	BK1R C 1
+	BK1R D 1 A_CustomPunch(20 * 15, 1, 0, "UnarmedHit", 65)
+	BK1R E 1 
+	BK1R F 1
+    TNT1 A 0 A_Refire
+	goto Refocus
+  } 
+}
+
+Actor Fist2 : UACWeapon 
+{
+  Tag "D-23 Hand Chainsaw"
+  Weapon.UpSound "GUNCHA"
+  Weapon.Kickback 25
+  Weapon.SelectionOrder 1000
+  Weapon.SlotNumber 1
+  Weapon.AmmoGive 200
+  +NoAlert
+  +NoAutofire
+  +inventory.undroppable
+  +WEAPON.MELEEWEAPON
+  +WEAPON.CHEATNOTWEAPON
+  Obituary "%o was sawed by %k's you know damn what."
+  states
+  { 
+  Spawn:
+    TNT1 A -1
+    Loop
+  Select:
+  	BK2I A 1 Offset(0, 100)
+	BK2I A 1 Offset(0, 69)
+	BK2I A 1 Offset(0, 47)
+	BK2I A 1 Offset(0, 34)
+	BK2I A 1 A_Raise
+	Wait
+ Ready:
+    TNT1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
+    TNT1 A 0 A_Playsound("SAWID",1,1,1)
+    BK2I ABCDE 1 A_WeaponReady(WRF_ALLOWRELOAD)
+    Loop
+ Upgrade:
+    TNT1 A 0 A_PlaySound("WEAPUP",64)
+	TNT1 A 1 A_Print("Upgraded to level 3!\n\nCHAINSAW MAN+",5,"SMALLFONT")
+	TNT1 A 0 A_GiveInventory("Fist3")
+    TNT1 A 0 A_TakeInventory("UpgradeToken",9)
+	TNT1 A 0 A_SelectWeapon ("Fist3")
+	TNT1 A 0 A_TakeInventory("Fist2")
+	TNT1 A 1
+	Goto Ready
+  Deselect:
+	TNT1 A 0 A_StopSound(1)
+	BK2I A 1 Offset(0, 34)
+	BK2I A 1 Offset(0, 47)
+	BK2I A 1 Offset(0, 69)	
+  	BK2I A 1 Offset(0, 100)
+    BK2I A 1 A_Lower
+    Wait
+  Fire:
+  Startattack:
+    BK2R A 2
+	TNT1 A 0 A_Playsound("SAW3",1,0.75,0)
+	BK2R BC 1
+	Goto AttackLoop
+  StopAttack:
+    TNT1 A 0 A_Playsound("SAW2",4,0.75,0)
+	BK2R CB 1
+	BK2R A 2
+	Goto Ready
+  Attackloop:
+  TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"AttackLoopBerserk")
+    TNT1 A 0 A_Playsound("SAW1",1,0.75,1)
+    BK2R D 1
+	TNT1 A 0 A_CustomPunch(15,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	TNT1 A 0 A_AlertMonsters
+	BK2R E 1 
+	TNT1 A 0 A_CustomPunch(15,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Refire("Attackloop") 
+	Goto StopAttack
+  AttackloopBerserk:
+    TNT1 A 0 A_Playsound("SAW1",1,0.75,1)
+    BK2R D 1
+	TNT1 A 0 A_CustomPunch(20 * 15,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	TNT1 A 0 A_AlertMonsters
+	BK2R E 1 
+	TNT1 A 0 A_CustomPunch(20 * 15,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Refire("Attackloop") 
+	Goto StopAttack	
+  Altfire:
+    TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"AltfireBerserk")
+    TNT1 A 0 A_Playsound("SAW3",1,0.75,0)
+	BK2S C 2 A_AlertMonsters
+	BK2S B 2
+	BK2S A 2
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S A 1 A_CustomPunch(15,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S A 1 A_CustomPunch(15,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S B 1 A_CustomPunch(15,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	TNT1 A 0 A_Playsound("SAW2",1,0.75,0)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S C 1
+	BK2S D 1
+	TNT1 A 8
+	TNT1 A 4
+    BK2I A 1 Offset(0, 100)
+	BK2I A 1 Offset(0, 69)
+	BK2I A 1 Offset(0, 47)
+	BK2I A 1 Offset(0, 34)
+	TNT1 A 0 A_Refire
+	Goto Ready
+  AltfireBerserk:
+    TNT1 A 0 A_Playsound("SAW3",1,0.75,0)
+	TNT1 A 2 A_AlertMonsters
+	BK2S B 1
+	BK2S A 1
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S A 1 A_CustomPunch(20 * 15,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S A 1 A_CustomPunch(20 * 15,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S B 1 A_CustomPunch(20 * 15,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	TNT1 A 0 A_Playsound("SAW2",1,0.75,0)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S C 1
+	BK2S D 1
+	TNT1 A 2
+	TNT1 A 1
+    BK2I A 1 Offset(0, 100)
+	BK2I A 1 Offset(0, 69)
+	BK2I A 1 Offset(0, 47)
+	BK2I A 1 Offset(0, 34)
+	TNT1 A 0 A_Refire
+	Goto Ready
+     } 
+}
+
+Actor Fist3 : UACWeapon 
+{
+  Tag "D-23 Hand Chainsaw - Dual"
+  Weapon.UpSound "GUNCHA"
+  Weapon.Kickback 25
+  Weapon.SelectionOrder 1000
+  Weapon.SlotNumber 1
+  Weapon.AmmoGive 200
+  +NoAlert
+  +NoAutofire
+  +inventory.undroppable
+  +WEAPON.MELEEWEAPON
+  +WEAPON.CHEATNOTWEAPON
+  Obituary "%o was sawed by %k's you know damn what."
+  states
+  { 
+  Spawn:
+    TNT1 A -1
+    Loop
+  Select:
+  	BK3I A 1 Offset(0, 100)
+	BK3I A 1 Offset(0, 69)
+	BK3I A 1 Offset(0, 47)
+	BK3I A 1 Offset(0, 34)
+	BK3I A 1 A_Raise
+	Wait
+ Ready:
+    TNT1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
+    TNT1 A 0 A_Playsound("SAWID",1,1,1)
+    BK3I ABCDE 1 A_WeaponReady(WRF_ALLOWRELOAD)
+    Loop
+  Upgrade:
+	TNT1 A 1 A_Print("THE WEAPON IS ALREADY UPGRADED TO THE MAX LEVEL!",5,"SMALLFONT")
+	TNT1 A 0 A_GiveInventory("UACTOOLZ", 1)
+    TNT1 A 0 A_TakeInventory("UpgradeToken",9)
+	TNT1 A 1
+	Goto Ready
+  Deselect:
+	TNT1 A 0 A_StopSound(1)
+	TNT1 A 0 A_TakeInventory("UACFistToken")
+	BK3I A 1 Offset(0, 34)
+	BK3I A 1 Offset(0, 47)
+	BK3I A 1 Offset(0, 69)	
+  	BK3I A 1 Offset(0, 100)
+    BK3I A 1 A_Lower
+    Wait
+  Fire:
+  Melons:
+    TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"MelonsBerserk")
+	TNT1 A 0 A_JumpIfInventory("UACFistToken",1,"Peaches")
+	TNT1 A 0 A_GiveInventory("UACFistToken")
+    TNT1 A 0 A_Playsound("SAW3",1,0.75,0)
+	BK2S C 2 A_AlertMonsters
+	BK2S B 2
+	BK2S A 2
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S A 1 A_CustomPunch(35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S A 1 A_CustomPunch(35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S B 1 A_CustomPunch(35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	TNT1 A 0 A_Playsound("SAW2",1,0.75,0)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S C 1
+	BK2S D 1
+	TNT1 A 8
+	TNT1 A 4
+	TNT1 A 0 A_Refire
+  	BK3I A 1 Offset(0, 100)
+	BK3I A 1 Offset(0, 69)
+	BK3I A 1 Offset(0, 47)
+	BK3I A 1 Offset(0, 34)
+	Goto Ready
+  MelonsBerserk:	
+    TNT1 A 0 A_GiveInventory("UACFistToken")
+    TNT1 A 0 A_Playsound("SAW3",1,0.75,0)
+	BK2S C 2 A_AlertMonsters
+	BK2S B 1
+	BK2S A 1
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S A 1 A_CustomPunch(20 * 35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S A 1 A_CustomPunch(20 * 35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S B 1 A_CustomPunch(20 * 35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	TNT1 A 0 A_Playsound("SAW2",1,0.75,0)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S C 1
+	BK2S D 1
+	TNT1 A 2
+	TNT1 A 1
+	TNT1 A 0 A_Refire
+  	BK3I A 1 Offset(0, 100)
+	BK3I A 1 Offset(0, 69)
+	BK3I A 1 Offset(0, 47)
+	BK3I A 1 Offset(0, 34)
+	Goto Ready
+  Peaches:
+    TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"PeachesBerserk")
+    TNT1 A 0 A_TakeInventory("UACFistToken")
+    TNT1 A 0 A_Playsound("SAW3",1,0.75,0)
+	BK3S C 2 A_AlertMonsters
+	BK3S B 2
+	BK3S A 2
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK3S A 1 A_CustomPunch(35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK3S A 1 A_CustomPunch(35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK3S B 1 A_CustomPunch(35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	TNT1 A 0 A_Playsound("SAW2",1,0.75,0)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK3S C 1
+	BK3S D 1
+	TNT1 A 8
+	TNT1 A 4
+	TNT1 A 0 A_Refire
+  	BK3I A 1 Offset(0, 100)
+	BK3I A 1 Offset(0, 69)
+	BK3I A 1 Offset(0, 47)
+	BK3I A 1 Offset(0, 34)
+	Goto Ready
+  PeachesBerserk:	
+    TNT1 A 0 A_TakeInventory("UACFistToken")
+    TNT1 A 0 A_Playsound("SAW3",1,0.75,0)
+	BK3S C 2 A_AlertMonsters
+	BK3S B 1
+	BK3S A 1
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK3S A 1 A_CustomPunch(20 * 35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK3S A 1 A_CustomPunch(20 * 35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK3S B 1 A_CustomPunch(20 * 35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	TNT1 A 0 A_Playsound("SAW2",1,0.75,0)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK3S C 1
+	BK3S D 1
+	TNT1 A 2
+	TNT1 A 1
+	TNT1 A 0 A_Refire
+  	BK3I A 1 Offset(0, 100)
+	BK3I A 1 Offset(0, 69)
+	BK3I A 1 Offset(0, 47)
+	BK3I A 1 Offset(0, 34)
+	Goto Ready
+     } 
+}
+  
+ACTOR ChainsawHit 
+{
+  +CLIENTSIDEONLY
+  RenderStyle Add
+  Decal ChainsawMark
+  Alpha 1
+  Radius 1
+  Height 1
+  Scale 0.55
+  Mass 5
+  States
+  {
+  Xdeath:
+  Melee:
+  TNT1 A 0 A_Playsound ("SAWHIT",CHAN_AUTO,1.0)
+  stop
+  Crash:
+  TNT1 A 0 A_Playsound ("SAWRIP",CHAN_AUTO,1.0)
+  TNT1 A 0 A_SpawnItemEx("bpuff_smoke", 0, 0, 0, 0, frandom(0,1), frandom(0,0.35), random(0,180))
+  TNT1 A 0 A_SpawnItemEx("BallisticImpactSpark",0,0,0,0,0,0,0,0,0,0)
+  TNT1 A 0 A_AlertMonsters(384)
+	stop
+  }
+}
+
+ACTOR UnarmedHit 
+{
+  +CLIENTSIDEONLY
+  RenderStyle Add
+  Alpha 1
+  Radius 1
+  Height 1
+  Scale 0.55
+  Mass 5
+  States
+  {
+  XDeath:
+  Melee:
+    TNT1 A 0 A_Playsound ("BLUHIT",CHAN_AUTO,1.0)
+	Stop
+  Crash:
+    TNT1 A 0 A_Playsound ("BLUSEE",CHAN_AUTO,1.0)
+	TNT1 A 0 A_SpawnItemEx("bpuff_smoke", 0, 0, 0, 0, frandom(0,1), frandom(0,0.35), random(0,180))
+	TNT1 A 0
+	stop
+  }
+}
+
+ACTOR UACFistToken : Inventory { -INVBAR Inventory.MaxAmount 1 -IGNORESKILL }

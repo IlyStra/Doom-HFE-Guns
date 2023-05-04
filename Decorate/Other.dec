@@ -58,14 +58,14 @@ ACTOR ForceRocketLauncherSpawner : RocketLauncherSpawner
 	{
 	Pickup:
 	    TNT1 A 0 A_JumpIfInventory("SuperShotgun3", 1, "3L")
-		TNT1 A 0 A_JumpIfInventory("SuperShotgun2", 1, "2L")
+		TNT1 A 0 A_JumpIfInventory("HFEG_RkLauncherL2", 1, "2L")
 		TNT1 A 0 A_GiveInventory("HFEG_RkLauncherL1")
 		Stop
 	3L:
 		TNT1 A 0 A_GiveInventory("SuperShotgun3")
 		Stop
 	2L:
-		TNT1 A 0 A_GiveInventory("SuperShotgun2")
+		TNT1 A 0 A_GiveInventory("HFEG_RkLauncherL2")
 		Stop
 	}
 }

@@ -385,6 +385,19 @@ fixed angle, fixed pitch, int newtid, Bool fog, Bool CenterZ)
 		return FALSE;
 }
 
+Function Void ACS_SpawnEx2(
+Str type, Int spotid, Fixed OffX, Fixed OffY, Fixed OffZ,
+fixed angle, fixed pitch)
+{
+	Fixed RotY = FixedMul(sin(angle), cos(-pitch));
+	Fixed RotX = FixedMul(cos(angle), cos(-pitch));
+	Fixed RotZ = sin(-pitch);
+	Fixed x = FixedMul(OffX, RotX)+FixedMul(OffY, RotY) + GetActorX(spotid);
+	Fixed y = FixedMul(OffX, RotY)-FixedMul(OffY, RotX) + GetActorY(spotid);
+	Fixed z = FixedMul(RotZ, OffX) + GetActorZ(spotid) + OffZ;
+	SpawnForced(type, x, y, z, 0, 0);
+}
+
 Script "HFEG_Flashlight" (Void) Net ClientSide
 {
 	Static Bool OnOff;
@@ -451,4 +464,9 @@ Script "HFEG_TMap_PushBack" (Int LineAngle)
 	ThrustThing(LineAngle, 2408, 0, 0);
 	Delay(4);
 	ThrustThing(LineAngle, 2408, 0, 0);
+}
+
+Script "HFEG_MinigunFlashSpawner" (Void)
+{
+	ACS_SpawnEx2("HFEG_MinigunFlash", 0, 8.0, 1.5, 39.0, GetActorAngle(0), GetActorPitch(0));
 }

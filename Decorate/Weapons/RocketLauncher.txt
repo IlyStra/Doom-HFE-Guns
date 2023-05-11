@@ -1,6 +1,5 @@
 Actor HFEG_RkLauncherL1 : Weapon
 {
-//	+CheatNotWeapon
 	Weapon.UpSound "GUNDRA"
 	Weapon.AmmoUse 1
 	Weapon.AmmoType "RocketAmmo"

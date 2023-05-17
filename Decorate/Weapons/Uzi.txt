@@ -77,7 +77,7 @@ ACTOR Uzi1 : UacWeapon
     Loop
   Upgrade:
     TNT1 A 0 A_PlaySound("WEAPUP",64)
-	TNT1 A 1 A_Print("Upgraded to level 2!\n\nDualWield+",5,"SMALLFONT")
+	TNT1 A 1 A_Print("Upgraded to level 2!\n\nDualWield+ - Damage+",5,"SMALLFONT")
 	TNT1 A 0 A_GiveInventory("Uzi2")
     TNT1 A 0 A_TakeInventory("UpgradeToken",9)
 	TNT1 A 0 A_SelectWeapon ("Uzi2")
@@ -100,7 +100,7 @@ ACTOR Uzi1 : UacWeapon
     Wait
   Fire:
     TNT1 A 0 A_JumpIfNoAmmo("Reload")
-	TNT1 A 0 A_FireBullets (4.6, 4.6, 1, 10, "UACBulletPuff")
+	TNT1 A 0 A_FireBullets (4.6, 4.6, 1, 8, "UACBulletPuff")
 	TNT1 A 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 4, 4, 0,frandom(-5, 5))
     TNT1 A 0 A_PlaySound("UZIFIR1", CHAN_WEAPON)
 	TNT1 A 0 A_AlertMonsters
@@ -185,7 +185,7 @@ ACTOR Uzi2 : UacWeapon
     Loop
   Upgrade:
     TNT1 A 0 A_PlaySound("WEAPUP",64)
-	TNT1 A 1 A_Print("Upgraded to level 3!\n\nAccuracy+ - Capacity+ - Reload Speed-",5,"SMALLFONT")
+	TNT1 A 1 A_Print("Upgraded to level 3!\n\nAccuracy+ - Capacity+ - Reload Speed- - Damage+",5,"SMALLFONT")
 	TNT1 A 0 A_GiveInventory("Uzi3")
     TNT1 A 0 A_TakeInventory("UpgradeToken",9)
 	TNT1 A 0 A_SelectWeapon ("Uzi3")
@@ -317,7 +317,7 @@ ACTOR Uzi3 : UacWeapon
     Wait
   Fire:
     TNT1 A 0 A_JumpIfNoAmmo("Reload")
-	TNT1 AA 0 A_FireBullets (4.6, 4.6, 1, 10, "UACBulletPuff")
+	TNT1 AA 0 A_FireBullets (4.6, 4.6, 1, 12, "UACBulletPuff")
 	TNT1 A 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 4, 4, 0,frandom(-5, 5))
 	TNT1 A 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, -4, 4, 0,frandom(-5, 5))
     TNT1 A 0 A_PlaySound("UZIFIR2", CHAN_WEAPON)

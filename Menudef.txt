@@ -58,5 +58,12 @@ OptionMenu "HFEG_Options"
 	Option "Silent Titlemap", "HFEGC_SilentTMap", "OnOff"
 	StaticText "<<  [Silent TMap] For weak platforms (Android  >>"
 	StaticText "<<  very weak PC, etc), No Combats in titlemap >>"
+	Option "Explode Style", "HFEGC_ExplodeStyle", "ExplRender"
 	StaticText " "
+}
+
+OptionValue "ExplRender"
+{
+	0, "Realistic (Default)"
+	1, "Optimized"
 }

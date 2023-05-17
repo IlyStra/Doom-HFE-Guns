@@ -109,7 +109,7 @@ Actor RocketLauncherSpawner : CustomInventory Replaces RocketLauncher
 		TNT1 A 0 A_GiveInventory("HFEG_RkLauncherL1")
 		Stop
 	Ammo:
-		TNT1 A 0 A_GiveInventory("HFEG_OneRocketBoxSpawner", 1)
+		TNT1 A 0 A_GiveInventory("HFEG_OneRocketBox", 1)
 		Stop
 	}
 }

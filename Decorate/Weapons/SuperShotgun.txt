@@ -112,7 +112,7 @@ ACTOR SuperShotgun1 : UacWeapon
 	TNT1 A 0 A_JumpIfInventory("SSGMAG1", 1, "FireRight")
 	Goto Ready
   FireAll:
-	TNT1 AA 0 A_FireBullets (4.6, 4.6, 12, 8, "UacBulletPuff")
+	TNT1 AA 0 A_FireBullets (4.6, 4.6, 12, 6, "UacBulletPuff")
 	TNT1 AA 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 3, 2, 0,frandom(-5, 5))
     TNT1 A 0 A_PlaySound ("SSGFIR2", CHAN_WEAPON)
 	TNT1 A 0 A_AlertMonsters
@@ -139,7 +139,7 @@ ACTOR SuperShotgun1 : UacWeapon
 	TNT1 A 0 A_JumpIfInventory("SSGMAG1", 1, "FireRight")
 	Goto Ready
   FireLeft:
-	TNT1 A 0 A_FireBullets (3.6, 3.6, 12, 8, "UacBulletPuff")
+	TNT1 A 0 A_FireBullets (3.6, 3.6, 12, 6, "UacBulletPuff")
 	TNT1 A 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 3, 2, 0,frandom(-5, 5))
     TNT1 A 0 A_PlaySound ("SSGFIR", CHAN_WEAPON)
 	TNT1 A 0 A_AlertMonsters
@@ -159,7 +159,7 @@ ACTOR SuperShotgun1 : UacWeapon
     DB1G A 1 A_Refire
     Goto Ready
   FireRight:	
-	TNT1 A 0 A_FireBullets (3.6, 3.6, 12, 8, "UacBulletPuff")
+	TNT1 A 0 A_FireBullets (3.6, 3.6, 12, 6, "UacBulletPuff")
 	TNT1 A 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 3, 2, 0,frandom(-5, 5))
     TNT1 A 0 A_PlaySound ("SSGFIR", CHAN_WEAPON)
 	TNT1 A 0 A_AlertMonsters
@@ -278,7 +278,7 @@ ACTOR SuperShotgun2 : UacWeapon
 	TNT1 A 0 A_JumpIfInventory("SSGMAG2", 1, "FireRight")
 	Goto Ready
   Fireall:
-	TNT1 AA 0 A_FireBullets (4.6, 4.6, 12, 12, "UacDBBulletPuff")
+	TNT1 AA 0 A_FireBullets (4.6, 4.6, 12, 9, "UacDBBulletPuff")
 	TNT1 AA 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 3, 2, 0,frandom(-5, 5))
     TNT1 A 0 A_PlaySound ("SSGFIR2", CHAN_WEAPON)
 	TNT1 A 0 A_AlertMonsters
@@ -305,7 +305,7 @@ ACTOR SuperShotgun2 : UacWeapon
 	TNT1 A 0 A_JumpIfInventory("SSGMAG2", 1, "FireRight")
 	Goto Ready
   FireLeft:
-	TNT1 A 0 A_FireBullets (3.6, 3.6, 12, 12, "UacDBBulletPuff")
+	TNT1 A 0 A_FireBullets (3.6, 3.6, 12, 10, "UacDBBulletPuff")
 	TNT1 A 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 3, 2, 0,frandom(-5, 5))
     TNT1 A 0 A_PlaySound ("SSGFIR", CHAN_WEAPON)
 	TNT1 A 0 A_AlertMonsters
@@ -325,7 +325,7 @@ ACTOR SuperShotgun2 : UacWeapon
     DB2G A 1 A_Refire
     Goto Ready
   FireRight:	
-	TNT1 A 0 A_FireBullets (3.6, 3.6, 12, 12, "UacDBBulletPuff")
+	TNT1 A 0 A_FireBullets (3.6, 3.6, 12, 10, "UacDBBulletPuff")
 	TNT1 A 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 3, 2, 0,frandom(-5, 5))
     TNT1 A 0 A_PlaySound ("SSGFIR", CHAN_WEAPON)
 	TNT1 A 0 A_AlertMonsters
@@ -442,7 +442,7 @@ ACTOR SuperShotgun3 : UacWeapon
 	TNT1 A 0 A_JumpIfInventory("SSGMAG3", 2, "FireRight")
 	Goto Ready
   FireAll:
-	TNT1 AAAA 0 A_FireBullets (4.6, 4.6, 12, 12, "UacDBBulletPuff")
+	TNT1 AAAA 0 A_FireBullets (4.6, 4.6, 12, 9, "UacDBBulletPuff")
 	TNT1 AAAA 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 3, 2, 0,frandom(-5, 5))
 	TNT1 AA 0 A_FireCustomMissile("UACSSGL3Projectile", frandom(-4, 4), 0, 3, 2, 0,frandom(-2, 2))
 	TNT1 AA 0 A_FireCustomMissile("UACSSGL3Projectile", frandom(-4, 4), 0, 3, 0, 0,frandom(-2, 2))
@@ -473,7 +473,7 @@ ACTOR SuperShotgun3 : UacWeapon
 	TNT1 A 0 A_JumpIfInventory("SSGMAG3", 2, "FireRight")
 	Goto Ready
   FireLeft:
-	TNT1 AA 0 A_FireBullets (3.6, 3.6, 12, 12, "UacDBBulletPuff")
+	TNT1 AA 0 A_FireBullets (3.6, 3.6, 12, 9, "UacDBBulletPuff")
 	TNT1 AA 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 3, 2, 0,frandom(-5, 5))
 	TNT1 AA 0 A_FireCustomMissile("UACSSGL3Projectile", frandom(-4, 4), 0, 3, 0, 0,frandom(-2, 2))
     TNT1 A 0 A_PlaySound ("SSGFIR2", CHAN_WEAPON)
@@ -494,7 +494,7 @@ ACTOR SuperShotgun3 : UacWeapon
     DB3G A 1 A_Refire
     Goto Ready
   FireRight:	
-	TNT1 AA 0 A_FireBullets (3.6, 3.6, 12, 12, "UacDBBulletPuff")
+	TNT1 AA 0 A_FireBullets (3.6, 3.6, 12, 9, "UacDBBulletPuff")
 	TNT1 AA 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 3, 2, 0,frandom(-5, 5))
 	TNT1 AA 0 A_FireCustomMissile("UACSSGL3Projectile", frandom(-4, 4), 0, 3, 0, 0,frandom(-2, 2))
     TNT1 A 0 A_PlaySound ("SSGFIR2", CHAN_WEAPON)

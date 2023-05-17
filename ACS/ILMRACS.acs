@@ -1,7 +1,7 @@
 #library "ILMRACS"
 #include "zcommon.acs"
 
-Global Int UMR_ClassCount[6];
+//Global Int UMR_ClassCount[6];
 
 Script "HFEG_BuddySelfHealth" (Void) Net
 {
@@ -24,7 +24,7 @@ Script "HFEG_SetUMRPropsByClass" (Int Class) Net
 	If(ClassifyActor(0) & Actor_Player){Terminate;}
 	If(Class < 0){Class = 0;}
 	If(Class > 6){Class = 6;}
-	UMR_ClassCount[Class] += 1;
+//	UMR_ClassCount[Class] += 1;
 	Switch(Class)
 	{
 		Case 0:
@@ -33,89 +33,42 @@ Script "HFEG_SetUMRPropsByClass" (Int Class) Net
 
 		Case 1:
 			SetActorProperty(0, APROP_NameTag, "\c[cyan]UAC Infantry Sergeant");
-			SetActorProperty(0, APROP_SpawnHealth, 225);
-			SetUserVariable(0, "User_NormalHealth", 225);
-			SetActorProperty(0, APROP_Health, 225);
 			Break;
 
 		Case 2:
 			SetActorProperty(0, APROP_NameTag, "\c[cyan]UAC Infantry Chief warrant officer");
-			SetActorProperty(0, APROP_SpawnHealth, 250);
-			SetUserVariable(0, "User_NormalHealth", 250);
-			SetActorProperty(0, APROP_Health, 250);
 			SetActorProperty(0, APROP_Speed, 10.0);
 			Break;
 
 		Case 3:
 			SetActorProperty(0, APROP_NameTag, "\c[cyan]UAC Infantry Lieutenant");
-			SetActorProperty(0, APROP_SpawnHealth, 300);
-			SetUserVariable(0, "User_NormalHealth", 300);
-			SetActorProperty(0, APROP_Health, 300);
 			SetActorProperty(0, APROP_Speed, 12.0);
 			Break;
 
 		Case 4:
 			SetActorProperty(0, APROP_NameTag, "\c[cyan]UAC Infantry Major");
-			SetActorProperty(0, APROP_SpawnHealth, 350);
-			SetUserVariable(0, "User_NormalHealth", 350);
-			SetActorProperty(0, APROP_Health, 350);
 			SetActorProperty(0, APROP_Speed, 13.0);
 			Break;
 
 		Case 5:
-			SetActorProperty(0, APROP_NameTag, "\c[cyan]                    UAC EISG\n\c[Cyan][Elite Infantry Spec-op Group]");
-			SetActorProperty(0, APROP_SpawnHealth, 420);
-			SetUserVariable(0, "User_NormalHealth", 420);
-			SetActorProperty(0, APROP_Health, 420);
+			SetActorProperty(0, APROP_NameTag, "\c[cyan]                  UAC EISG\n\c[Cyan][Elite Infantry Spec-op Group]");
 			SetActorProperty(0, APROP_Speed, 14.0);
 			Break;
 
 		Case 6:
-			SetActorProperty(0, APROP_NameTag, "\c[cyan]                    UAC EISG Medic\n\c[Cyan][Elite Infantry Spec-op Group]");
-			SetActorProperty(0, APROP_SpawnHealth, 450);
-			SetUserVariable(0, "User_NormalHealth", 450);
-			SetActorProperty(0, APROP_Health, 450);
+			SetActorProperty(0, APROP_NameTag, "\c[cyan]            UAC EISG Medic\n\c[Cyan][Elite Infantry Spec-op Group]");
 			SetActorProperty(0, APROP_Speed, 14.0);
 			Break;
 	}
 }
 
-Script "HFEG_UMRDeath" (Int Class) Net
+/*Script "HFEG_UMRDeath" (Int Class) Net
 {
 	If(ClassifyActor(0) & Actor_Player){Terminate;}
 	UMR_ClassCount[Class] -= 1;
 }
 
-Script "HFEG_UMRTakesHealth" (Void) Net
-{
-	If(CheckProximity(0, "HealthBonus", 32.0, 1, CPXF_Ancestor | CPXF_SetTracer | CPXF_Closest))
-	{
-		SetActorProperty(0, APROP_Health, GetActorProperty(0, APROP_Health)+2);
-		SetActivator(0, AAPTR_Tracer);
-		Thing_Remove(0);
-	}
-	If(CheckProximity(0, "Stimpack", 32.0, 1, CPXF_Ancestor | CPXF_SetTracer | CPXF_Closest))
-	{
-		SetActorProperty(0, APROP_Health, GetActorProperty(0, APROP_Health)+20);
-		SetActivator(0, AAPTR_Tracer);
-		Thing_Remove(0);
-	}
-	If(CheckProximity(0, "Medikit", 32.0, 1, CPXF_Ancestor | CPXF_SetTracer | CPXF_Closest))
-	{
-		SetActorProperty(0, APROP_Health, GetActorProperty(0, APROP_Health)+50);
-		SetActivator(0, AAPTR_Tracer);
-		Thing_Remove(0);
-		Terminate;
-	}
-	If(CheckProximity(0, "Health", 32.0, 1, CPXF_Ancestor | CPXF_SetTracer | CPXF_Closest))
-	{
-		SetActorProperty(0, APROP_Health, GetActorProperty(0, APROP_Health)+20);
-		SetActivator(0, AAPTR_Tracer);
-		Thing_Remove(0);
-	}
-}
-
-Bool MapStared = 0;
+Bool MapStared = False;
 
 Script "HFEG_UMRNewMap" Enter Net
 {
@@ -127,7 +80,7 @@ Script "HFEG_UMRNewMap" Enter Net
 		For(Int I; I < UMR_ClassCount[0]; I += 1)
 		{
 			SpawnerTID = UniqueTID();
-			SpawnForced("HFEG_UACMarineSpawner", GetActorX(0), GetActorY(0), GetActorZ(0), SpawnerTID, Random(0, 255));
+			SpawnForced("HFEG_UACMarine", GetActorX(0), GetActorY(0), GetActorZ(0), SpawnerTID, Random(0, 255));
 			SetThingSpecial(SpawnerTID, 0, 0, 1);
 		}
 	}
@@ -136,7 +89,7 @@ Script "HFEG_UMRNewMap" Enter Net
 		For(Int I; I < UMR_ClassCount[0]; I += 1)
 		{
 			SpawnerTID = UniqueTID();
-			SpawnForced("HFEG_UACMarineSpawner", GetActorX(0), GetActorY(0), GetActorZ(0), SpawnerTID, Random(0, 255));
+			SpawnForced("HFEG_UACMarine", GetActorX(0), GetActorY(0), GetActorZ(0), SpawnerTID, Random(0, 255));
 			SetThingSpecial(SpawnerTID, 0, 1, 1);
 		}
 	}
@@ -145,7 +98,7 @@ Script "HFEG_UMRNewMap" Enter Net
 		For(Int I; I < UMR_ClassCount[0]; I += 1)
 		{
 			SpawnerTID = UniqueTID();
-			SpawnForced("HFEG_UACMarineSpawner", GetActorX(0), GetActorY(0), GetActorZ(0), SpawnerTID, Random(0, 255));
+			SpawnForced("HFEG_UACMarine", GetActorX(0), GetActorY(0), GetActorZ(0), SpawnerTID, Random(0, 255));
 			SetThingSpecial(SpawnerTID, 0, 2, 1);
 		}
 	}
@@ -154,7 +107,7 @@ Script "HFEG_UMRNewMap" Enter Net
 		For(Int I; I < UMR_ClassCount[0]; I += 1)
 		{
 			SpawnerTID = UniqueTID();
-			SpawnForced("HFEG_UACMarineSpawner", GetActorX(0), GetActorY(0), GetActorZ(0), SpawnerTID, Random(0, 255));
+			SpawnForced("HFEG_UACMarine", GetActorX(0), GetActorY(0), GetActorZ(0), SpawnerTID, Random(0, 255));
 			SetThingSpecial(SpawnerTID, 0, 3, 1);
 		}
 	}
@@ -163,7 +116,7 @@ Script "HFEG_UMRNewMap" Enter Net
 		For(Int I; I < UMR_ClassCount[0]; I += 1)
 		{
 			SpawnerTID = UniqueTID();
-			SpawnForced("HFEG_UACMarineSpawner", GetActorX(0), GetActorY(0), GetActorZ(0), SpawnerTID, Random(0, 255));
+			SpawnForced("HFEG_UACMarine", GetActorX(0), GetActorY(0), GetActorZ(0), SpawnerTID, Random(0, 255));
 			SetThingSpecial(SpawnerTID, 0, 4, 1);
 		}
 	}
@@ -172,7 +125,7 @@ Script "HFEG_UMRNewMap" Enter Net
 		For(Int I; I < UMR_ClassCount[0]; I += 1)
 		{
 			SpawnerTID = UniqueTID();
-			SpawnForced("HFEG_UACMarineSpawner", GetActorX(0), GetActorY(0), GetActorZ(0), SpawnerTID, Random(0, 255));
+			SpawnForced("HFEG_UACMarine", GetActorX(0), GetActorY(0), GetActorZ(0), SpawnerTID, Random(0, 255));
 			SetThingSpecial(SpawnerTID, 0, 5, 1);
 		}
 	}
@@ -181,11 +134,11 @@ Script "HFEG_UMRNewMap" Enter Net
 		For(Int I; I < UMR_ClassCount[0]; I += 1)
 		{
 			SpawnerTID = UniqueTID();
-			SpawnForced("HFEG_UACMarineSpawner", GetActorX(0), GetActorY(0), GetActorZ(0), SpawnerTID, Random(0, 255));
+			SpawnForced("HFEG_UACMarine", GetActorX(0), GetActorY(0), GetActorZ(0), SpawnerTID, Random(0, 255));
 			SetThingSpecial(SpawnerTID, 0, 6, 1);
 		}
 	}
-}
+}*/
 
 Script "HFEG_PlayerProps" Enter Net
 {
@@ -469,4 +422,9 @@ Script "HFEG_TMap_PushBack" (Int LineAngle)
 Script "HFEG_MinigunFlashSpawner" (Void)
 {
 	ACS_SpawnEx2("HFEG_MinigunFlash", 0, 8.0, 1.5, 39.0, GetActorAngle(0), GetActorPitch(0));
+}
+
+Script "HFEG_ExplodeStyle" (Void)
+{
+	SetResultValue(GetCVar("HFEGC_ExplodeStyle"));
 }

@@ -1,2 +1,3 @@
 User Bool HFEGC_SilentTMap = False;
 Server Bool HFEGC_UMREnable = True;
+Server Bool HFEGC_ExplodeStyle = False;

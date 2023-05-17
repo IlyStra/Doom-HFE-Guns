@@ -51,9 +51,9 @@ ACTOR BLTClip : Ammo Replaces Clip
 {
   Inventory.PickupMessage "Picked up a Bullet Mag." 
   Inventory.Amount 15
-  Inventory.MaxAmount 300
+  Inventory.MaxAmount 150
   Ammo.BackpackAmount 30
-  Ammo.BackpackMaxAmount 600
+  Ammo.BackpackMaxAmount 300
   Inventory.Icon "CLIPA0"
   Inventory.PickupSound "MEPICK"
   States

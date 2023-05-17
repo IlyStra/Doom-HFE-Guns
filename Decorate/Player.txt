@@ -35,7 +35,7 @@ ACTOR UacPlayer : PlayerPawn replaces DoomPlayer
   Player.WeaponSlot 2, TacPistol1,TacPistol2,TacPistol3,Uzi1,Uzi2,Uzi3,Revolver1,Revolver2,Revolver3
   Player.WeaponSlot 3, Shotgun1,Shotgun2,Shotgun3,SuperShotGun1,SuperShotGun2,SuperShotGun3
   Player.WeaponSlot 4, Machinegun1, MachineGun2, Machinegun3, Minigun1,Minigun2,Minigun3
-  Player.WeaponSlot 5, Grenade1,Grenade2,Grenade3,RocketLauncher1,RocketLauncher2,RocketLauncher3,GrenadeLauncher1,GrenadeLauncher2,GrenadeLauncher3
+  Player.WeaponSlot 5, Grenade1,Grenade2,Grenade3,RocketLauncher1,RocketLauncher2,RocketLauncher3,HFEG_GNDLauncherL1,HFEG_GNDLauncherL2,HFEG_GNDLauncherL3
   Player.WeaponSlot 6, PlasmaGun1,PlasmaGun2,PlasmaGun3,RailGun1,Railgun2,RailGun3
   Player.WeaponSlot 5, BFG1,BFG2,BFG3,Flamer1,Flamer2,Flamer3
   Player.ColorRange 112, 127

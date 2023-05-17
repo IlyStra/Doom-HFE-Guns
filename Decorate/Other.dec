@@ -162,7 +162,7 @@ Actor HFEG_UACMarine
 	Radius 12
 	Height 52
 	Mass 100
-	Health 200
+	Health 100
 	Monster
 	PainChance 256
 	MaxStepHeight 48
@@ -190,6 +190,7 @@ Actor HFEG_UACMarine
 	+SeeInvisible
 	+FixMapThingPos
 	+NoRadiusDMG
+	+DontOverlap
 	+NoTelefrag
 	-ActivateMCross
 	+DontHurtSpecies
@@ -492,13 +493,13 @@ Actor HFEG_UACMarine
 		"####" G 2 A_PlaySound("*Pain")
 		"####" A 0 A_JumpIf(User_Class == 6, 2)
 		"####" A 0 A_Jump(256, "Missile")
-		"####" A 0 A_JumpIf(Health <= 400, "MedSelfHealth")
+		"####" A 0 A_JumpIf(Health <= 75, "MedSelfHealth")
 		Goto Missile
 	Pain.Fire:
 		"####" G 0 ThrustThing(Angle/360*256+Random(0, 255), Random(12, 16), 0, 0)
 		"####" A 0 A_JumpIf(User_Class == 6, 2)
 		"####" A 0 A_Jump(256, 2)
-		"####" A 0 A_JumpIf(Health <= 400, "MedSelfHealth")
+		"####" A 0 A_JumpIf(Health <= 75, "MedSelfHealth")
 		"####" G 1 A_PlaySound("*Pain")
 		Goto Wander
 	MedSelfHealth:
@@ -513,11 +514,10 @@ Actor HFEG_UACMarine
 		"####" A 32
 		"####" A 0 A_SetUserVar("User_DelayInCombats", User_DelayInCombats+32)
 		"####" A 0 A_PlaySound("UACMarineMedicine0")
-		"####" A 0 A_JumpIf(Health <= 400, "MedSelfHealthProc")
+		"####" A 0 A_JumpIf(Health <= 100, "MedSelfHealthProc")
 		"####" A 0 A_ChangeFlag("NoDamage", False)
 		Goto Wander
 	Death:
-		"####" G 0 ACS_NamedExecuteAlways("HFEG_UMRDeath", 0)
 		"####" G 0 A_PlaySound("UMRDeath")
 		"####" GH 1
 		"####" I 1 A_NoBlocking
@@ -537,7 +537,6 @@ Actor HFEG_UACMarine
 		Stop
 	XDeath:
 		"####" O 0 A_JumpIf(User_Class == 2, "Death")
-		"####" O 0 ACS_NamedExecuteAlways("HFEG_UMRDeath", 0)
 		"####" O 0 A_PlaySound("*XDeath")
 		"####" O 1
 		"####" P 1 A_NoBlocking
@@ -919,7 +918,7 @@ Actor HFEG_PlayerCallUMR
 	{
 	Spawn:
 		TNT1 A 0
-		TNT1 A 0 A_RadiusGive("HFEG_UMRActive", 512, RGF_Monsters | RGF_NoSight)
+		TNT1 A 0 A_RadiusGive("HFEG_UMRActive", 1024, RGF_Monsters | RGF_NoSight)
 		Stop
 	}
 }
@@ -931,7 +930,7 @@ Actor HFEG_PlayerCallWithoutUMR
 	{
 	Spawn:
 		TNT1 A 0
-		TNT1 A 0 A_RadiusGive("HFEG_UMRDeactive", 512, RGF_Monsters | RGF_NoSight)
+		TNT1 A 0 A_RadiusGive("HFEG_UMRDeactive", 1024, RGF_Monsters | RGF_NoSight)
 		Stop
 	}
 }

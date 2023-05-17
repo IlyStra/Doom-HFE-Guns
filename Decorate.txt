@@ -20,8 +20,9 @@
 #include "Decorate/Weapons/SuperShotgun.txt"
 #include "Decorate/Weapons/MachineGun.txt"
 #include "Decorate/Weapons/Rocketlauncher.txt"
-#include "Decorate/Weapons/Minigun.txt"
 //Il Str
+#include "Decorate/Weapons/GLauncher.dec"
+#include "Decorate/Weapons/Minigun.txt"
 #include "Decorate/Weapons/Rockets.dec"
 #include "Decorate/Weapons/RemakedFire.dec"
 #include "Decorate/Other.dec"

@@ -292,3 +292,8 @@ MGN1FIR7	MGN1FIR7
 Minigun_Rotation_Start	MGNROTST
 Minigun_Rotation_Loop	MGNROTLP
 Minigun_Rotation_Stop	MGNROTSP
+
+M72GLauncher_Fire	M72GFIR0
+M72GLauncher_Reload0	M72GRL0
+M72GLauncher_Reload1	M72GRL1
+M72GLauncher_Reload2	M72GRL2

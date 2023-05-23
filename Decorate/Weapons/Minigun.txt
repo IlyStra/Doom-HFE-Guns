@@ -117,12 +117,11 @@ Actor HFEG_MinigunL1 : Weapon
 	FireLoop:
 		MNG0 A 0 A_PlaySound("Minigun_Rotation_Loop", Chan_5, 1.0, True)
 		MNG0 A 1 Offset(-3, 35)
-		MNG0 C 0 A_FireBullets(6.0, 6.0, 1, 15, "UACBulletPuff")
-		MNG0 C 0 ACS_NamedExecute("HFEG_MinigunFlashSpawner", 0)
-		MNG0 C 0 A_SetAngle(Angle-0.25)
-		MNG0 C 1 Bright Offset(-2, 37)
-		MNG0 D 0 A_PlaySound("MGN0FIR", Chan_Weapon, 1.0, False, 0.5)
-		MNG0 E 1 Offset(0, 37)
+		MNG0 L 0 A_FireBullets(6.0, 6.0, 1, 15, "UACBulletPuff")
+		MNG0 L 0 A_SetAngle(Angle-0.25)
+		MNG0 L 1 Bright Offset(-2, 37)
+		MNG0 M 0 A_PlaySound("MGN0FIR", Chan_Weapon, 1.0, False, 0.5)
+		MNG0 M 1 Offset(0, 37)
 		MNG0 A 0 A_Refire("FireLoop")
 	FireEnd:
 		MNG0 A 0 A_JumpIfInventory("HFEG_MinigunToggleSpin", 1, "Ready")
@@ -250,12 +249,11 @@ Actor HFEG_MinigunL2 : Weapon
 	FireLoop:
 		MNG0 A 0 A_PlaySound("Minigun_Rotation_Loop", Chan_5, 1.0, True)
 		MNG0 A 1 Offset(-4, 36)
-		MNG0 C 0 A_FireBullets(6.0, 6.0, 1, (9), "UACDBBulletPuff")
-		MNG0 C 0 ACS_NamedExecute("HFEG_MinigunFlashSpawner", 0)
-		MNG0 C 0 A_SetAngle(Angle-0.25)
-		MNG0 C 1 Bright Offset(-2, 38)
-		MNG0 C 0 A_PlaySound("MGN0FIR", Chan_Weapon, 1.0, False, 0.5)
-		MNG0 E 1 Offset(-4, 33)
+		MNG0 L 0 A_FireBullets(6.0, 6.0, 1, (9), "UACDBBulletPuff")
+		MNG0 L 0 A_SetAngle(Angle-0.25)
+		MNG0 L 1 Bright Offset(-2, 38)
+		MNG0 M 0 A_PlaySound("MGN1FIR", Chan_Weapon, 1.0, False, 0.5)
+		MNG0 M 1 Offset(-4, 33)
 		MNG0 A 0 A_Refire("FireLoop")
 	FireEnd:
 		MNG0 A 0 A_JumpIfInventory("HFEG_MinigunToggleSpin", 1, "Ready")
@@ -365,15 +363,13 @@ Actor HFEG_MinigunL3 : Weapon
 	FireLoop:
 		MNG0 A 0 A_PlaySound("Minigun_Rotation_Loop", Chan_5, 1.0, True)
 		MNG0 A 1 Bright Offset(-5, 36)
-		MNG0 C 0 A_FireBullets(6.0, 6.0, 1, (15), "UACBulletPuff")
-		MNG0 C 0 ACS_NamedExecute("HFEG_MinigunFlashSpawner", 0)
-		MNG0 C 0 A_SetAngle(Angle-0.5)
-		MNG0 C 0 A_PlaySound("MGN0FIR", Chan_Weapon, 1.0, False, 0.5)
-		MNG0 C 1 Bright Offset(-3, 39)
-		MNG0 C 0 A_FireBullets(6.0, 6.0, 1, (15), "UACBulletPuff")
-		MNG0 C 0 ACS_NamedExecute("HFEG_MinigunFlashSpawner", 0)
-		MNG0 C 0 A_SetAngle(Angle-0.5)
-		MNG0 C 0 A_PlaySound("MGN0FIR", Chan_Weapon, 1.0, False, 0.5)
+		MNG0 L 0 A_FireBullets(6.0, 6.0, 1, (15), "UACBulletPuff")
+		MNG0 L 0 A_SetAngle(Angle-0.5)
+		MNG0 L 0 A_PlaySound("MGN1FIR", Chan_Weapon, 1.0, False, 0.5)
+		MNG0 L 1 Bright Offset(-3, 39)
+		MNG0 L 0 A_FireBullets(6.0, 6.0, 1, (15), "UACBulletPuff")
+		MNG0 L 0 A_SetAngle(Angle-0.5)
+		MNG0 L 0 A_PlaySound("MGN1FIR", Chan_Weapon, 1.0, False, 0.5)
 		MNG0 A 0 A_Refire("FireLoop")
 	FireEnd:
 		MNG0 A 0 A_JumpIfInventory("HFEG_MinigunToggleSpin", 1, "Ready")
@@ -396,7 +392,7 @@ Actor HFEG_MinigunL3 : Weapon
 	}
 }
 
-Actor HFEG_MinigunFlash
+/*Actor HFEG_MinigunFlash
 {
 	+NoInteraction
 	+ClientSideOnly
@@ -406,7 +402,8 @@ Actor HFEG_MinigunFlash
 	States
 	{
 	Spawn:
-		MZ00 ABCD 1
+		MZ00 A 0
+		MZ00 ABCD 1 A_Recoil(-1)
 		Stop
 	}
-}
+}*/

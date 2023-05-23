@@ -76,3 +76,117 @@ Actor HFEG_GNDLauncherL1 : Weapon
 		Stop
 	}
 }
+
+ACTOR HFEG_MGLMag6 : Inventory
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 6
+}
+
+Actor HFEG_GNDLauncherL2 : Weapon
+{
+	Weapon.UpSound "GUNDRA"
+	Weapon.AmmoUse 1
+	Weapon.AmmoType "RocketAmmo"
+	Weapon.SlotNumber 5
+	Weapon.AmmoGive 6
+	+NoAutoFire
+	+CheatNotWeapon
+	Scale 0.75
+	Obituary "%o was bombed by %k`s MGL."
+	Inventory.Pickupmessage "You got the MGL!"
+	Tag "Standart Semi-Auto ''MGL''"
+	States
+	{
+	Ready:
+		TNT1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
+		MGLW A 1 A_WeaponReady(WRF_AllowZoom)// | WRF_AllowReload)
+		Loop
+	Upgrade:
+		TNT1 A 0 A_PlaySound("WEAPUP",64)
+		TNT1 A 1 A_Print("Upgraded to level 3!\n\nFull-Auto+ - Magazine+",5,"SMALLFONT")
+		TNT1 A 0 A_GiveInventory("HFEG_GNDLauncherL3")
+		TNT1 A 0 A_TakeInventory("UpgradeToken",9)
+		TNT1 A 0 A_SelectWeapon ("HFEG_GNDLauncherL3")
+		TNT1 A 0 A_TakeInventory("HFEG_GNDLauncherL2")
+		TNT1 A 1
+	Goto Ready
+	Deselect:
+		MGLW A 1 Offset(0, 34)
+		MGLW A 1 Offset(0, 47)
+		MGLW A 1 Offset(0, 69)
+		MGLW A 1 Offset(0, 100)
+		MGLW A 1 A_Lower
+		Wait
+	Select:
+		MGLW A 1 Offset(0, 100)
+		MGLW A 1 Offset(0, 69)
+		MGLW A 1 Offset(0, 47)
+		MGLW A 1 Offset(0, 34)
+		MGLW A 1 A_Raise
+		Wait
+	Fire:
+//		MGLW A 0 A_JumpIfInventory("HFEG_MGLMag6", 6, "Reload")
+		MGLW A 0 A_PlaySound("UGLFIR", Chan_Weapon)
+		MGLW A 0 A_FireCustomMissile("40MMUG", 0, True, 7, 0, 0)
+//		MGLW A 0 A_GiveInventory("HFEG_MGLMag6")
+		MGLW A 0 A_SetPitch(pitch-1)
+		MGLW A 0 A_Zoomfactor(0.98)
+		MGLW B 1 Offset(2, 34)
+		MGLW B 1 Offset(4, 36)
+		MGLW B 1 Offset(6, 38)
+		MGLW B 0 A_Zoomfactor(1.0)
+		MGLW B 1 Offset(4, 42)
+		MGLW B 1 Offset(2, 44)
+		MGLW B 1 Offset(4, 42)
+		MGLW B 1 Offset(6, 38)
+		MGLW B 1 Offset(4, 36)
+		MGLW C 6
+		Goto Ready
+/*	Reload:
+		MGLW A 0 A_JumpIfInventory("HFEG_MGLMag6", 6, 2)
+		MGLW A 0 A_Jump(256, "Ready")
+		MGLW A 0 A_TakeInventory("HFEG_MGLMag6")
+		MGLW A 1 Offset(0, 36)
+		MGLW A 1 Offset(0, 38)
+		MGLW A 1 Offset(0, 40)
+		MGLW A 1 Offset(0, 43)
+		MGLW A 1 Offset(0, 45)
+		MGLW A 0 A_PlaySound("M72GLauncher_Reload0", Chan_Body)
+		MGLW DE 3 Offset(0, 45)
+		MGLW F 3 Offset(0, 45) A_PlaySound("M72GLauncher_Reload1", Chan_Body)
+		MGLW G 3 Offset(0, 45)
+		MGLW H 3 Offset(0, 45) A_PlaySound("M72GLauncher_Reload1", Chan_Body)
+		MGLW IG 3 Offset(0, 45)
+		MGLW H 3 Offset(0, 45) A_PlaySound("M72GLauncher_Reload1", Chan_Body)
+		MGLW I 3 Offset(0, 45)
+		MGLW IG 3 Offset(0, 45)
+		MGLW H 3 Offset(0, 45) A_PlaySound("M72GLauncher_Reload1", Chan_Body)
+		MGLW I 3 Offset(0, 45)
+		MGLW IG 3 Offset(0, 45)
+		MGLW H 3 Offset(0, 45) A_PlaySound("M72GLauncher_Reload1", Chan_Body)
+		MGLW I 3 Offset(0, 45)
+		MGLW IJ 3 Offset(0, 45)
+		MGLW K 3 Offset(0, 45) A_PlaySound("M72GLauncher_Reload1", Chan_Body)
+		MGLW K 3 Offset(0, 45) //Load
+		MGLW K 3 Offset(0, 45) A_PlaySound("M72GLauncher_Reload1", Chan_Body)
+		MGLW IJ 3 Offset(0, 45)
+		MGLW I 3 Offset(0, 45)
+		MGLW H 3 Offset(0, 45) A_PlaySound("M72GLauncher_Reload1", Chan_Body)
+		MGLW IG 3 Offset(0, 45)
+		MGLW I 3 Offset(0, 45)
+		MGLW H 3 Offset(0, 45) A_PlaySound("M72GLauncher_Reload1", Chan_Body)
+		MGLW IG 3 Offset(0, 45)
+		MGLW I 3 Offset(0, 45)
+		MGLW H 3 Offset(0, 45) A_PlaySound("M72GLauncher_Reload1", Chan_Body)
+		MGLW IG 3 Offset(0, 45)
+		MGLW H 3 Offset(0, 45) A_PlaySound("M72GLauncher_Reload1", Chan_Body)
+		MGLW G 3 Offset(0, 45)
+		MGLW F 3 Offset(0, 45) A_PlaySound("M72GLauncher_Reload1", Chan_Body)
+		MGLW DE 2 Offset(0, 45)
+		Goto Ready*/
+	Spawn:
+		MGLW L -1
+		Stop
+	}
+}

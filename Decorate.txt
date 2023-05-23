@@ -25,4 +25,5 @@
 #include "Decorate/Weapons/Minigun.txt"
 #include "Decorate/Weapons/Rockets.dec"
 #include "Decorate/Weapons/RemakedFire.dec"
+#include "Decorate/Barrel.dec"
 #include "Decorate/Other.dec"

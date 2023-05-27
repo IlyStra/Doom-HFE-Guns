@@ -33,7 +33,7 @@ Actor BackPackWithoutToolz
 	}
 }
 
-Actor UACBackPack : BackpackItem 
+Actor UACBackPack : CustomInventory 
 {
   Inventory.PickupSound "DSBACK"
   Inventory.PickupMessage "Picked up an Ammo Backpack!"
@@ -43,7 +43,10 @@ Actor UACBackPack : BackpackItem
   {
   Spawn:
     BPAK A -1
-    stop
+    Loop
+  Pickup:
+    TNT1 A 0 ACS_NamedExecuteAlways("HammerspaceBackpack")
+    Stop
   }
 }
 

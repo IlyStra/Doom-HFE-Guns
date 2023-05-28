@@ -3,10 +3,6 @@ monospacefonts true, "0";
 
 statusbar fullscreen, fullscreenoffsets // ZDoom HUD
 {
-    InInventory UACTOOLZ, 1
-	{
-	drawimage "HUDTUL", 233, -19;
-	}
 	IsSelected MachineGun3
 	{
 	drawnumber 3, SMALLFONT, white, "UACROCKETAMMO", alignment(right), 173, -22;
@@ -26,6 +22,10 @@ statusbar fullscreen, fullscreenoffsets // ZDoom HUD
 	drawnumber 3,SMALLFONT, darkgreen, ammo1capacity, alignment(left), 124, -28;	
 	drawnumber 3, SMALLFONT, white, ammo2, alignment(right), 173, -28;
 	
+	inventorybarnotvisible
+			{
+				drawselectedinventory centerbottom, drawshadow, INDEXFONT, 233, -19, 243, -28, untranslated;
+			}
 	
 	//KEYS
 	DrawKeyBar 100, horizontal, 9, 95, -16;

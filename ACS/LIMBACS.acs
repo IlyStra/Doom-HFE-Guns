@@ -1,7 +1,7 @@
 #library "UACBackPack"
 
 #include "zcommon.acs"
-#define NumAmmoTypes 4
+#define NumAmmoTypes 5
 // This is the position of the ammo to test against for a hard backpack expansion cap.
 #define AMMO_LIMIT_TEST_TYPE 5
 #define AMMO_LIMIT 9999
@@ -9,12 +9,14 @@
 int ammotypes[NumAmmoTypes] = {
 "UACPlasmaAmmo",
 "BLTClip",
+"RIFClip",
 "ShotShell",
 "HFEG_OneRocketBox",
 };
 
 int capexpansion[NumAmmoTypes] = {
 200,
+100,
 100,
 50,
 20,

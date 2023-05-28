@@ -50,9 +50,51 @@ Actor UACBackPack : CustomInventory
   }
 }
 
-ACTOR BLTClip : Ammo Replaces Clip
+Actor ClipSpawner : Randomspawner Replaces Clip
 {
-  Inventory.PickupMessage "Picked up a Bullet Mag." 
+DropItem "BLTClip"
+DropItem "RIFClip"
+}
+
+Actor ClipSpawner : Randomspawner Replaces Clipbox
+{
+DropItem "BLTpack"
+DropItem "RIFpack"
+}
+
+ACTOR BLTClip : Ammo 
+{
+  Inventory.PickupMessage "Picked up a Pistol Bullet Mag." 
+  Inventory.Amount 15
+  Inventory.MaxAmount 150
+  Ammo.BackpackAmount 30
+  Ammo.BackpackMaxAmount 300
+  Inventory.Icon "HGCLA0"
+  Inventory.PickupSound "MEPICK"
+  States
+  {
+  Spawn:
+    HGCL A -1
+    Stop
+  }
+}
+
+ACTOR BLTpack : BLTClip 
+{
+  Inventory.PickupMessage "Picked up a Pistol Bullet Box." 
+  Inventory.Amount 60
+  Inventory.PickupSound "MEPICK"
+  States
+  {
+  Spawn:
+    HGBO A -1
+    Stop
+  }
+}
+
+ACTOR RIFClip : Ammo 
+{
+  Inventory.PickupMessage "Picked up a Rifle Bullet Mag." 
   Inventory.Amount 15
   Inventory.MaxAmount 150
   Ammo.BackpackAmount 30
@@ -67,9 +109,9 @@ ACTOR BLTClip : Ammo Replaces Clip
   }
 }
 
-ACTOR BLTpack : BLTClip replaces ClipBox
+ACTOR RIFpack : RIFClip 
 {
-  Inventory.PickupMessage "Picked up a Bullet Box." 
+  Inventory.PickupMessage "Picked up a Rifle Bullet Box." 
   Inventory.Amount 60
   Inventory.PickupSound "MEPICK"
   States

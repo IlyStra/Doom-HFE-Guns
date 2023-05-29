@@ -1,0 +1,29 @@
+Actor HFEG_BlurSphere : CustomInventory
+{
+	+COUNTITEM
+	+INVENTORY.AUTOACTIVATE
+	+INVENTORY.ALWAYSPICKUP
+	+INVENTORY.BIGPOWERUP
+	Inventory.MaxAmount 0
+	Inventory.PickupMessage "$GOTINVIS"
+	Inventory.PickupAnnouncerEntry "partialinvisibility"
+	States
+	{
+	Spawn:
+		PINS ABCD 6 Bright
+		Loop
+	PickUp:
+		TNT1 A 0 A_GiveInventory("HFEG_Invisibility")
+		Stop
+	}
+}
+
+Actor HFEG_Invisibility : PowerInvisibility
+{
+	-Shadow
+	Powerup.Duration -60
+	Powerup.Strength 100
+	Powerup.Mode "Translucent"
+	+CantSeek
+	+Ghost
+}

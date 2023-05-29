@@ -262,6 +262,23 @@ RocketL3WLaunch		RL3WL0
 RocketL1WReload		RL1WR0
 RocketL2WReload		RL2WR0
 
+RocketL3LL0	RL3LL0
+
+$Random RocketL3Explode
+{
+	RocketL3Ex0	RocketL3Ex1
+}
+
+RocketL3ExplodeD	RL3ED0
+
+RocketL3Ex0		RL3EX0
+RocketL3Ex1		RL3EX1
+
+$Random RocketL3Explode
+{
+	RocketL3Ex0	RocketL3Ex1
+}
+
 $Random MGN0FIR
 {
 	MGN0FIR0	MGN0FIR1
@@ -297,3 +314,6 @@ M72GLauncher_Fire	M72GFIR0
 M72GLauncher_Reload0	M72GRL0
 M72GLauncher_Reload1	M72GRL1
 M72GLauncher_Reload2	M72GRL2
+
+RailGun_Charge	RLGCHRG0
+RailGun_Reload	RLGRL0

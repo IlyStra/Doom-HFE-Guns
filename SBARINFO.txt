@@ -21,6 +21,8 @@ statusbar fullscreen, fullscreenoffsets // ZDoom HUD
 	drawstring SMALLFONT, white, weapontag, 170, -50;
 	drawnumber 3,SMALLFONT, darkgreen, ammo1capacity, alignment(left), 124, -28;	
 	drawnumber 3, SMALLFONT, white, ammo2, alignment(right), 173, -28;
+	drawstring SMALLFONT, white, "/", 182, -28;
+	drawnumber 4,SMALLFONT, darkgreen, ammo2capacity, alignment(left), 183, -28;
 	
 	inventorybarnotvisible
 			{

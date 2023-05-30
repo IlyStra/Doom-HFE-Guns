@@ -237,3 +237,212 @@ ACTOR UACdragonsbreathcasing
       Wait
    }
 }
+
+ACTOR MagBasis
+{
+	PROJECTILE
+	-NOGRAVITY
+	-NOBLOCKMAP
+	+BOUNCEONACTORS
+	+FORCEXYBILLBOARD
+	Mass 10
+	BounceType Doom
+	BounceFactor 0.5
+	WallBounceFactor 0.2
+}
+
+ACTOR EmptyPistolMag
+{
+   Height 2
+   Radius 2
+   Speed 4
+   Scale 0.72
+   +DOOMBOUNCE
+   - NOGRAVITY
+   +WINDTHRUST
+   +CLIENTSIDEONLY
+   +MOVEWITHSECTOR
+   +MISSILE
+   +NOBLOCKMAP
+   -DROPOFF
+   +NOTELEPORT
+   +FORCEXYBILLBOARD
+   +NOTDMATCH
+   +GHOST
+   BounceFactor 0.3
+   Mass 1
+   DeathSound "weapons/smallmagdrop"
+   BounceSound "weapons/smallmagdrop"
+   States
+   {
+   Spawn:
+      TNT1 A 7 A_PlaySound("NULL")
+      TCLI ABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGH 3
+      Stop
+   Death:
+	  TNT1 A 0
+      TCLI H 200
+	  Stop
+   }
+}
+
+ACTOR EmptyPistolClipSpawn
+{
+	Speed 20
+	PROJECTILE
+	+NOCLIP
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_CustomMissile("EmptyPistolMag",1,0,random(-85,-95),1,1)
+		Stop
+	}
+}
+
+ACTOR EmptySMGMag
+{
+   Height 2
+   Radius 2
+   Speed 4
+   Scale 0.9
+   +DOOMBOUNCE
+   - NOGRAVITY
+   +WINDTHRUST
+   +CLIENTSIDEONLY
+   +MOVEWITHSECTOR
+   +MISSILE
+   +NOBLOCKMAP
+   -DROPOFF
+   +NOTELEPORT
+   +FORCEXYBILLBOARD
+   +NOTDMATCH
+   +GHOST
+   BounceFactor 0.4
+   Mass 1
+   DeathSound "weapons/smallmagdrop"
+   BounceSound "weapons/smallmagdrop"
+   States
+   {
+   Spawn:
+      TNT1 A 7 A_PlaySound("NULL")
+      KMAG ABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGH 3
+      Stop
+   Death:
+	  TNT1 A 0
+      KMAG H 200
+		Stop
+   }
+}
+
+ACTOR EmptySMGClipSpawn
+{
+	Speed 20
+	PROJECTILE
+	+NOCLIP
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_CustomMissile("EmptySMGMag",1,0,random(-85,-95),1,1)
+		Stop
+	}
+}
+
+ACTOR EmptyAKMag
+{
+   Height 2
+   Radius 2
+   Speed 4
+   Scale 0.5
+   +DOOMBOUNCE
+   - NOGRAVITY
+   +WINDTHRUST
+   +CLIENTSIDEONLY
+   +MOVEWITHSECTOR
+   +MISSILE
+   +NOBLOCKMAP
+   -DROPOFF
+   +NOTELEPORT
+   +FORCEXYBILLBOARD
+   +NOTDMATCH
+   +GHOST
+   BounceFactor 0.3
+   Mass 1
+   DeathSound "weapons/largemagdrop"
+   BounceSound "weapons/largemagdrop"
+   States
+   {
+   Spawn:
+      TNT1 A 7 A_PlaySound("NULL")
+      E16M ABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGH 3
+      Stop
+   Death:
+	  TNT1 A 0
+      E16M H 200
+		Stop
+   }
+}
+
+ACTOR EmptyAKClipSpawn
+{
+	Speed 20
+	PROJECTILE
+	+NOCLIP
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_CustomMissile("EmptyAKMag",1,0,random(85,95),1,1)
+		Stop
+	}
+}
+
+ACTOR EmptyAAMag
+{
+   Height 2
+   Radius 2
+   Speed 4
+   Scale 0.6
+   +DOOMBOUNCE
+   - NOGRAVITY
+   +WINDTHRUST
+   +CLIENTSIDEONLY
+   +MOVEWITHSECTOR
+   +MISSILE
+   +NOBLOCKMAP
+   -DROPOFF
+   +NOTELEPORT
+   +FORCEXYBILLBOARD
+   +NOTDMATCH
+   +GHOST
+   BounceFactor 0.3
+   Mass 1
+   DeathSound "weapons/largemagdrop"
+   BounceSound "weapons/largemagdrop"
+   States
+   {
+   Spawn:
+      TNT1 A 7 A_PlaySound("NULL")
+      FK7M ABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGH 3
+      Stop
+   Death:
+	  TNT1 A 0
+      FK7M H 200
+		Stop
+   }
+}
+
+ACTOR EmptyAAClipSpawn
+{
+	Speed 20
+	PROJECTILE
+	+NOCLIP
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_CustomMissile("EmptyAAMag",1,0,random(85,95),1,1)
+		Stop
+	}
+}

@@ -317,3 +317,20 @@ M72GLauncher_Reload2	M72GRL2
 
 RailGun_Charge	RLGCHRG0
 RailGun_Reload	RLGRL0
+
+$random weapons/smallmagdrop  { weapons/smallmagdrop1 weapons/smallmagdrop2 weapons/smallmagdrop3 weapons/smallmagdrop4 }
+weapons/smallmagdrop1		dsbounc1
+weapons/smallmagdrop2		dsbounc2
+weapons/smallmagdrop3		dsbounc3
+weapons/smallmagdrop4		dsbounc4
+
+$random weapons/largemagdrop  { weapons/largemagdrop1 weapons/largemagdrop2 weapons/largemagdrop3 weapons/largemagdrop4 }
+weapons/largemagdrop1		dsaounc1
+weapons/largemagdrop2		dsaounc2
+weapons/largemagdrop3		dsaounc3
+weapons/largemagdrop4		dsaounc4
+
+weapons/barrelpain		barrelz
+
+$volume weapons/smallmagdrop 0.5
+$volume weapons/largemagdrop 0.5

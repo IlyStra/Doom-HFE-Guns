@@ -27,7 +27,7 @@ Actor HFEG_MinigunL1 : Weapon
 {
 	Weapon.UpSound "GUNDRA"
 	Weapon.AmmoUse 1
-	Weapon.AmmoType "BLTClip"
+	Weapon.AmmoType "RIFClip"
 	Weapon.SlotNumber 4
 	Weapon.AmmoGive 200
 	Scale 0.375
@@ -159,7 +159,7 @@ Actor HFEG_MinigunL2 : Weapon
 	+CheatNotWeapon
 	Weapon.UpSound "GUNDRA"
 	Weapon.AmmoUse 1
-	Weapon.AmmoType "BLTClip"
+	Weapon.AmmoType "RIFClip"
 	Weapon.SlotNumber 4
 	Weapon.AmmoGive 200
 	Scale 0.375
@@ -291,7 +291,7 @@ Actor HFEG_MinigunL3 : Weapon
 	+CheatNotWeapon
 	Weapon.UpSound "GUNDRA"
 	Weapon.AmmoUse 1
-	Weapon.AmmoType "BLTClip"
+	Weapon.AmmoType "RIFClip"
 	Weapon.SlotNumber 4
 	Weapon.AmmoGive 200
 	Scale 0.375

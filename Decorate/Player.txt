@@ -6,7 +6,7 @@ ACTOR UacPlayer : PlayerPawn replaces DoomPlayer
   Height 56
   Mass 100
   PainChance 255
-  Player.DisplayName "Vigilante"
+  Player.DisplayName "E.I.S.G - Top league"
   Player.CrouchSprite "PLYC"
   Player.StartItem "TacPistol1"
   Player.StartItem "Grenade1"

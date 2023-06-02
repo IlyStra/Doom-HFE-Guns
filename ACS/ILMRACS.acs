@@ -153,7 +153,7 @@ Script "HFEG_PlayerProps" Enter Net
 			Default:SetActorProperty(0, APROP_NameTag, StrParam(s:"\c[cyan]EISG Colonel:\c[white] ", n:0));Break;
 		}
 	}
-	SetActorProperty(0, APROP_Species, "UACGuard");
+	If(GetCvar("Cooperative") == True){SetActorProperty(0, APROP_Species, "UACGuard");}
 	SetActorProperty(0, APROP_SpawnHealth, 100);
 }
 
@@ -398,7 +398,7 @@ Script "HFEG_GetUMRECvar" (Void) Net
 	{SetResultValue(CVr_UMREnable);
 	CVr_CallCount += 1;}
 	Else{
-	CVr_CallCount = 0;CVr_UMREnable = GetCvar("HFEGC_UMREnable");
+	CVr_CallCount = 0;CVr_UMREnable = GetCvar("HFEGC_UMREnable")*(!GetCvar("SV_NoMonsters"));
 	SetResultValue(CVr_UMREnable);}
 }
 

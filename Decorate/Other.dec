@@ -78,7 +78,7 @@ Actor HFEG_UACMarineSpawnerBS Replaces BlurSphere
 	Spawn:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("HFEG_GetUMRECvar") != True, "DefSpawn")
-		TNT1 A 0 A_Jump(96, "DefSpawn")
+		TNT1 A 0 A_Jump(32, "DefSpawn")
 		TNT1 A 0 A_SpawnItemEx("HFEG_UACMarine")
 		Stop
 	DefSpawn:

@@ -56,7 +56,7 @@ DropItem "BLTClip"
 DropItem "RIFClip"
 }
 
-Actor ClipSpawner : Randomspawner Replaces Clipbox
+Actor ClipboxSpawner : Randomspawner Replaces Clipbox
 {
 DropItem "BLTpack"
 DropItem "RIFpack"

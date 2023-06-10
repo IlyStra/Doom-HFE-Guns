@@ -37,8 +37,8 @@ OptionMenu "HFEG_Options"
 	StaticText " "
 	Control "Toggle FlashLight", "HFEG_FlashLightToggle"
 	Control "Call Allies (Follow)", "Pukename HFEG_CallUMR always; wait 4"
-	Control "Fast melee" new_fastmelee
-	Control "Fast grenade" new_fastgrenade
+	Control "Fast melee", new_fastmelee
+	Control "Fast grenade", new_fastgrenade
 	StaticText " "
 	StaticText " "
 	StaticText "Gameplay Options", 1

@@ -225,8 +225,6 @@ ACTOR HFEG_SniperRifleL2 : UacWeapon
   Ready:
      TNT1 A 0 A_JumpIfInventory("Meleeing",1,"FastMeleeBase")
      TNT1 A 0 A_JumpIfInventory("Grenading",1,"FastGrenadeBase")
-     TNT1 A 0 A_JumpIfInventory("Meleeing",1,"FastMeleeBase")
-     TNT1 A 0 A_JumpIfInventory("Grenading",1,"FastGrenadeBase")
 		RLG1 A 0 A_JumpIfInventory("HFEG_SniperZoom", 1, 5)
 		TNT1 A 0 A_FireBullets(0,0,-1,0,"TacPistolLaserSight",FBF_EXPLICITANGLE|FBF_NORANDOMPUFFZ|FBF_NOFLASH,32767)
 		SNP1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")

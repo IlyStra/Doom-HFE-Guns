@@ -23,6 +23,7 @@ Actor Slot4Spawner : Randomspawner replaces Chaingun
 {
 DropItem "MachinegunSpawner", 255, 45
 DropItem "UziSpawner", 255, 80
+DropItem "HFEG_SniperSpawner", 255, 10
 DropItem "UACToolZ", 192, 1
 }
 
@@ -36,14 +37,14 @@ DropItem "UACToolZ", 224, 1
 
 Actor Slot6Spawner : Randomspawner replaces PlasmaRifle
 {
-DropItem "PlasmagunSpawner", 255, 65
-DropItem "RailgunSpawner", 255, 25
+DropItem "HFEG_PlasmagunSpawner", 255, 65
+DropItem "HFEG_RailGunSpawner", 255, 25
 DropItem "UACToolZ", 255, 1
 }
 
 Actor Slot7Spawner : Randomspawner replaces BFG9000
 {
-DropItem "BFGSpawner", 255, 65
+DropItem "HFEG_BFGSpawner", 255, 65
 DropItem "FlamerSpawner", 255, 45
 DropItem "UACToolZ", 255, 10
 }

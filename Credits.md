@@ -9,7 +9,7 @@
 `	█	██		  ██	██				██				██		██								█`
 `	█	██		  ██	██				██████████		██████████		Credits					█`
 `	█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█`
-
+													 █
 	`"CREDIT PEOPLE, CREDIT PEOPLE, CREDIT PEOPLE."` █ *TerminusEst13 (Retired)*
 							▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 	`Fonts`					█	*Jimmy*
@@ -50,10 +50,16 @@
 							█
 	`Rockets`				█	*Jenoclip*
 							█
+	`Rocket Launcher`		█	*Jenoclip, YukiHerz*
+							█
 	`Titlemap`				█	*Jenoclip*
 							█
-	`Railgun`				█	*Jenoclip*
+	`Railgun`				█	*Jenoclip, Hellstorm Archon(Sprites), ravage(Sprites)*
 							█
 	`Playing`				█	*You*
-							█
-	`Lots of sprites`		█	*Zdoom Spriting Carnival Members*
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█If we didn't accidentally add you to the credits,												█
+█then write about this mistake on the NMW server.												█
+█Link:	https://discord.gg/nm3NryzKJs															█
+█Sorry for the mistake.																			█
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀

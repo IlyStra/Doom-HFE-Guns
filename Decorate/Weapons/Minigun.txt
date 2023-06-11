@@ -23,7 +23,7 @@ ACTOR MinigunSpawner : CustomInventory
 
 Actor HFEG_MinigunToggleSpin : Inventory{}
 
-Actor HFEG_MinigunL1 : Weapon
+Actor HFEG_MinigunL1 : UACweapon
 {
 	Weapon.UpSound "GUNDRA"
 	Weapon.AmmoUse 1
@@ -154,7 +154,7 @@ Actor HFEG_MinigunL1 : Weapon
 	}
 }
 
-Actor HFEG_MinigunL2 : Weapon
+Actor HFEG_MinigunL2 : UACweapon
 {
 	+CheatNotWeapon
 	Weapon.UpSound "GUNDRA"
@@ -286,7 +286,7 @@ Actor HFEG_MinigunL2 : Weapon
 	}
 }
 
-Actor HFEG_MinigunL3 : Weapon
+Actor HFEG_MinigunL3 : UACweapon
 {
 	+CheatNotWeapon
 	Weapon.UpSound "GUNDRA"

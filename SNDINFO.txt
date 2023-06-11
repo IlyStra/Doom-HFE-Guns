@@ -148,7 +148,7 @@ SHOCAS2        SHOCAS2
 SHOCAS3        SHOCAS3
 
 //|-------------------------------------------------|
-//|						Il Str						|
+//|						Jenoclip					|
 //|-------------------------------------------------|
 
 UACMarineMedicine0		UMMED0
@@ -334,3 +334,33 @@ weapons/barrelpain		barrelz
 
 $volume weapons/smallmagdrop 0.5
 $volume weapons/largemagdrop 0.5
+
+
+SniperRifle1_Fire	SNPFR0
+SniperRifle2_Fire	SNPFR1
+SniperRifle3_Fire	SNPFR2
+
+SniperRifle1_FireD	SNPFR0D
+SniperRifle2_FireD	SNPFR1D
+SniperRifle3_FireD	SNPFR2D
+
+menu/activate	UIACT
+menu/backup	UIDEACT
+menu/prompt UIDEACT
+menu/change	UICHNG
+menu/cursor	UICURS
+menu/choose	UICHOSE
+menu/invalid	UIERROR
+menu/clear	UICLR
+menu/dismiss	UIDISM
+
+$volume menu/activate 4.0
+$volume menu/backup 4.0
+$volume menu/prompt 4.0
+
+menu/quit1	UIDISM
+menu/quit2	UIDISM
+
+BFG_Explode		BFGEXPL
+BFG_Fire		BFGFIRE
+BFG_Charge		BFGCHRG

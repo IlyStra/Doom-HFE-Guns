@@ -38,6 +38,7 @@ Actor UACDBBulletPuff : BulletPuff
   +PuffOnActors
 	+MThruSpecies
 	+ThruSpecies
+	+BLOODLESSIMPACT
 	+DontHurtSpecies
 	DontHurtShooter
   RenderStyle Add

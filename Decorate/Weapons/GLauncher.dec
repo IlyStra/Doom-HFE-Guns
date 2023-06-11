@@ -1,4 +1,4 @@
-Actor HFEG_GNDLauncherL1 : Weapon
+Actor HFEG_GNDLauncherL1 : UacWeapon
 {
 	Weapon.UpSound "GUNDRA"
 	Weapon.AmmoUse 1
@@ -85,7 +85,7 @@ ACTOR HFEG_MGLMag6 : Inventory
 	Inventory.MaxAmount 6
 }
 
-Actor HFEG_GNDLauncherL2 : Weapon
+Actor HFEG_GNDLauncherL2 : UacWeapon
 {
 	Weapon.UpSound "GUNDRA"
 	Weapon.AmmoUse 1

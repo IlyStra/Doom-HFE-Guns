@@ -30,6 +30,8 @@ ACTOR UacPlayer : PlayerPawn replaces DoomPlayer
   Player.StartItem "BLTClip", 60
   Player.StartItem "GrenadeAmmo", 2
   Player.StartItem "Fist1"
+  Player.StartItem "Action_FastMelee"
+  Player.StartItem "Action_FastGrenade"
   Player.WeaponSlot 1, Fist1, Fist2, Fist3
   Player.WeaponSlot 2, TacPistol1,TacPistol2,TacPistol3,Uzi1,Uzi2,Uzi3,Revolver1,Revolver2,Revolver3
   Player.WeaponSlot 3, Shotgun1,Shotgun2,Shotgun3,SuperShotGun1,SuperShotGun2,SuperShotGun3

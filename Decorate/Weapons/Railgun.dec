@@ -26,7 +26,7 @@ Actor HFEG_RailGun1 : UACweapon
 {
 	Weapon.UpSound "GUNDRA"
 	Weapon.AmmoUse 15
-	Weapon.AmmoType "Cell"
+	Weapon.AmmoType "UACPlasmaAmmo"
 	Weapon.SlotNumber 6
 	Weapon.AmmoGive 15
 	Scale 0.75
@@ -36,6 +36,8 @@ Actor HFEG_RailGun1 : UACweapon
 	States
 	{
 	Ready:
+     TNT1 A 0 A_JumpIfInventory("Meleeing",1,"FastMeleeBase")
+     TNT1 A 0 A_JumpIfInventory("Grenading",1,"FastGrenadeBase")
 		TNT1 A 0 Bright A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
 		RLG0 A 1 Bright A_WeaponReady(WRF_AllowZoom)
 		Loop
@@ -242,7 +244,7 @@ Actor HFEG_RailGun2 : UACweapon
 	+CheatNotWeapon
 	Weapon.UpSound "GUNDRA"
 	Weapon.AmmoUse 15
-	Weapon.AmmoType "Cell"
+	Weapon.AmmoType "UACPlasmaAmmo"
 	Weapon.SlotNumber 6
 	Weapon.AmmoGive 15
 	Scale 0.75
@@ -252,6 +254,8 @@ Actor HFEG_RailGun2 : UACweapon
 	States
 	{
 	Ready:
+     TNT1 A 0 A_JumpIfInventory("Meleeing",1,"FastMeleeBase")
+     TNT1 A 0 A_JumpIfInventory("Grenading",1,"FastGrenadeBase")
 		RLG1 A 0 A_JumpIfInventory("HFEG_Raligun_Zoom", 1, 4)
 		RLG1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
 		RLG1 A 1 A_WeaponReady(WRF_AllowZoom)
@@ -399,7 +403,7 @@ Actor HFEG_RailGun3 : UACweapon
 	+CheatNotWeapon
 	Weapon.UpSound "GUNDRA"
 	Weapon.AmmoUse 40
-	Weapon.AmmoType "Cell"
+	Weapon.AmmoType "UACPlasmaAmmo"
 	Weapon.SlotNumber 6
 	Weapon.AmmoGive 40
 	Scale 0.75
@@ -409,6 +413,8 @@ Actor HFEG_RailGun3 : UACweapon
 	States
 	{
 	Ready:
+     TNT1 A 0 A_JumpIfInventory("Meleeing",1,"FastMeleeBase")
+     TNT1 A 0 A_JumpIfInventory("Grenading",1,"FastGrenadeBase")
 		RLG2 A 0 A_JumpIfInventory("HFEG_Raligun_Zoom", 1, 4)
 		RLG2 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
 		RLG2 A 1 Bright A_WeaponReady(WRF_AllowZoom)

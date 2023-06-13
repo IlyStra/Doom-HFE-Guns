@@ -37,7 +37,7 @@ DropItem "UACToolZ", 224, 1
 
 Actor Slot6Spawner : Randomspawner replaces PlasmaRifle
 {
-DropItem "HFEG_PlasmagunSpawner", 255, 65
+DropItem "HFEG_PlasmaSpawner", 255, 65
 DropItem "HFEG_RailGunSpawner", 255, 25
 DropItem "UACToolZ", 255, 1
 }

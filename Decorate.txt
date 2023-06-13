@@ -28,6 +28,8 @@
 #include "Decorate/Weapons/Railgun.dec"
 #include "Decorate/Weapons/SRifle.dec"
 #include "Decorate/Weapons/BFG.dec"
+#include "Decorate/Weapons/Plasmagun.dec"
 #include "Decorate/Pickups/Artifacts.dec"
+#include "Decorate/Pickups/OtherPicks.dec"
 #include "Decorate/Barrel.dec"
 #include "Decorate/Other.dec"

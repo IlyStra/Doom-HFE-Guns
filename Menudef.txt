@@ -1,6 +1,6 @@
 DefaultListMenu
 {
-    Font "DBigFont", "CYAN"
+    Font "DBigFont", "White"
 }
 
 ListMenu "MainMenu"

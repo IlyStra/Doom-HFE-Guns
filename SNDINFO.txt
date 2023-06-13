@@ -364,3 +364,17 @@ menu/quit2	UIDISM
 BFG_Explode		BFGEXPL
 BFG_Fire		BFGFIRE
 BFG_Charge		BFGCHRG
+
+Plasma_Fire0	PLSMFIR0
+Plasma_Fire1	PLSMFIR1
+Plasma_Fire2	PLSMFIR2
+
+Plasma_Explode0		PLSMEXP0
+Plasma_Explode1		PLSMEXP1
+Plasma_Explode2		PLSMEXP2
+Plasma_Explode3		PLSMEXP3
+
+
+$random Plasma_Explode
+{Plasma_Explode0	Plasma_Explode1
+Plasma_Explode2		Plasma_Explode3}

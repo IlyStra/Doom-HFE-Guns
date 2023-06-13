@@ -56,6 +56,8 @@
 							█
 	`Railgun`				█	*Jenoclip, Hellstorm Archon(Sprites), ravage(Sprites)*
 							█
+	`Other Pickups`			█	*BloodyAcid, BigDaveHadSomeToo, Jenoclip*
+							█
 	`Playing`				█	*You*
 ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 █If we didn't accidentally add you to the credits,												█

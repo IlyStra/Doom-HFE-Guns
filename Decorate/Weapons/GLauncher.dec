@@ -194,3 +194,65 @@ Actor HFEG_GNDLauncherL2 : UacWeapon
 		Stop
 	}
 }
+
+Actor HFEG_GNDLauncherL3 : UacWeapon
+{
+	Weapon.UpSound "GUNDRA"
+	Weapon.AmmoUse 1
+	Weapon.AmmoType "RocketAmmo"
+	Weapon.SlotNumber 5
+	Weapon.AmmoGive 6
+	+CheatNotWeapon
+	Scale 0.75
+	Obituary "%o was bombed by %k`s PAGL-19."
+	Inventory.Pickupmessage "You got the PAGL-19!"
+	Tag "''PAGL-19'' - Portable Auto-grenade launcher"
+	States
+	{
+	Ready:
+     TNT1 A 0 A_JumpIfInventory("Meleeing",1,"FastMeleeBase")
+     TNT1 A 0 A_JumpIfInventory("Grenading",1,"FastGrenadeBase")
+		TNT1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
+		AGLW A 1 A_WeaponReady(WRF_AllowZoom)// | WRF_AllowReload)
+		Loop
+	Upgrade:
+		TNT1 A 1 A_Print("THE WEAPON IS ALREADY UPGRADED TO THE MAX LEVEL!",5,"SMALLFONT")
+		TNT1 A 0 A_GiveInventory("UACTOOLZ", 1)
+		TNT1 A 0 A_TakeInventory("UpgradeToken",9)
+		TNT1 A 1
+		Goto Ready
+	Deselect:
+		AGLW A 1 Offset(0, 34)
+		AGLW A 1 Offset(0, 47)
+		AGLW A 1 Offset(0, 69)
+		AGLW A 1 Offset(0, 100)
+		AGLW A 1 A_Lower
+		Wait
+	Select:
+		AGLW A 1 Offset(0, 100)
+		AGLW A 1 Offset(0, 69)
+		AGLW A 1 Offset(0, 47)
+		AGLW A 1 Offset(0, 34)
+		AGLW A 1 A_Raise
+		Wait
+	Fire:
+		AGLW A 0 A_PlaySound("UGLFIR", Chan_Weapon)
+		AGLW A 0 A_FireCustomMissile("40MMUG", 0, True, 7, 0, 0)
+		AGLW A 0 A_SetPitch(pitch-1)
+		AGLW A 0 A_Zoomfactor(0.98)
+		AGLW A 1 Offset(2, 34)
+		AGLW A 1 Offset(4, 36)
+		AGLW A 1 Offset(6, 38)
+		AGLW A 0 A_Zoomfactor(1.0)
+		AGLW A 1 Offset(4, 42)
+		AGLW A 1 Offset(2, 44)
+		AGLW A 1 Offset(4, 42)
+		AGLW A 1 Offset(6, 38)
+		AGLW A 1 Offset(4, 36)
+		AGLW A 0 A_ReFire
+		Goto Ready
+	Spawn:
+		AGLW B -1
+		Stop
+	}
+}

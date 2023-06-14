@@ -17,11 +17,11 @@ statusbar fullscreen, fullscreenoffsets // ZDoom HUD
 	drawnumber 2147483647, BIGFONT, blue, armor, drawshadow, 82, -19;
 
 	//ammo 'n' weppins
-	drawnumber 3, SMALLFONT, green, ammo1, alignment(right), 114, -28;
+	drawnumber 4, SMALLFONT, green, ammo1, alignment(right), 114, -28;
 	drawstring SMALLFONT, white, "/", 123, -28;
 	drawstring SMALLFONT, white, weapontag, 170, -50;
-	drawnumber 3,SMALLFONT, darkgreen, ammo1capacity, alignment(left), 124, -28;	
-	drawnumber 3, SMALLFONT, white, ammo2, alignment(right), 173, -28;
+	drawnumber 4,SMALLFONT, darkgreen, ammo1capacity, alignment(left), 124, -28;	
+	drawnumber 4, SMALLFONT, white, ammo2, alignment(right), 173, -28;
 	drawstring SMALLFONT, white, "/", 182, -28;
 	drawnumber 4,SMALLFONT, darkgreen, ammo2capacity, alignment(left), 183, -28;
 	

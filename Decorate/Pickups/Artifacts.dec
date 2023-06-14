@@ -7,7 +7,13 @@ Actor HFEG_BlurSphere : CustomInventory
 	+INVENTORY.PICKUPFLASH
 	Inventory.UseSound 		"UPCONF"
 	Inventory.MaxAmount 100
-	Inventory.Icon PINSA0
+	Inventory.Icon HDITC0
+	Translation "192:207=[255,255,0]:[128,0,0]",
+				"168:191=[255,255,0]:[129,0,0]",
+				"250:254=[255,255,0]:[128,0,0]",
+				"240:247=[128,0,0]:[0,0,0]",
+				"0:0=[43,0,0]:[43,0,0]",
+				"80:111=[255,255,0]:[128,0,0]"
 	Inventory.PickupMessage "$GOTINVIS"
 	Inventory.PickupAnnouncerEntry "partialinvisibility"
 	States
@@ -48,7 +54,7 @@ Actor HFEG_AcidProofSuit : CustomInventory Replaces RadSuit
 	Inventory.UseSound 		"UPCONF"
 	Height 46
 	Inventory.MaxAmount 100
-	Inventory.Icon CSTMA0
+	Inventory.Icon HDITA0
 	Inventory.PickupMessage "$GOTSUIT"
 	States
 	{
@@ -76,7 +82,7 @@ ACTOR NightVision : CustomInventory Replaces Infrared
 	+INVENTORY.PICKUPFLASH
 	Inventory.UseSound 		"UPCONF"
 	Inventory.MaxAmount 100
-	Inventory.Icon NVISA0
+	Inventory.Icon HDITB0
 	Inventory.PickupMessage "$GOTVISOR"
 	States
 	{

@@ -40,3 +40,39 @@ Actor LargeHealthpack : Medikit Replaces Medikit
 		Stop
 	}
 }
+
+Actor ArmoredHelmet : ArmorBonus Replaces ArmorBonus
+{
+	Inventory.Pickupmessage "You got new UAC Heavy Special Helmet"
+	Inventory.Icon "ARM0C0"
+	States
+	{
+	Spawn:
+		ARM0 C -1
+		Stop
+	}
+}
+
+Actor SteelArmor : GreenArmor Replaces ArmorBonus
+{
+	Inventory.Pickupmessage "You got Simple Steel Armor"
+	Inventory.Icon "ARM0B0"
+	States
+	{
+	Spawn:
+		ARM0 B -1
+		Stop
+	}
+}
+
+Actor UACSpecialArmor : BlueArmor Replaces BlueArmor
+{
+	Inventory.Pickupmessage "You got UAC Special Armor"
+	Inventory.Icon "ARM0A0"
+	States
+	{
+	Spawn:
+		ARM0 A -1
+		Stop
+	}
+}

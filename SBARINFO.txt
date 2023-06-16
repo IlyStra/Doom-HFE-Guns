@@ -14,6 +14,7 @@ statusbar fullscreen, fullscreenoffsets // ZDoom HUD
 	//armor
 	drawimage "RMORA0", 33, -19;
 	drawimage armoricon, 15, -4, centerbottom;
+	drawnumber 3, SMALLFONT, green, SavePercent, whennotzero, alignment(right), 15, -10;
 	drawnumber 2147483647, BIGFONT, blue, armor, drawshadow, 82, -19;
 
 	//ammo 'n' weppins

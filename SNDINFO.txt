@@ -1,0 +1,380 @@
+///INTERFACE
+WEAPUP    WEAPUP
+UPCONF    UPCONF
+GUNPI     GUNPI
+HEALPI    HEALPI
+MEPICK    MEPICK
+DSBACK    DSBACK
+
+///WEAPONS
+GUNDRA    GUNDRA
+DEKLIK    DEKLIK
+ZOOMTIC   ZOOMTIC
+///THROWABLE
+GRPUL     GRPUL
+GRBOUN    GRBOUN
+MOLLIT    MOLLIT
+LITRON    LITRON
+LITROP    LITROP
+$Random MOLEXP {MOLEXP1 MOLEXP2 MOLEXP3 MOLEXP4 MOLEXP5}
+MOLEXP1		MOLEXP1
+MOLEXP2		MOLEXP2
+MOLEXP3		MOLEXP3
+MOLEXP4		MOLEXP4
+MOLEXP5		MOLEXP5
+$Random MOLFIR {MOLFIR1 MOLFIR2 MOLFIR3 MOLFIR4 MOLFIR5}
+MOLFIR1		MOLFIR1
+MOLFIR2		MOLFIR2
+MOLFIR3		MOLFIR3
+MOLFIR4		MOLFIR4
+MOLFIR5		MOLFIR5
+
+///FIST
+BLUSEE      BLUSEE
+BLUHIT      BLUHIT
+BLUSWI      BLUSWI
+BLUSWI2     BLUSWI2
+SAWID       SAWID
+SAW1        SAW1
+SAW2        SAW2
+SAW3        SAW3
+$random SAWRIP { SAWRI1 SAWRI2 SAWRI3 }
+SAWRI1   SAWRI1
+SAWRI2   SAWRI2
+SAWRI3   SAWRI3
+$random SAWHIT { SAWHI1 SAWHI2 SAWHI3 }
+SAWHI1   SAWHI1
+SAWHI2   SAWHI2
+SAWHI3   SAWHI3
+
+///PISTOL
+PISFIR    PISFIR
+LV3PIS    LV3PIS
+PISIN     PISIN
+PISOUT    PISOUT
+PISCOK    PISCOK
+
+///REVOLVER
+REVFIR1   REVFIR1
+REVLV3    REVLV3
+REVOUT    REVOUT
+REVIN     REVIN
+REVOPN    REVOPN
+REVCLO    REVCLO
+
+
+///UZIS
+UZIFIR1   UZIFIR1
+UZIFIR2   UZIFIR2
+UZIIN     UZIIN
+UZIOUT    UZIOUT
+
+///SHOTGUN
+SGFIR1   SGFIR1
+SGFIR3   SGFIR3
+SGPUMP   SGPUMP
+SGLOAD   SGLOAD
+SGIN     SGIN
+SGOUT    SGOUT
+$random WINFIR { WINFIR1 WINFIR2 }
+WINFIR1       WINFIR1
+WINFIR2       WINFIR2
+WINRE1        WINRE1
+WINRE2        WINRE2
+
+///SUPER SHOTGUN
+SSGFIR   SSGFIR
+SSGFIR2  SSGFIR2
+SSGFIR3   SSGFIR3
+SSGOPN   SSGOPN
+SSGIN    SSGIN
+SSGCLO   SSGCLO
+SSGOPN3   SSGOPN3
+SSGIN3    SSGIN3
+SSGCLO3   SSGCLO3
+
+///SHOTGUN
+MGFIR    MGFIR
+MGIN     MGIN
+MGOUT    MGOUT
+UGLFIR   UGLFIR
+
+///EFFECTS
+$random RICO { RICO_1 RICO_2 RICO_3 }
+RICO_1          RICO1
+RICO_2          RICO2
+RICO_3          RICO3
+
+
+///BOOM LOL
+$Random misc/boom { misc/boom1 misc/boom2 misc/boom3 }
+misc/boom1 EXP1
+misc/boom2 EXP2
+misc/boom3 EXP3
+
+BIGBOOM BIGBOOM
+
+$limit BIGBOOM 6
+
+
+$limit misc/boom 6
+
+
+$random misc/distanceboom { FAREXP1 FAREXP2 FAREXP3 }
+FAREXP1 FAREXP1
+FAREXP2 FAREXP2
+FAREXP3 FAREXP3
+
+$random GLEXP { GLEXP1 GLEXP2 GLEXP3 }
+GLEXP1 GLEXP1
+GLEXP2 GLEXP2
+GLEXP3 GLEXP3
+
+
+///CASINGS
+$random PISCAS { PISCAS1 PISCAS2 PISCAS3 }
+PISCAS1        PISCAS1
+PISCAS2        PISCAS2
+PISCAS3        PISCAS3
+
+$random RIFCAS { RIFCAS1 RIFCAS2 RIFCAS3 }
+RIFCAS1        RIFCAS1
+RIFCAS2        RIFCAS2
+RIFCAS3        RIFCAS3
+
+$random SHOCAS { SHOCAS1 SHOCAS2 SHOCAS3 }
+SHOCAS1        SHOCAS1
+SHOCAS2        SHOCAS2
+SHOCAS3        SHOCAS3
+
+//|-------------------------------------------------|
+//|						Jenoclip					|
+//|-------------------------------------------------|
+
+UACMarineMedicine0		UMMED0
+UACMarineTakeMedkit0		UMTMD0
+UACMarineTakeMedkit1		UMTMD1
+UACMarineTakeMedkit2		UMTMD2
+UACMarineTakeMedkit3		UMTMD3
+UACMarineTakeMedkit4		UMTMD4
+$Random UACMarineTakeMedkit
+{
+	UACMarineTakeMedkit0	UACMarineTakeMedkit1
+	UACMarineTakeMedkit2	UACMarineTakeMedkit3
+	UACMarineTakeMedkit4
+}
+
+FlashOn FLASHON
+FlashOff FLASHOFF
+
+UMRFollow	UMFOLW
+UMRCombat0	UMFIR0
+UMRCombat1	UMFIR1
+UMRPain0	UMPAN0
+UMRPain1	UMPAN1
+UMRKillHim0	UMKLH0
+UMRKillHim1	UMKLH1
+UMRKillHim2	UMKLH2
+UMROk0		UMOK0
+UMROk1		UMOK1
+UMROk2		UMOK2
+UMROk3		UMOK3
+UMROk4		UMOK4
+UMRDeath0	UMDTH0
+UMRDeath1	UMDTH1
+UMRDeath2	UMDTH2
+UMRDeath3	UMDTH3
+UMRDeath4	UMDTH4
+UMRDeath5	UMDTH5
+
+$Random UMRPain
+{
+	UMRPain0	UMRPain1
+}
+
+$Random UMRCombat
+{
+	UMRCombat0	UMRCombat1
+}
+
+$Random UMRKillHim
+{
+	UMRKillHim0	UMRKillHim1
+	UMRKillHim2
+}
+
+$Random UMROk
+{
+	UMROk0	UMROk1
+	UMROk2	UMROk3
+	UMROk4
+}
+
+$Random UMRDeath
+{
+	UMRDeath0	UMRDeath1
+	UMRDeath2	UMRDeath3
+	UMRDeath4	UMRDeath4
+}
+
+RocketL2Ex0		RL2EX0
+RocketL2Ex1		RL2EX1
+RocketL2Ex2		RL2EX2
+RocketL2ExD0	RL2ED0
+RocketL2ExD1	RL2ED1
+RocketL2ExD2	RL2ED2
+
+RocketL2LS0	RL2LS0
+RocketL2LL0	RL2LL0
+
+$Random RocketL2Explode
+{
+	RocketL2Ex0	RocketL2Ex1
+	RocketL2Ex2
+}
+
+$Random RocketL2ExplodeD
+{
+	RocketL2ExD0	RocketL2ExD1
+	RocketL2ExD2
+}
+
+RocketL1LL0	RL1LL0
+
+RocketL1Ex0		RL1EX0
+RocketL1Ex1		RL1EX1
+RocketL1Ex2		RL1EX2
+RocketL1Ex3		RL1EX3
+RocketL1Ex4		RL1EX4
+RocketL1Ex5		RL1EX5
+
+$Random RocketL1Explode
+{
+	RocketL1Ex0	RocketL1Ex1
+	RocketL1Ex2 RocketL1Ex3
+	RocketL1Ex4 RocketL1Ex5
+}
+
+RocketL1WLaunch		RL1WL0
+RocketL2WLaunch		RL2WL0
+RocketL3WLaunch		RL3WL0
+
+RocketL1WReload		RL1WR0
+RocketL2WReload		RL2WR0
+
+RocketL3LL0	RL3LL0
+
+$Random RocketL3Explode
+{
+	RocketL3Ex0	RocketL3Ex1
+}
+
+RocketL3ExplodeD	RL3ED0
+
+RocketL3Ex0		RL3EX0
+RocketL3Ex1		RL3EX1
+
+$Random RocketL3Explode
+{
+	RocketL3Ex0	RocketL3Ex1
+}
+
+$Random MGN0FIR
+{
+	MGN0FIR0	MGN0FIR1
+	MGN0FIR2
+}
+
+$Random MGN1FIR
+{
+	MGN1FIR0	MGN1FIR1
+	MGN1FIR2	MGN1FIR3
+	MGN1FIR4	MGN1FIR5
+	MGN1FIR6	MGN1FIR7
+}
+
+MGN0FIR0	MGN0FIR0
+MGN0FIR1	MGN0FIR1
+MGN0FIR2	MGN0FIR2
+MGN0DST0	MGN0DST0
+MGN1FIR0	MGN1FIR0
+MGN1FIR1	MGN1FIR1
+MGN1FIR2	MGN1FIR2
+MGN1FIR3	MGN1FIR3
+MGN1FIR4	MGN1FIR4
+MGN1FIR5	MGN1FIR5
+MGN1FIR6	MGN1FIR6
+MGN1FIR7	MGN1FIR7
+
+Minigun_Rotation_Start	MGNROTST
+Minigun_Rotation_Loop	MGNROTLP
+Minigun_Rotation_Stop	MGNROTSP
+
+M72GLauncher_Fire	M72GFIR0
+M72GLauncher_Reload0	M72GRL0
+M72GLauncher_Reload1	M72GRL1
+M72GLauncher_Reload2	M72GRL2
+
+RailGun_Charge	RLGCHRG0
+RailGun_Reload	RLGRL0
+
+$random weapons/smallmagdrop  { weapons/smallmagdrop1 weapons/smallmagdrop2 weapons/smallmagdrop3 weapons/smallmagdrop4 }
+weapons/smallmagdrop1		dsbounc1
+weapons/smallmagdrop2		dsbounc2
+weapons/smallmagdrop3		dsbounc3
+weapons/smallmagdrop4		dsbounc4
+
+$random weapons/largemagdrop  { weapons/largemagdrop1 weapons/largemagdrop2 weapons/largemagdrop3 weapons/largemagdrop4 }
+weapons/largemagdrop1		dsaounc1
+weapons/largemagdrop2		dsaounc2
+weapons/largemagdrop3		dsaounc3
+weapons/largemagdrop4		dsaounc4
+
+weapons/barrelpain		barrelz
+
+$volume weapons/smallmagdrop 0.5
+$volume weapons/largemagdrop 0.5
+
+
+SniperRifle1_Fire	SNPFR0
+SniperRifle2_Fire	SNPFR1
+SniperRifle3_Fire	SNPFR2
+
+SniperRifle1_FireD	SNPFR0D
+SniperRifle2_FireD	SNPFR1D
+SniperRifle3_FireD	SNPFR2D
+
+menu/activate	UIACT
+menu/backup	UIDEACT
+menu/prompt UIDEACT
+menu/change	UICHNG
+menu/cursor	UICURS
+menu/choose	UICHOSE
+menu/invalid	UIERROR
+menu/clear	UICLR
+menu/dismiss	UIDISM
+
+$volume menu/activate 4.0
+$volume menu/backup 4.0
+$volume menu/prompt 4.0
+
+menu/quit1	UIDISM
+menu/quit2	UIDISM
+
+BFG_Explode		BFGEXPL
+BFG_Fire		BFGFIRE
+BFG_Charge		BFGCHRG
+
+Plasma_Fire0	PLSMFIR0
+Plasma_Fire1	PLSMFIR1
+Plasma_Fire2	PLSMFIR2
+
+Plasma_Explode0		PLSMEXP0
+Plasma_Explode1		PLSMEXP1
+Plasma_Explode2		PLSMEXP2
+Plasma_Explode3		PLSMEXP3
+
+
+$random Plasma_Explode
+{Plasma_Explode0	Plasma_Explode1
+Plasma_Explode2		Plasma_Explode3}

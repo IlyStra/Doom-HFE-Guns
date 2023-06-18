@@ -1,0 +1,579 @@
+/// Colt Python .44
+/// Used by many security forces and vigilantes
+/// This revolver is a good one hit weapon for low tier enemies.
+/// can be attached with a scope that will help taking them down from the distance.
+
+/// S&W .500 Magnum
+/// Disgusting handgun.
+/// A lot stronger than other revolvers, this thing likes to make a hole.
+/// A really big hole.
+
+
+ACTOR RevolverSpawner : CustomInventory
+{
+	Inventory.Icon "TNT1A0"
+	Inventory.PickupSound "GUNPI"
+	Inventory.PickupMessage "You got the revolver!"
+	Scale 0.65
+	States
+	{
+	Spawn:
+		REVP A -1
+		Stop
+	Pickup:
+	    TNT1 A 0 A_JumpIfInventory("Revolver3", 1, "Ammo")
+		TNT1 A 0 A_JumpIfInventory("Revolver2", 1, "Ammo")
+		TNT1 A 0 A_JumpIfInventory("Revolver1", 1, "Ammo")
+		TNT1 A 0 A_GiveInventory("Revolver1")
+		Stop
+	Ammo:
+		TNT1 A 0 A_GiveInventory("BLTClip", 30)
+		Stop
+	}
+}
+
+ACTOR REVMAG1 : Ammo
+{
+  Inventory.Amount 0
+  Inventory.MaxAmount 6
+  Ammo.BackpackAmount 0
+  Ammo.BackpackMaxAmount 6
+  +IGNORESKILL
+}
+
+ACTOR REVMAG2 : Ammo
+{
+  Inventory.Amount 0
+  Inventory.MaxAmount 6
+  Ammo.BackpackAmount 0
+  Ammo.BackpackMaxAmount 6
+  +IGNORESKILL
+}
+
+ACTOR REVMAG3 : Ammo
+{
+  Inventory.Amount 0
+  Inventory.MaxAmount 5
+  Ammo.BackpackAmount 0
+  Ammo.BackpackMaxAmount 5
+  +IGNORESKILL
+}
+ACTOR RevMagnification : Inventory { Inventory.MaxAmount 1 +IGNORESKILL }
+
+ACTOR Revolver1 : UacWeapon 
+{
+  +Ammo_Optional
+  Weapon.SelectionOrder 1700
+  Weapon.UpSound "GUNDRA"
+  Weapon.AmmoUse 1
+  Weapon.AmmoUse2 0
+  Weapon.SlotNumber 2
+  Weapon.AmmoGive2 20
+  Weapon.AmmoType "REVMAG1"
+  Scale 0.65
+  Weapon.AmmoType2 "BLTClip"
+  Obituary "%o was yeehaw'd by %k."
+  Inventory.Pickupmessage "You got the revolver!"
+  Tag "Colt Python Revolver - Security Model"
+  States
+  {
+  Ready:
+     TNT1 A 0 A_JumpIfInventory("Meleeing",1,"FastMeleeBase")
+     TNT1 A 0 A_JumpIfInventory("Grenading",1,"FastGrenadeBase")
+    TNT1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
+    RV1G A 1 A_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWZOOM)
+    Loop	
+  Upgrade:
+    TNT1 A 0 A_PlaySound("WEAPUP",64)
+	TNT1 A 1 A_Print("Upgraded to level 2!\n\nDAMAGE+ - ACCURACY+",5,"SMALLFONT")
+	TNT1 A 0 A_GiveInventory("Revolver2")
+    TNT1 A 0 A_TakeInventory("UpgradeToken",9)
+	TNT1 A 0 A_SelectWeapon ("Revolver2")
+	TNT1 A 0 A_TakeInventory("Revolver1")
+	TNT1 A 1
+	Goto Ready
+  Deselect:
+    RV1G A 1 Offset(0, 34)
+	RV1G A 1 Offset(0, 47)
+	RV1G A 1 Offset(0, 69)
+	RV1G A 1 Offset(0, 100)
+    RV1G A 1 A_Lower
+    Wait
+  Select:
+    RV1G A 1 Offset(0, 100)
+	RV1G A 1 Offset(0, 69)
+	RV1G A 1 Offset(0, 47)
+	RV1G A 1 Offset(0, 34)
+    RV1G A 1 A_Raise
+    Wait
+  Fire:
+    TNT1 A 0 A_JumpIfNoAmmo("Reload")
+	TNT1 A 0 A_FireBullets (1.3, 1.3, 1, 20, "UACBulletPuff")
+	TNT1 A 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 2, 8, 0,frandom(-5, 5))
+    TNT1 A 0 A_PlaySound("REVFIR1", CHAN_WEAPON)
+	TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_SetPitch(pitch-2)
+	TNT1 A 0 A_Zoomfactor(0.98)
+	RV1G B 1 Bright A_GunFlash
+	TNT1 A 0 A_Quake(3,2,0,90,"")
+	TNT1 A 0 A_Zoomfactor(1.0)
+    RV1G C 2 Offset(22,65)
+    RV1G C 1 Offset(18,60)
+	RV1G C 1 Offset(16,55)
+	RV1G C 1 Offset(14,50)
+	RV1G A 1 Offset(12,45)
+	RV1G A 1 Offset(10,40)
+	RV1G A 1 Offset(5,35)
+	RV1G A 1 A_Refire("Fanning")
+    Goto Ready
+  Fanning:
+    RV1F B 1
+	RV1F C 1
+	RV1F D 1
+  Fanningloop:
+    TNT1 A 0 A_JumpIfNoAmmo("Reload")
+	TNT1 A 0 A_FireBullets (7.6, 7.6, 1, 20, "UACBulletPuff")
+	TNT1 A 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 2, 8, 0,frandom(-5, 5))
+    TNT1 A 0 A_PlaySound("REVFIR1", CHAN_WEAPON)
+	TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_SetPitch(pitch-3)
+	TNT1 A 0 A_Zoomfactor(0.97)
+	RV1F A 1 Bright A_GunFlash
+	TNT1 A 0 A_Quake(3,2,0,90,"")
+	TNT1 A 0 A_Zoomfactor(1.0)
+    RV1F D 1 Offset(18,65)
+    RV1F C 1 Offset(16,60)
+	RV1F B 1 Offset(14,55)
+	RV1F C 1 Offset(12,50)
+	RV1F D 1 Offset(10,45)
+	RV1F D 1 A_Refire("Fanningloop")
+    Goto FanningEnd
+ FanningEnd:
+    RV1F D 1 Offset(5,40)
+	RV1F C 1 Offset(0,35)
+	RV1F B 1
+	Goto Ready
+  Reload:
+     TNT1 A 0 A_JumpIfInventory("REVMAG1",6,"Ready")
+	 RV1G A 0 A_JumpIfInventory("BLTClip", 1, "ReloadWork")
+	 TNT1 A 0 A_PlaySound("DEKLIK", CHAN_WEAPON)
+	 Goto Ready
+  ReloadWork:
+     RV1G A 1 Offset(5,35)
+     RV1G A 1 Offset(10,40)
+     RV1G A 1 Offset(15,45)
+	 RV1G A 1 Offset(20,50)
+	 RV1G A 1 Offset(25,60)
+	 TNT1 A 0 A_PlaySound("REVOPN", CHAN_BODY)
+     RV1R A 2 Offset(30,65)
+	 RV1R A 1 Offset(35,70)
+	 RV1R A 1 Offset(35,75)
+	 TNT1 A 0 A_PlaySound("REVOUT", CHAN_BODY)
+	 TNT1 AAAAAA 0 A_FireCustomMissile("UACrevolvercasing_spawner",0,0,4,2,0)
+	 RV1R B 1 Offset(35,80)
+	 RV1R B 1 Offset(40,85)
+	 RV1R B 1 Offset(40,90)
+	 RV1R B 1 Offset(40,110)
+	 TNT1 A 0 A_PlaySound("REVIN", CHAN_BODY)
+	 RV1R A 1 Offset(40,110)
+	 RV1R A 1 Offset(35,95)
+	 RV1R A 1 Offset(25,90)
+	 RV1R A 2 Offset(30,85)
+	 TNT1 A 0 A_PlaySound("REVCLO", CHAN_BODY)
+	 RV1G A 2 Offset(25,80)
+	 RV1G A 2 Offset(20,75)
+	 RV1G A 2 Offset(19,70)
+	 RV1G A 1 Offset(18,65)
+	 RV1G A 1 Offset(17,60)
+	 RV1G A 1 Offset(16,50)
+	 RV1G A 1 Offset(15,45)
+	 RV1G A 1 Offset(10,40)
+	 RV1G A 1 Offset(5,35)
+	 RV1G A 1
+  ReloadLoop:
+     TNT1 A 0 A_TakeInventory("BLTClip", 1)
+	 TNT1 A 0 A_GiveInventory("REVMAG1", 1)
+	 TNT1 A 0 A_JumpIfInventory("REVMAG1", 6, "Ready")
+	 TNT1 A 0 A_JumpIfInventory("BLTClip", 1, "ReloadLoop")
+	 Goto Ready	 
+  Flash:
+    TNT1 A 2 Bright A_Light1
+    Goto LightDone
+  Spawn:
+    REVP A -1
+    Stop
+  }
+}
+
+ACTOR Revolver2 : UacWeapon 
+{
+  +Ammo_Optional
+  +Weapon.CheatNotWeapon
+  Weapon.SelectionOrder 1700
+  Weapon.UpSound "GUNDRA"
+  Weapon.AmmoUse 1
+  Weapon.AmmoUse2 0
+  Weapon.SlotNumber 2
+  Weapon.AmmoGive2 20
+  Weapon.AmmoType "REVMAG2"
+  Scale 0.65
+  Weapon.AmmoType2 "BLTClip"
+  Obituary "%o was yeehaw'd by %k."
+  Inventory.Pickupmessage "You got the revolver!"
+  Tag "Colt Python Revolver - Marksman Model"
+  States
+  {
+  Ready:
+     TNT1 A 0 A_JumpIfInventory("Meleeing",1,"FastMeleeBase")
+     TNT1 A 0 A_JumpIfInventory("Grenading",1,"FastGrenadeBase")
+    TNT1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
+    RV2G A 1 A_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWZOOM)
+    Loop
+  ReadyZoomed:
+    TNT1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
+    SNIP A 1 A_WeaponReady (WRF_NOBOB)
+    Loop		
+  Upgrade:
+    TNT1 A 0 A_PlaySound("WEAPUP",64)
+	TNT1 A 0 A_TakeInventory("RevMagnification",1)
+    TNT1 A 0 A_ZoomFactor(1.000,ZOOM_INSTANT)
+	TNT1 A 1 A_Print("Upgraded to level 3!\n\nDAMAGE++ - ACCURACY++ - MAG CAPACITY-",5,"SMALLFONT")
+	TNT1 A 0 A_GiveInventory("Revolver3")
+    TNT1 A 0 A_TakeInventory("UpgradeToken",9)
+	TNT1 A 0 A_SelectWeapon ("Revolver3")
+	TNT1 A 0 A_TakeInventory("Revolver2")
+	TNT1 A 1
+	Goto Ready
+  Deselect:
+    TNT1 A 0 A_SetCrosshair(0)
+	TNT1 A 0 A_TakeInventory("RevMagnification",1)
+    TNT1 A 0 A_ZoomFactor(1.000,ZOOM_INSTANT)
+    RV2G A 1 Offset(0, 34)
+	RV2G A 1 Offset(0, 47)
+	RV2G A 1 Offset(0, 69)
+	RV2G A 1 Offset(0, 100)
+    RV2G A 1 A_Lower
+    Wait
+  Select:
+    RV2G A 1 Offset(0, 100)
+	RV2G A 1 Offset(0, 69)
+	RV2G A 1 Offset(0, 47)
+	RV2G A 1 Offset(0, 34)
+    RV2G A 1 A_Raise
+    Wait
+  Fire:
+    TNT1 A 0 A_JumpIfInventory("RevMagnification", 1, "FireZoomed")
+    TNT1 A 0 A_JumpIfNoAmmo("Reload")
+	TNT1 A 0 A_FireBullets (1.0, 1.0, 1, 30, "UACBulletPuff")
+	TNT1 A 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 2, 8, 0,frandom(-5, 5))
+    TNT1 A 0 A_PlaySound("REVFIR1", CHAN_WEAPON)
+	TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_SetPitch(pitch-2)
+	TNT1 A 0 A_Zoomfactor(0.98)
+	RV2G B 1 Bright A_GunFlash
+	TNT1 A 0 A_Quake(3,2,0,90,"")
+	TNT1 A 0 A_Zoomfactor(1.0)
+    RV2G C 2 Offset(22,65)
+    RV2G C 1 Offset(18,60)
+	RV2G C 1 Offset(16,55)
+	RV2G C 1 Offset(14,50)
+	RV2G A 1 Offset(12,45)
+	RV2G A 1 Offset(10,40)
+	RV2G A 1 Offset(5,35)
+	RV2G A 1 A_Refire("Fanning")
+    Goto Ready
+  FireZoomed:
+    TNT1 A 0 A_JumpIfNoAmmo("Reload")
+	TNT1 A 0 A_FireBullets (0.5, 0.5, 1, 30, "UACBulletPuff")
+	TNT1 A 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 2, 8, 0,frandom(-5, 5))
+    TNT1 A 0 A_PlaySound("REVFIR1", CHAN_WEAPON)
+	TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_SetPitch(pitch-1)
+	SNIP B 1 Bright A_GunFlash
+	TNT1 A 0 A_Quake(3,2,0,90,"")
+    SNIP A 2 Offset(0,65)
+    SNIP A 1 Offset(0,60)
+	SNIP A 1 Offset(0,55)
+	SNIP A 1 Offset(0,50)
+	SNIP A 1 Offset(0,45)
+	SNIP A 1 Offset(0,40)
+	SNIP A 1 Offset(0,35)
+    Goto ReadyZoomed
+  Fanning:
+    RV2F B 1
+	RV2F C 1
+	RV2F D 1
+  Fanningloop:
+    TNT1 A 0 A_JumpIfNoAmmo("Reload")
+	TNT1 A 0 A_FireBullets (4.6, 4.6, 1, 29, "UACBulletPuff")
+	TNT1 A 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 2, 8, 0,frandom(-5, 5))
+    TNT1 A 0 A_PlaySound("REVFIR1", CHAN_WEAPON)
+	TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_SetPitch(pitch-3)
+	TNT1 A 0 A_Zoomfactor(0.97)
+	RV2F A 1 Bright A_GunFlash
+	TNT1 A 0 A_Quake(3,2,0,90,"")
+	TNT1 A 0 A_Zoomfactor(1.0)
+    RV2F D 1 Offset(18,65)
+    RV2F C 1 Offset(16,60)
+	RV2F B 1 Offset(14,55)
+	RV2F C 1 Offset(12,50)
+	RV2F D 1 Offset(10,45)
+	RV2F D 1 A_Refire("Fanningloop")
+    Goto FanningEnd
+ FanningEnd:
+    RV2F D 1 Offset(5,40)
+	RV2F C 1 Offset(0,35)
+	RV2F B 1
+	Goto Ready
+  Reload:
+     TNT1 A 0 A_TakeInventory("RevMagnification",1)
+     TNT1 A 0 A_ZoomFactor(1.000,ZOOM_INSTANT) 
+     TNT1 A 0 A_JumpIfInventory("REVMAG2",6,"Ready")
+	 RV2G A 0 A_JumpIfInventory("BLTClip", 1, "ReloadWork")
+	 TNT1 A 0 A_PlaySound("DEKLIK", CHAN_WEAPON)
+	 Goto Ready
+  ReloadWork:
+     RV2G A 1 Offset(5,35)
+     RV2G A 1 Offset(10,40)
+     RV2G A 1 Offset(15,45)
+	 RV2G A 1 Offset(20,50)
+	 RV2G A 1 Offset(25,60)
+	 TNT1 A 0 A_PlaySound("REVOPN", CHAN_BODY)
+     RV2R A 2 Offset(30,65)
+	 RV2R A 1 Offset(35,70)
+	 RV2R A 1 Offset(35,75)
+	 TNT1 A 0 A_PlaySound("REVOUT", CHAN_BODY)
+	 TNT1 AAAAAA 0 A_FireCustomMissile("UACrevolvercasing_spawner",0,0,4,2,0)
+	 RV2R B 1 Offset(35,80)
+	 RV2R B 1 Offset(40,85)
+	 RV2R B 1 Offset(40,90)
+	 RV2R B 1 Offset(40,110)
+	 TNT1 A 0 A_PlaySound("REVIN", CHAN_BODY)
+	 RV2R A 1 Offset(40,110)
+	 RV2R A 1 Offset(35,95)
+	 RV2R A 1 Offset(25,90)
+	 RV2R A 2 Offset(30,85)
+	 TNT1 A 0 A_PlaySound("REVCLO", CHAN_BODY)
+	 RV2G A 2 Offset(25,80)
+	 RV2G A 2 Offset(20,75)
+	 RV2G A 2 Offset(19,70)
+	 RV2G A 1 Offset(18,65)
+	 RV2G A 1 Offset(17,60)
+	 RV2G A 1 Offset(16,50)
+	 RV2G A 1 Offset(15,45)
+	 RV2G A 1 Offset(10,40)
+	 RV2G A 1 Offset(5,35)
+	 RV2G A 1
+  ReloadLoop:
+     TNT1 A 0 A_TakeInventory("BLTClip", 1)
+	 TNT1 A 0 A_GiveInventory("REVMAG2", 1)
+	 TNT1 A 0 A_JumpIfInventory("REVMAG2", 6, "Ready")
+	 TNT1 A 0 A_JumpIfInventory("BLTClip", 1, "ReloadLoop")
+	 Goto Ready	 
+  Altfire:
+    TNT1 A 0 A_SetCrosshair(1)
+	TNT1 A 0 A_JumpIfInventory("RevMagnification",1,"Unzoom")
+    TNT1 A 0 A_PlayWeaponsound("ZOOMTIC")
+    SNIP A 1 A_ZoomFactor(4.000,ZOOM_INSTANT)
+	TNT1 A 0 A_GiveInventory("RevMagnification",1)
+	goto ReadyZoomed
+    Unzoom:
+    TNT1 A 0 A_SetCrosshair(0)
+    TNT1 A 0 A_PlayWeaponsound("ZOOMTIC")
+	TNT1 A 0 A_TakeInventory("RevMagnification",1)
+	TNT1 A 0 A_ZoomFactor(1.0,ZOOM_INSTANT)
+	Goto Ready
+  Flash:
+    TNT1 A 2 Bright A_Light1
+    Goto LightDone
+  Spawn:
+    REVP A -1
+    Stop
+  }
+}
+
+ACTOR Revolver3 : UacWeapon 
+{
+  +Ammo_Optional
+  +Weapon.CheatNotWeapon
+  Weapon.SelectionOrder 1700
+  Weapon.UpSound "GUNDRA"
+  Weapon.AmmoUse 1
+  Weapon.AmmoUse2 0
+  Weapon.SlotNumber 2
+  Weapon.AmmoGive2 20
+  Weapon.AmmoType "REVMAG3"
+  Scale 0.65
+  Weapon.AmmoType2 "BLTClip"
+  Obituary "%o was yeehaw'd by %k."
+  Inventory.Pickupmessage "You got the revolver!"
+  Tag "Smith and Wesson .500 Magnum Handcannon"
+  States
+  {
+  Ready:
+     TNT1 A 0 A_JumpIfInventory("Meleeing",1,"FastMeleeBase")
+     TNT1 A 0 A_JumpIfInventory("Grenading",1,"FastGrenadeBase")
+    TNT1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
+    RV3G A 1 A_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWZOOM)
+    Loop
+  ReadyZoomed:
+    TNT1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
+    SNIP A 1 A_WeaponReady (WRF_NOBOB)
+    Loop		
+  Upgrade:
+    TNT1 A 0 A_TakeInventory("RevMagnification",1)
+    TNT1 A 0 A_ZoomFactor(1.000,ZOOM_INSTANT)
+	TNT1 A 1 A_Print("THE WEAPON IS ALREADY UPGRADED TO THE MAX LEVEL!",5,"SMALLFONT")
+	TNT1 A 0 A_GiveInventory("UACTOOLZ", 1)
+    TNT1 A 0 A_TakeInventory("UpgradeToken",9)
+	TNT1 A 1
+	Goto Ready
+  Deselect:
+    TNT1 A 0 A_SetCrosshair(0)
+	TNT1 A 0 A_TakeInventory("RevMagnification",1)
+    TNT1 A 0 A_ZoomFactor(1.000,ZOOM_INSTANT)
+    RV3G A 1 Offset(0, 34)
+	RV3G A 1 Offset(0, 47)
+	RV3G A 1 Offset(0, 69)
+	RV3G A 1 Offset(0, 100)
+    RV3G A 1 A_Lower
+    Wait
+  Select:
+    RV3G A 1 Offset(0, 100)
+	RV3G A 1 Offset(0, 69)
+	RV3G A 1 Offset(0, 47)
+	RV3G A 1 Offset(0, 34)
+    RV3G A 1 A_Raise
+    Wait
+  Fire:
+    TNT1 A 0 A_JumpIfInventory("RevMagnification", 1, "FireZoomed")
+    TNT1 A 0 A_JumpIfNoAmmo("Reload")
+	TNT1 A 0 A_FireBullets (1.0, 1.0, 1, 58, "UACBulletPuff")
+	TNT1 A 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 2, 8, 0,frandom(-5, 5))
+    TNT1 A 0 A_PlaySound("REVLV3", CHAN_WEAPON)
+	TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_SetPitch(pitch-3)
+	TNT1 A 0 A_Zoomfactor(0.98)
+	RV3G B 1 Bright A_GunFlash
+	TNT1 A 0 A_Quake(4,4,0,90,"")
+	TNT1 A 0 A_Zoomfactor(1.0)
+    RV3G C 2 Offset(22,65)
+    RV3G C 1 Offset(18,60)
+	RV3G C 1 Offset(16,55)
+	RV3G C 1 Offset(14,50)
+	RV3G A 1 Offset(12,45)
+	RV3G A 1 Offset(10,40)
+	RV3G A 1 Offset(5,35)
+	RV3G A 1 A_Refire("Fanning")
+    Goto Ready
+  FireZoomed:
+    TNT1 A 0 A_JumpIfNoAmmo("Reload")
+	TNT1 A 0 A_FireBullets (0.1, 0.1, 1, 58, "UACBulletPuff")
+	TNT1 A 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 2, 8, 0,frandom(-5, 5))
+    TNT1 A 0 A_PlaySound("REVLV3", CHAN_WEAPON)
+	TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_SetPitch(pitch-1)
+	SNIP B 1 Bright A_GunFlash
+	TNT1 A 0 A_Quake(3,2,0,90,"")
+    SNIP A 2 Offset(0,65)
+    SNIP A 1 Offset(0,60)
+	SNIP A 1 Offset(0,55)
+	SNIP A 1 Offset(0,50)
+	SNIP A 1 Offset(0,45)
+	SNIP A 1 Offset(0,40)
+	SNIP A 1 Offset(0,35)
+    Goto ReadyZoomed
+  Fanning:
+    RV3F B 1
+	RV3F C 1
+	RV3F D 1
+  Fanningloop:
+    TNT1 A 0 A_JumpIfNoAmmo("Reload")
+	TNT1 A 0 A_FireBullets (2.3, 2.3, 1, 58, "UACBulletPuff")
+	TNT1 A 0 A_FireCustomMissile("Gunsmoke_Spawner", frandom(-8, 8), 0, 2, 8, 0,frandom(-5, 5))
+    TNT1 A 0 A_PlaySound("REVLV3", CHAN_WEAPON)
+	TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_SetPitch(pitch-4)
+	TNT1 A 0 A_Zoomfactor(0.97)
+	RV3F A 1 Bright A_GunFlash
+	TNT1 A 0 A_Quake(4,4,0,90,"")
+	TNT1 A 0 A_Zoomfactor(1.0)
+    RV3F D 1 Offset(18,65)
+    RV3F C 1 Offset(16,60)
+	RV3F B 1 Offset(14,55)
+	RV3F C 1 Offset(12,50)
+	RV3F D 1 Offset(10,45)
+	RV3F D 1 A_Refire("Fanningloop")
+    Goto FanningEnd
+ FanningEnd:
+    RV3F D 1 Offset(5,40)
+	RV3F C 1 Offset(0,35)
+	RV3F B 1
+	Goto Ready
+  Reload:
+     TNT1 A 0 A_TakeInventory("RevMagnification",1)
+     TNT1 A 0 A_ZoomFactor(1.000,ZOOM_INSTANT) 
+     TNT1 A 0 A_JumpIfInventory("REVMAG3",5,"Ready")
+	 RV3G A 0 A_JumpIfInventory("BLTClip", 1, "ReloadWork")
+	 TNT1 A 0 A_PlaySound("DEKLIK", CHAN_WEAPON)
+	 Goto Ready
+  ReloadWork:
+     RV3G A 1 Offset(5,35)
+     RV3G A 1 Offset(10,40)
+     RV3G A 1 Offset(15,45)
+	 RV3G A 1 Offset(20,50)
+	 RV3G A 1 Offset(25,60)
+	 TNT1 A 0 A_PlaySound("REVOPN", CHAN_BODY)
+     RV3R A 2 Offset(30,65)
+	 RV3R A 1 Offset(35,70)
+	 RV3R A 1 Offset(35,75)
+	 TNT1 A 0 A_PlaySound("REVOUT", CHAN_BODY)
+	 TNT1 AAAAA 0 A_FireCustomMissile("UACriflecasing_spawner",0,0,4,-3,0)
+	 RV3R B 1 Offset(35,80)
+	 RV3R B 1 Offset(40,85)
+	 RV3R B 1 Offset(40,90)
+	 RV3R B 1 Offset(40,110)
+	 TNT1 A 0 A_PlaySound("REVIN", CHAN_BODY)
+	 RV3R A 1 Offset(40,110)
+	 RV3R A 1 Offset(35,95)
+	 RV3R A 1 Offset(25,90)
+	 RV3R A 2 Offset(30,85)
+	 TNT1 A 0 A_PlaySound("REVCLO", CHAN_BODY)
+	 RV3G A 2 Offset(25,80)
+	 RV3G A 2 Offset(20,75)
+	 RV3G A 2 Offset(19,70)
+	 RV3G A 1 Offset(18,65)
+	 RV3G A 1 Offset(17,60)
+	 RV3G A 1 Offset(16,50)
+	 RV3G A 1 Offset(15,45)
+	 RV3G A 1 Offset(10,40)
+	 RV3G A 1 Offset(5,35)
+	 RV3G A 1
+  ReloadLoop:
+     TNT1 A 0 A_TakeInventory("BLTClip", 1)
+	 TNT1 A 0 A_GiveInventory("REVMAG3", 1)
+	 TNT1 A 0 A_JumpIfInventory("REVMAG3", 5, "Ready")
+	 TNT1 A 0 A_JumpIfInventory("BLTClip", 1, "ReloadLoop")
+	 Goto Ready	 
+  Altfire:
+    TNT1 A 0 A_SetCrosshair(1)
+	TNT1 A 0 A_JumpIfInventory("RevMagnification",1,"Unzoom")
+    TNT1 A 0 A_PlayWeaponsound("ZOOMTIC")
+    SNIP A 1 A_ZoomFactor(4.000,ZOOM_INSTANT)
+	TNT1 A 0 A_GiveInventory("RevMagnification",1)
+	goto ReadyZoomed
+  Unzoom:
+    TNT1 A 0 A_SetCrosshair(0)
+    TNT1 A 0 A_PlayWeaponsound("ZOOMTIC")
+	TNT1 A 0 A_TakeInventory("RevMagnification",1)
+	TNT1 A 0 A_ZoomFactor(1.0,ZOOM_INSTANT)
+	Goto Ready
+  Flash:
+    TNT1 A 2 Bright A_Light1
+    Goto LightDone
+  Spawn:
+    REVP A -1
+    Stop
+  }
+}

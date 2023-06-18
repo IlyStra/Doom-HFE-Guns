@@ -1,0 +1,22 @@
+Model HFEG_TMap_PowerTwr
+{
+	Path "Models"
+	Model 0 "PowerTower.md3"
+	Skin 0 "PowerTower.png"
+	AngleOffset 90
+	Scale 128.0 128.0 192.0
+	FrameIndex PLAY A 0 0
+}
+//Blender tip:
+//1m FBX(FBX Unit Scale, Масштаб Единиц FBX) ->
+//-> 100m MD3 (Export Scaling 0.01)
+
+Model HFEG_TMap_PowerTwr2
+{
+	Path "Models"
+	Model 0 "PowerTower2.md3"
+	Skin 0 "PowerTower.png"
+	AngleOffset 90
+	Scale 128.0 128.0 203.5
+	FrameIndex PLAY B 0 0
+}//+368 Units to down part of up, or +2 meters

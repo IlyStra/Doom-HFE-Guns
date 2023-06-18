@@ -1,0 +1,736 @@
+Actor HFEG_CRocketL1
+{
+	Speed 16
+	Radius 8
+	Height 14
+	Gravity 0.03125
+	Scale 0.625
+	Projectile
+	+SeekerMissile
+	+ScreenSeeker
+	-NoTeleport
+	-NoGravity
+	+ForceRadiusDMG
+	+MThruSpecies
+	+ThruSpecies
+	+DontHurtSpecies
+	+DontSplash
+	DontHurtShooter
+	States
+	{
+	Spawn:
+		CRR1 A 5
+		TNT1 A 0 A_PlaySound("RocketL1LL0", Chan_5, 1.0, True, 0.875)
+		CRR1 A 0 A_ScaleVelocity(4.0)
+	Spawn2:
+		CRR1 A 0 Bright A_CheckFlag("Friendly", 2, AAPTR_Tracer)
+		CRR1 A 0 Bright A_RearrangePointers(AAPTR_Default, AAPTR_Default, AAPTR_Null)
+		CRR1 A 1 Bright A_SeekerMissile(0, 5.625, SMF_Precise | SMF_Look | SMF_CurSpeed, 256, 12)
+		CRR1 A 0 Bright A_SpawnItemEx("HFEG_RocketBloomL1", -26)
+		CRR1 A 0 Bright A_SpawnItemEx("HFEG_RocketEyeBloomL1", 26, 0, 0, 0, 0, 0, 180)
+		Loop
+	Death:
+		TNT1 A 0 A_StopSound(Chan_5)
+		TNT1 A 0 A_Explode((128), 32)
+		TNT1 A 1 A_SpawnItemEx("HFEG_PlRocketExplode")
+		TNT1 A 0 Radius_Quake(2, 15, 0, 4, 0)
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("HFEG_L1Flame", 0, 0, 0, FRandom(0.1, 1.0), 0, FRandom(-1.0, 1.0), Random(0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("HFEG_ExplodeStyle") == 1, "Optimized")
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("HFEG_L1Flame", 0, 0, 0, FRandom(0.1, 1.0), 0, FRandom(-1.0, 1.0), Random(0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItemEx("HFEG_L1Expl1", Random(-32, 32), Random(-32, 32), Random(-32, 32))
+		TNT1 A 0 A_SpawnItemEx("HFEG_L1Expl2", Random(-32, 32), Random(-32, 32), Random(-32, 32))
+		TNT1 AA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, FRandom(1, 1.5), 0, FRandom(-1.5, 1.5), Random(0, 360), SXF_MultiplySpeed)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, FRandom(1, 1.5), 0, FRandom(-1.5, 1.5), 180+Random(-90, 90), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItemEx("UACHandGrenadeShockwave",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+	Optimized:
+		TNT1 A 0 A_SpawnItemEx("HFEG_L1Cumunilative", 0, 0, 0, 1, 0, 0, 0, SXF_TransferPointers | SXF_SetMaster | SXF_MultiplySpeed)
+		TNT1 A 0 A_PlaySound("RocketL1Explode", Chan_6)
+		TNT1 A 0 A_PlaySound("RocketL2ExplodeD", Chan_5, 1.0, False, 0.1875)
+		TNT1 A 140
+		Stop
+	}
+}
+
+Actor HFEG_L1Cumunilative
+{
+	+Missile
+	+NoInteraction
+	+ForceRadiusDMG
+	+DontSplash
+	Speed 32
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("HFEG_L1Flame", 0, 0, 0, FRandom(0.5, 1.0), 0, FRandom(-1.0, 1.0), Random(0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("HFEG_ExplodeStyle") == 1, "Optimized")
+		TNT1 A 1 A_Explode((128), 8, 0, False, 8)
+		TNT1 AAAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L1CExpl")
+		TNT1 A 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,10,10,10*Random(-1, 1),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 1 A_Explode((112), 16, 0, False, 16)
+		TNT1 AAAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L1CExpl")
+		TNT1 A 1 A_RadiusThrust(10000, 64)
+		TNT1 A 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,10,10,10*Random(-1, 1),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((96), 48, 0, False, 48)
+		TNT1 AAAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L1CExpl")
+		TNT1 A 1 A_RadiusThrust(10000, 112)
+		TNT1 A 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,10,10,10*Random(-1, 1),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((72), 72, 0, True, 72)
+		Stop
+	Optimized:
+		TNT1 A 1 A_Explode((128), 8, 0, False, 8)
+		TNT1 A 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,10,10,10*Random(-1, 1),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 1 A_Explode((112), 16, 0, False, 16)
+		TNT1 A 1 A_RadiusThrust(10000, 64)
+		TNT1 A 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,10,10,10*Random(-1, 1),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((96), 48, 0, False, 48)
+		TNT1 A 1 A_RadiusThrust(10000, 112)
+		TNT1 A 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,10,10,10*Random(-1, 1),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((72), 72, 0, True, 72)
+		Stop
+	}
+}
+
+Actor HFEG_L1CExpl
+{
+	+NoInteraction
+	+ClientSideOnly
+	+ForceXYBillBoard
+	+Bright
+	Scale 0.25
+	RenderStyle Add
+	States
+	{
+	Spawn:
+		CRF3 ABCDEFGHIJKLMNOP 1 A_SetScale(ScaleX+0.03125)
+		Stop
+	}
+}
+
+Actor HFEG_L1Flame
+{
+	Radius 21
+	Height 42
+	Speed 12
+	BounceFactor 1
+	WallBounceFactor 1
+	RenderStyle Add
+	+NoBlockmap
+	+Missile
+	+DontSplash
+	+Bright
+	+NoGravity
+	+BounceOnWalls
+	+BounceOnFloors
+	+BounceOnCeilings
+	+BounceOnActors
+	States
+	{
+	Spawn://Lots of tabulation on TNT1A0 functions to better distinguish between secondary functions
+		CRF3 A Random(0, 4) A_ScaleVelocity(0.75)
+		CRF3 B 1 A_Explode((Random(0, 1)), 32, 0, False, 32)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF3 C 1 A_Explode((Random(0, 1)), 48, 0, False, 48)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF3 D 1 A_Explode((Random(0, 1)), 56, 0, False, 56)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF3 E 1 A_Explode((Random(0, 1)), 48, 0, False, 48)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF3 F 1 A_Explode((Random(0, 1)), 56, 0, False, 56)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF6 A 1 A_Explode((Random(0, 1)), 48, 0, False, 48)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF6 B 1 A_Explode((Random(0, 1)), 56, 0, False, 56)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF6 C 1 A_Explode((Random(0, 1)), 56, 0, False, 56)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF6 D 1 A_Explode((Random(0, 1)), 56, 0, False, 56)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF7 K 1 A_Explode((Random(0, 1)), 48, 0, False, 48)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF7 L 1 A_Explode((Random(0, 1)), 32, 0, False, 32)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF7 M 1 A_Explode((Random(0, 1)), 24, 0, False, 24)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF7 N 1 A_Explode((Random(0, 1)), 18, 0, False, 18)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF7 O 1 A_Explode((Random(0, 1)), 16, 0, False, 16)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF7 P 1 A_Explode((Random(0, 1)), 12, 0, False, 12)
+		Stop
+	}
+}
+
+Actor HFEG_L1Expl1
+{
+	+NoInteraction
+	+ClientSideOnly
+	+ForceXYBillBoard
+	+Bright
+	RenderStyle Add
+	States
+	{
+	Spawn:
+		CRF4 ABCDEFGHIJKLMNOP 2
+		Stop
+	}
+}
+
+Actor HFEG_L1Expl2
+{
+	+NoInteraction
+	+ClientSideOnly
+	+ForceXYBillBoard
+	+Bright
+	RenderStyle Add
+	States
+	{
+	Spawn:
+		CRF5 ABCDEFGHIJKLMNOPQ 2
+		Stop
+	}
+}
+
+Actor HFEG_RocketBloomL1
+{
+	+NoInteraction
+	+ClientSideOnly
+	+ForceXYBillBoard
+	+Bright
+	Scale 1
+	RenderStyle Add
+	States
+	{
+	Spawn:
+		CRF1 A 2
+		Stop
+	}
+}
+
+Actor HFEG_RocketEyeBloomL1
+{
+	+NoInteraction
+	+ClientSideOnly
+	+ForceXYBillBoard
+	+Bright
+	Scale 0.09375
+	RenderStyle Add
+	States
+	{
+	Spawn:
+		CRF2 A 2
+		Stop
+	}
+}
+
+Actor HFEG_CRocketL2
+{
+	Speed 12
+	Radius 8
+	Height 14
+	Gravity 0.03125
+	Projectile
+	-NoGravity
+	-NoTeleport
+	+ForceRadiusDMG
+	+MThruSpecies
+	+ThruSpecies
+	+DontHurtSpecies
+	+DontSplash
+	DontHurtShooter
+	States
+	{
+	Spawn:
+		CRR0 A 10
+		TNT1 A 0 A_PlaySound("RocketL2LS0", Chan_Body, 1.0, False, 0.75)
+		TNT1 A 0 A_PlaySound("RocketL2LL0", Chan_5, 1.0, True, 0.875)
+		CRR0 A 0 A_ScaleVelocity(6.0)
+	Spawn2:
+		CRR0 B 1 Bright A_SpawnItemEx("HFEG_SimpleTrailSmoke")
+		CRR0 B 0 Bright A_SpawnItemEx("HFEG_RocketBloom", -17)
+		Loop
+	Death:
+		TNT1 A 0 A_StopSound(Chan_5)
+		TNT1 A 0 A_Explode((132), 32)
+		TNT1 A 1 A_SpawnItemEx("HFEG_RocketExplode")
+		TNT1 A 0 Radius_Quake(5, 35, 0, 8, 0)
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("HFEG_L2Flame", 0, 0, 0, FRandom(0.1, 1.0), 0, FRandom(-1.0, 1.0), Random(0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("HFEG_ExplodeStyle") == 1, "Optimized")
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("HFEG_L2Flame", 0, 0, 0, FRandom(0.1, 1.0), 0, FRandom(-1.0, 1.0), Random(0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItemEx("HFEG_RocketFiredStarter",0,0,0,1,0,FRandom(-1, 1),180+Random(-90, 90),SXF_MultiplySpeed | SXF_NOCHECKPOSITION)
+		TNT1 AAAAA 0 A_SpawnItemEx("UACHandGrenadeExplosionFlame", 0, 0, 0, FRandom(1, 1.5), 0, FRandom(-1.5, 1.5), Random(0, 360), SXF_MultiplySpeed)
+		TNT1 AAAAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, FRandom(1, 1.5), 0, FRandom(-1.5, 1.5), Random(0, 360), SXF_MultiplySpeed)
+		TNT1 AAAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, FRandom(1, 1.5), 0, FRandom(-1.5, 1.5), 180+Random(-90, 90), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItemEx("UACHandGrenadeShockwave",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+	Optimized:
+		TNT1 A 0 A_PlaySound("RocketL2Explode", Chan_6)
+		TNT1 A 0 A_PlaySound("RocketL2ExplodeD", Chan_5, 1.0, False, 0.1875)
+		TNT1 A 0 A_SpawnItemEx("HFEG_L2Cumunilative", 0, 0, 0, 1, 0, 0, 0, SXF_TransferPointers | SXF_SetMaster | SXF_MultiplySpeed)
+		TNT1 A 140
+		Stop
+	}
+}
+
+Actor HFEG_L2Flame
+{
+	Radius 21
+	Height 42
+	Speed 24
+	BounceFactor 1
+	WallBounceFactor 1
+	RenderStyle Add
+	+NoBlockmap
+	+Missile
+	+Bright
+	+NoGravity
+	+BounceOnWalls
+	+BounceOnFloors
+	+BounceOnCeilings
+	+DontSplash
+	+BounceOnActors
+	States
+	{
+	Spawn://Lots of tabulation on TNT1A0 functions to better distinguish between secondary functions
+		CRF7 A Random(0, 4) A_ScaleVelocity(0.75)
+		CRF7 B 1 A_Explode((Random(0, 1)), 32, 0, False, 32)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF7 C 1 A_Explode((Random(0, 1)), 48, 0, False, 48)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF7 D 1 A_Explode((Random(0, 1)), 56, 0, False, 56)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF7 E 1 A_Explode((Random(0, 1)), 48, 0, False, 48)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF7 F 1 A_Explode((Random(0, 1)), 56, 0, False, 56)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF7 G 1 A_Explode((Random(0, 1)), 48, 0, False, 48)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF7 H 1 A_Explode((Random(0, 1)), 56, 0, False, 56)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF7 I 1 A_Explode((Random(0, 1)), 56, 0, False, 56)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF7 J 1 A_Explode((Random(0, 1)), 56, 0, False, 56)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF7 K 1 A_Explode((Random(0, 1)), 48, 0, False, 48)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF7 L 1 A_Explode((Random(0, 1)), 32, 0, False, 32)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF7 M 1 A_Explode((Random(0, 1)), 24, 0, False, 24)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF7 N 1 A_Explode((Random(0, 1)), 18, 0, False, 18)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF7 O 1 A_Explode((Random(0, 1)), 16, 0, False, 16)
+															TNT1 A 0 A_ScaleVelocity(0.75)
+		CRF7 P 1 A_Explode((Random(0, 1)), 12, 0, False, 12)
+		Stop
+	}
+}
+
+Actor HFEG_SimpleTrailSmoke
+{
+	+NoInteraction
+	+ClientSideOnly
+	+ForceXYBillBoard
+	States
+	{
+	Spawn:
+		NSMK ABCDEFGHIJKLMNOPQ 1 A_SetScale(ScaleX+0.0625)
+		Stop
+	}
+}
+
+Actor HFEG_RocketBloom
+{
+	+NoInteraction
+	+ClientSideOnly
+	+ForceXYBillBoard
+	+Bright
+	Scale 0.25
+	RenderStyle Add
+	States
+	{
+	Spawn:
+		CRF0 A 2
+		Stop
+	}
+}
+
+Actor HFEG_RocketExplode
+{
+	+NoInteraction
+	+ClientSideOnly
+	+ForceXYBillBoard
+	+Bright
+	Scale 0.5
+	RenderStyle Add
+	States
+	{
+	Spawn:
+		CRE0 ABCDEFGHIJKKLMNOPQR 1
+		Stop
+	}
+}
+
+Actor HFEG_L2CExpl
+{
+	+NoInteraction
+	+ClientSideOnly
+	+ForceXYBillBoard
+	+Bright
+	Scale 0.125
+	RenderStyle Add
+	States
+	{
+	Spawn:
+		CRE0 ABCDEFGHIJKKLMNOPQR 1 A_SetScale(ScaleX+0.03125)
+		Stop
+	}
+}
+
+Actor HFEG_L2Cumunilative
+{
+	+Missile
+	+NoInteraction
+	+ForceRadiusDMG
+	Speed 32
+	+DontSplash
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,10,10,10*Random(-1, 1),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 1 A_Explode((112), 8, 0, False, 8)
+		TNT1 AAAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("HFEG_ExplodeStyle") == 1, "Optimized")
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,10,10,10*Random(-1, 1),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 1 A_Explode((96), 16, 0, False, 16)
+		TNT1 AAAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(10000, 64)
+		TNT1 A 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,10,10,10*Random(-1, 1),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((96), 48, 0, False, 48)
+		TNT1 AAAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(10000, 112)
+		TNT1 A 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,10,10,10*Random(-1, 1),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((72), 72, 0, False, 72)
+		TNT1 AAAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(10000, 132)
+		TNT1 A 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,10,10,10*Random(-1, 1),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((56), 128, 0, False, 128)
+		TNT1 AAAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(10000, 168)
+		TNT1 A 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,10,10,10*Random(-1, 1),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((64), 132, 0, False, 132)
+		TNT1 AAAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(1000, 172)
+		TNT1 A 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,10,10,10*Random(-1, 1),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((48), 144, 0, False, 144)
+		TNT1 AAAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,10,10,10*Random(-1, 1),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((48), 160, 0, True, 160)
+		TNT1 AAAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		Stop
+	Optimized:
+		TNT1 A 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,10,10,10*Random(-1, 1),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 1 A_Explode((96), 16, 0, False, 16)
+		TNT1 A 1 A_RadiusThrust(10000, 64)
+		TNT1 A 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,10,10,10*Random(-1, 1),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((96), 48, 0, False, 48)
+		TNT1 A 1 A_RadiusThrust(10000, 112)
+		TNT1 A 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,10,10,10*Random(-1, 1),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((72), 72, 0, False, 72)
+		TNT1 A 1 A_RadiusThrust(10000, 132)
+		TNT1 A 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,10,10,10*Random(-1, 1),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((56), 128, 0, False, 128)
+		TNT1 A 1 A_RadiusThrust(10000, 168)
+		TNT1 A 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,10,10,10*Random(-1, 1),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((64), 132, 0, False, 132)
+		TNT1 A 1 A_RadiusThrust(1000, 172)
+		TNT1 A 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,10,10,10*Random(-1, 1),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((48), 144, 0, False, 144)
+		TNT1 A 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,10,10,10*Random(-1, 1),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((48), 160, 0, True, 160)
+		Stop
+	}
+}
+
+Actor HFEG_RExplodeSmoke1
+{
+	Projectile
+	+ClientSideOnly
+	+ForceXYBillBoard
+	+NoInteraction	
+	+Missile
+	Radius 1
+	Height 1
+	Scale 0.0
+	Speed 1.25
+	RenderStyle Translucent
+	Alpha 1.0
+	States
+    {
+	Spawn:
+		ESM0 A 0 A_Jump(72, "ExplodeStart")
+		ESM0 B 0 A_Jump(72, "ExplodeStart")
+		ESM0 C 0
+	ExplodeStart:
+		"####" "#" 1 A_SetScale(ScaleX+0.05, ScaleX+0.05)
+		"####" "#" 0 A_SetTranslucent(Alpha-0.025)
+		"####" "#" 0 A_JumpIf(Alpha<=0.75, "ExplodeFadeOut")
+		Loop
+	ExplodeFadeOut:
+		"####" "#" 1 A_SetScale(ScaleX+0.009375, ScaleX+0.009375)
+		"####" "#" 0 A_SetTranslucent(Alpha-0.003125)
+		"####" "#" 0 A_ScaleVelocity(0.875)
+		"####" "#" 0 A_JumpIf(Alpha<=0.0, "Null")
+		"####" "#" 1 A_SetTranslucent(Alpha-0.003125)
+		"####" "#" 0 A_ScaleVelocity(0.875)
+		"####" "#" 0 A_JumpIf(Alpha<=0.0, "Null")
+		"####" "#" 1 A_SetTranslucent(Alpha-0.003125)
+		"####" "#" 0 A_ScaleVelocity(0.875)
+		"####" "#" 0 A_JumpIf(Alpha<=0.0, "Null")
+		Loop
+	}
+}
+
+Actor HFEG_RocketFiredStarter
+{
+	Radius 4
+	Height 8
+	Speed 32
+	Gravity 1.5
+	RenderStyle Add
+	Scale 0.25
+	+Missile
+	+ClientSideOnly
+	+Bright
+	+NoBlockMap
+	+BounceOnFloors
+	+BounceOnCeilings
+	+BounceOnWalls
+	+ForceXYBillBoard
+	+BounceOnActors
+	+DontSplash
+	BounceFactor 0.5
+	WallBounceFactor 0.5
+	Args 35
+	States
+	{
+	Spawn:
+		FLAR B 1 ThrustThing(Angle/360*256, Random(1, 2), 0, 0)
+		FLAR B 0 A_SetAngle(Angle+60)
+		FLAR B 0 A_SetPitch(Angle+60)
+		FLAR B 0 A_SpawnItemEx("HFEG_1TickStarterDec")
+		FLAR B 0 A_CountDownArg(0)
+		Loop
+	Death:
+	FOut:
+		FLAR B 1 A_SetScale(ScaleX-0.001875, ScaleX-0.001875)
+		FLAR B 0 ThrustThing(Angle/360*256, Random(1, 2), 0, 0)
+		FLAR B 0 A_SetAngle(Angle+20)
+		FLAR B 0 A_SetPitch(Angle+20)
+		FLAR B 0 A_SpawnItemEx("HFEG_1TickStarterDec")
+		FLAR B 0 A_JumpIf(ScaleX<=0.0, "Burned")
+		Loop
+	Burned:
+		FLAR B 0 A_SpawnItemEx("HFEG_PermanentStarterDec")
+		Stop
+	}
+}
+
+Actor HFEG_1TickStarterDec
+{
+	+NoInteraction
+	+ClientSideOnly
+	States
+	{
+	Spawn:
+		RBM0 M 2
+		Stop
+	}
+}
+
+Actor HFEG_PermanentStarterDec
+{
+	+NoInteraction
+	+ClientSideOnly
+	States
+	{
+	Spawn:
+		RBM0 M 280
+		Stop
+	}
+}
+
+Actor HFEG_CRocketL3
+{
+	Speed 16
+	Radius 8
+	Height 14
+	Gravity 0.03132
+	Projectile
+	-NoGravity
+	-NoTeleport
+	+ForceRadiusDMG
+	+MThruSpecies
+	+ThruSpecies
+	+DontHurtSpecies
+	+DontSplash
+	DontHurtShooter
+	States
+	{
+	Spawn:
+		CRR0 A 10
+		TNT1 A 0 A_PlaySound("RocketL3LL0", Chan_5, 1.0, True, 0.875)
+		TNT1 A 0 A_PlaySound("RocketL3Explode", Chan_6, 0.5)
+		TNT1 A 0 A_PlaySound("RocketL3ExplodeD", Chan_5, 0.5, False, 0.1875)
+		CRR0 A 0 A_ScaleVelocity(6.0)
+	Spawn2:
+		CRR0 B 1 Bright A_SpawnItemEx("HFEG_SimpleTrailSmoke")
+		CRR0 B 0 Bright A_SpawnItemEx("HFEG_RocketBloom", -17)
+		Loop
+	Death:
+		TNT1 A 0 A_StopSound(Chan_5)
+		TNT1 A 0 A_Explode((256), 256)
+		TNT1 A 1 A_SpawnItemEx("HFEG_RocketExplode")
+		TNT1 A 0 Radius_Quake(9, 70, 0, 10, 0)
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("HFEG_L2Flame", 0, 0, 0, FRandom(0.25, 1.75), 0, FRandom(-1.75, 1.75), Random(0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("HFEG_ExplodeStyle") == 1, "Optimized")
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("HFEG_L2Flame", 0, 0, 0, FRandom(0.25, 1.75), 0, FRandom(-1.75, 1.75), Random(0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItemEx("HFEG_RocketFiredStarter",0,0,0,1,0,FRandom(-1, 1),180+Random(-90, 90),SXF_MultiplySpeed | SXF_NOCHECKPOSITION)
+		TNT1 AAAAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, FRandom(1, 1.75), 0, FRandom(-1.75, 1.75), Random(0, 360), SXF_MultiplySpeed)
+		TNT1 AAAAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, FRandom(1, 1.75), 0, FRandom(-1.75, 1.75), 180+Random(-90, 90), SXF_MultiplySpeed)
+		TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,Random(20, 35),0,Random(-10, 10),Random(0,360),SXF_NOCHECKPOSITION)
+	Optimized:
+		TNT1 A 0 A_PlaySound("RocketL3Explode", Chan_6)
+		TNT1 A 0 A_PlaySound("RocketL3ExplodeD", Chan_5, 1.0, False, 0.1875)
+		TNT1 A 0 A_SpawnItemEx("HFEG_L3Cumunilative", 0, 0, 0, 1, 0, 0, 0, SXF_TransferPointers | SXF_SetMaster | SXF_MultiplySpeed)
+		TNT1 A 35 A_RadiusThrust(10000, 512)
+		TNT1 A 105
+		Stop
+	}
+}
+
+Actor HFEG_L3Cumunilative
+{
+	+Missile
+	+NoInteraction
+	+ForceRadiusDMG
+	Speed 32
+	+DontSplash
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_Explode((144), 64, 0, False, 8)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("HFEG_ExplodeStyle") == 1, "Optimized")
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,Random(20, 35),0,Random(-20, 20),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 1 A_Explode((132), 56, 0, False, 16)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(1000000, 64)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,Random(20, 35),0,Random(-20, 20),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((128), 48, 0, False, 48)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(100000, 112)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,Random(20, 35),0,Random(-20, 20),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((112), 72, 0, False, 72)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(10000, 132)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,Random(20, 35),0,Random(-20, 20),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((96), 128, 0, False, 128)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(10000, 168)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,Random(20, 35),0,Random(-20, 20),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((80), 132, 0, False, 132)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(1000, 172)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,Random(20, 35),0,Random(-20, 20),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((72), 144, 0, False, 144)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(1000, 192)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,Random(20, 35),0,Random(-20, 20),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((64), 160, 0, False, 160)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(1000, 208)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,Random(20, 35),0,Random(-20, 20),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((48), 176, 0, False, 176)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(1000, 224)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,Random(20, 35),0,Random(-20, 20),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((32), 192, 0, False, 192)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(1000, 232)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,Random(20, 35),0,Random(-20, 20),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((24), 208, 0, False, 208)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(1000, 248)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,Random(20, 35),0,Random(-20, 20),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((16), 224, 0, False, 208)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(1000, 256)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RemakedFireBall",0,0,0,Random(20, 35),0,Random(-20, 20),Random(0,360),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_Explode((12), 232, 0, True, 208)
+		TNT1 AAA 0 A_SpawnItemEx("HFEG_RExplodeSmoke1", 0, 0, 0, Random(1, 1.5), Random(1, 1.5), Random(1, 1.5), Random (0, 360), SXF_MultiplySpeed)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		Stop
+	Optimized:
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_Explode((132), 56, 0, False, 16)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(1000000, 64)
+		TNT1 A 0 A_Explode((128), 48, 0, False, 48)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(100000, 112)
+		TNT1 A 0 A_Explode((112), 72, 0, False, 72)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(10000, 132)
+		TNT1 A 0 A_Explode((96), 128, 0, False, 128)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(10000, 168)
+		TNT1 A 0 A_Explode((80), 132, 0, False, 132)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(1000, 172)
+		TNT1 A 0 A_Explode((72), 144, 0, False, 144)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(1000, 192)
+		TNT1 A 0 A_Explode((64), 160, 0, False, 160)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(1000, 208)
+		TNT1 A 0 A_Explode((48), 176, 0, False, 176)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(1000, 224)
+		TNT1 A 0 A_Explode((32), 192, 0, False, 192)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(1000, 232)
+		TNT1 A 0 A_Explode((24), 208, 0, False, 208)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 1 A_RadiusThrust(1000, 248)
+		TNT1 A 0 A_Explode((16), 224, 0, False, 208)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		TNT1 A 0 A_Explode((12), 232, 0, True, 208)
+		TNT1 A 0 A_SpawnItem("HFEG_L2CExpl")
+		Stop
+	}
+}

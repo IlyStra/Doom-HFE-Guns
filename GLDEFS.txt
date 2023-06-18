@@ -1,0 +1,12 @@
+FlickerLight FireLight0
+{
+	Color 0.988 0.6 0.36
+    Size 72
+    SecondarySize 96
+    Chance 0.5
+}
+
+PointLight HFEG_Flashlight64{Color 0.25 0.5 1.0 Size 64}
+PointLight HFEG_Flashlight128{Color 0.12 0.37 0.75 Size 128}
+PointLight HFEG_Flashlight256{Color 0.06 0.25 0.5 Size 256}
+PointLight HFEG_Flashlight512{Color 0.03 0.1 0.25 Size 512}

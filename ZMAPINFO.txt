@@ -1,0 +1,120 @@
+gameinfo
+{
+	NoRandomPlayerClass = True
+	PlayerClasses = "UACPlayer"
+	Titlepage = "TITLE01"
+    QuitMessages = "Chickening out? bwak bwak bwak!?", 
+	"Come on, you will reach the top level of destruction.", 
+	"In the end, there will be only you.", 
+	"Are you sure you are the good guy?", 
+	"Leave this shit. You killed enough.",
+	"Leaving the world isn't scary as it sounds.",
+	"Are you enjoying this?",
+	"This isn't the thing you should do in real life.",
+	"Killed 200 people today? Maybe more?",
+	"Leave this shit. You already painted the town red.",
+	"Cleaned up the streets enough?",
+	"Who's delusional, you or them?",
+	"The world's still gonna end without you.",
+	"Vgavnonah.",
+	"FUBAR.",
+	"Rozpierdolony.",
+	"Zajebany.",
+	"Twoj pociag juz dawno odjechal.",
+	"Sluchaj, jak znasz jezyk polski, to przeczytaj - juz wystarczajaco rozjebales ich. idz kimac.",
+	"You are a cruel motherfucker.",
+	"You shouldn't end it like this.",
+	"You are lifeless, just like them."
+}
+
+map TITLEMAP lookup "TMAP"
+{
+	music = "TitlMus"
+}
+ClearSkills
+skill bobo// Skill 0
+{
+	ACSReturn = 0
+	AutoUseHealth
+	AmmoFactor = 2
+	DamageFactor = 0.5
+	EasyBossBrain
+	SpawnFilter = Baby
+	TextColor = "White"
+	Name = "As banal as stabbing someone"
+	Key = "i"
+}
+
+skill ez// Skill 1
+{
+	ACSReturn = 1
+	EasyBossBrain
+	SpawnFilter = Easy
+	TextColor = "White"
+	Name = "As easy as pulling the trigger"
+	Key = "h"
+}
+
+skill normalasfuck// Skill 2
+{
+	ACSReturn = 2
+	SpawnFilter = Normal
+	Key = "h"
+	TextColor = "White"
+	Name = "As normal as shooting everyone"
+	DefaultSkill
+}
+
+skill ultrafun// Skill 3
+{
+	ACSReturn = 3
+	SpawnFilter = Hard
+	TextColor = "Yellow"
+	Name = "As hard as committing a warcrime"
+	Key = "u"
+}
+
+skill fuckingtough// Skill 4
+{
+	ACSReturn = 4
+	AmmoFactor = 2
+	FastMonsters
+	RespawnTime = 12
+	SpawnFilter = Nightmare
+	TextColor = "Red"
+	Name = "As fucking impossible as being death itself "
+	MustConfirm
+	Key = "n"
+}
+
+skill OneShot// Skill 5
+{
+	ACSReturn = 5
+	AmmoFactor = 4
+	DamageFactor = 10000.0
+	MonsterHealth = 0.001
+	FriendlyHealth = 0.001
+	SpawnFilter = Normal
+	TextColor = "DarkRed"
+	Name = "Challenge: Insta-kill(Skill: normal)"
+	MustConfirm
+	Key = "с"
+}
+
+skill NoBydloDamage// Skill 6
+{
+	ACSReturn = 6
+	AmmoFactor = 0
+	MonsterHealth = 1000.0
+	FriendlyHealth = 1000.0
+	SpawnFilter = Normal
+	TextColor = "Black"
+	Name = "Challenge: No damage to bydlo(Skill: normal)"
+	MustConfirm
+	Key = "с"
+}
+
+Map TITLEMAP "HFEG Titlemap"
+{
+	Sky1 = "HFTMSK0"
+}

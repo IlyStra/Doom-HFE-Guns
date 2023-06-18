@@ -1,0 +1,316 @@
+/// MK93 Frag Grenade
+/// It's a pretty much outdated grenade model, but still used EVERYWHERE.
+
+/// Molotov Cocktail
+/// Old, but not obsolete way to burn the fuckers.
+
+/// CJCB-51 Napalm Grenade
+/// Good for strategic firebombin', bad for anything else.
+ACTOR GrenadeAmmo : Ammo 
+{
+  Inventory.PickupMessage "Picked up grenade ammo." 
+  Inventory.Amount 1
+  Inventory.MaxAmount 30
+  Ammo.BackpackAmount 5
+  Ammo.BackpackMaxAmount 60
+  Inventory.Icon "GAMOA0"
+  Inventory.PickupSound "MEPICK"
+  States
+  {
+  Spawn:
+    GAMO A -1
+    Stop
+  }
+}
+
+ACTOR GrenadeBox : GrenadeAmmo
+{
+  Inventory.PickupMessage "Picked up a grenade ammo box." 
+  Inventory.Amount 10
+  Inventory.PickupSound "MEPICK"
+  States
+  {
+  Spawn:
+    GAMO B -1
+    Stop
+  }
+}
+
+actor Grenade1 : UACWeapon 
+{
+  Game Doom
+  Weapon.Kickback 100
+  Weapon.SelectionOrder 400
+  Weapon.UpSound "GUNDRA"
+  Weapon.SlotNumber 5
+  Tag "MK93 Frag Grenade"
+  Weapon.AmmoType "GrenadeAmmo"
+  Weapon.AmmoUse 1
+  Scale 0.62
+  +NOALERT
+  Obituary "%o was naded by %k. "
+  States
+  {
+  Spawn:
+    TNT1 A -1
+    Loop
+  Ready:
+     TNT1 A 0 A_JumpIfInventory("Meleeing",1,"FastMeleeBase")
+    TNT1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
+    MKGR A 1 A_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWZOOM)
+    loop
+  ReadyNoGrenade:
+    TNT1 A 0 A_JumpIfInventory("GrenadeAmmo",1,"Refocus")
+	TNT1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
+    TNT1 A 1 A_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWZOOM)
+	loop
+  Upgrade:
+    TNT1 A 0 A_PlaySound("WEAPUP",64)
+	TNT1 A 1 A_Print("Upgraded to level 2!\n\nFIREBOMB+",5,"SMALLFONT")
+	TNT1 A 0 A_GiveInventory("Grenade2")
+    TNT1 A 0 A_TakeInventory("UpgradeToken",9)
+	TNT1 A 0 A_SelectWeapon ("Grenade2")
+	TNT1 A 0 A_TakeInventory("Grenade1")
+	TNT1 A 1
+	Goto Ready
+  Deselect:
+    TNT1 A 0 A_JumpIfNoAmmo("DeSelectNoGrenade")
+    MKGR A 1 Offset(0, 34)
+	MKGR A 1 Offset(0, 47)
+	MKGR A 1 Offset(0, 69)
+    MKGR A 1 Offset(0, 100)
+    MKGR A 1 A_Lower
+    Wait
+  Select:
+    TNT1 A 0 A_JumpIfNoAmmo("SelectNoGrenade")
+    MKGR A 1 Offset(0, 100)
+	MKGR A 1 Offset(0, 69)
+	MKGR A 1 Offset(0, 47)
+	MKGR A 1 Offset(0, 34)
+    MKGR A 1 A_Raise
+    Wait
+  DeselectNoGrenade:
+    TNT1 A 1 A_Lower
+    Wait
+  SelectNoGrenade: 
+    TNT1 A 1 A_Raise
+    Goto ReadyNoGrenade
+  Refocus:
+    TNT1 A 0 A_JumpIfNoAmmo("DeSelectNoGrenade")
+	TNT1 A 2
+    MKGR A 1 Offset(67, 100) 
+	MKGR A 1 Offset(32, 69)
+	MKGR A 1 Offset(10, 47)
+	MKGR A 1 Offset(2, 34)
+	Goto Ready
+  Fire:
+    TNT1 A 0 A_JumpIfNoAmmo("DeselectNoGrenade")
+    MKGR A 1 Offset(2, 34)
+	MKGR A 1 Offset(10, 47)
+	MKGR A 1 Offset(32, 69)
+    MKGR A 1 Offset(67, 100)
+	TNT1 A 2
+  Goto Throw
+  Throw:
+    TNT1 A 0 A_Playsound("GRPUL",4,1,0)
+    GRTH A 1 Offset(67, 100) 
+	GRTH A 1 Offset(32, 69)
+	GRTH A 1 Offset(10, 47) 
+	GRTH A 1 Offset(2, 34)
+	TNT1 A 0 A_Playsound("BLUSWI",1,1,0)
+	GRTH A 1 A_FireCustomMissile("ThrownGrenade1",0,1,0,0)
+	GRTH A 1 Offset(10, 47)
+	GRTH A 1 Offset(32, 69)
+	GRTH A 1 Offset(67, 100)
+	TNT1 A 2 Offset(67, 100)
+	TNT1 A 0 A_JumpIfNoAmmo("ReadyNoGrenade")
+	goto Refocus
+  } 
+}
+
+actor Grenade2 : UACWeapon 
+{
+  Game Doom
+  Weapon.Kickback 100
+  Weapon.SelectionOrder 400
+  Weapon.UpSound "GUNDRA"
+  Weapon.SlotNumber 5
+  Tag "''Madman'' brand Molotov"
+  Weapon.AmmoType "GrenadeAmmo"
+  Weapon.AmmoUse 1
+  Scale 0.62
+  +NOALERT
+  +Weapon.CHEATNOTWEAPON
+  Obituary "%o was molotoved by %k. "
+  States
+  {
+  Spawn:
+    TNT1 A -1
+    Loop
+  Ready:
+     TNT1 A 0 A_JumpIfInventory("Meleeing",1,"FastMeleeBase")
+    TNT1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
+    MTCH ABCDEFGH 1 Bright A_WeaponReady 
+    loop
+  ReadyNoGrenade:
+    TNT1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
+    TNT1 A 0 A_JumpIfInventory("GrenadeAmmo",1,"Refocus")
+    TNT1 A 1 A_WeaponReady
+	loop
+  Upgrade:
+    TNT1 A 0 A_PlaySound("WEAPUP",64)
+	TNT1 A 1 A_Print("Upgraded to level 3!\n\nFIREBOMB++",5,"SMALLFONT")
+	TNT1 A 0 A_GiveInventory("Grenade3")
+    TNT1 A 0 A_TakeInventory("UpgradeToken",9)
+	TNT1 A 0 A_SelectWeapon ("Grenade3")
+	TNT1 A 0 A_TakeInventory("Grenade2")
+	TNT1 A 1
+	Goto Ready
+  Deselect:
+    TNT1 A 0 A_JumpIfNoAmmo("DeSelectNoGrenade")
+    MTCH A 1 Offset(0, 34) Bright
+	MTCH A 1 Offset(0, 47) Bright
+	MTCH A 1 Offset(0, 69) Bright
+    MTCH A 1 Offset(0, 100) Bright
+    MTCH A 1 A_Lower
+    Wait
+  Select:
+    TNT1 A 0 A_JumpIfNoAmmo("SelectNoGrenade")
+	TNT1 A 0 A_Playsound("LITROP",4,1,0)
+    MTCH A 1 Offset(0, 100) Bright
+	MTCH A 1 Offset(0, 69) Bright
+	MTCH A 1 Offset(0, 47) Bright
+	TNT1 A 0 A_Playsound("LITRON",4,1,0)
+	MTCH A 1 Offset(0, 34) Bright
+    MTCH A 1 A_Raise
+    Wait
+  DeselectNoGrenade:
+    TNT1 A 1 A_Lower
+    Wait
+  SelectNoGrenade: 
+    TNT1 A 1 A_Raise
+    Goto ReadyNoGrenade
+  Refocus:
+    TNT1 A 0 A_JumpIfNoAmmo("DeSelectNoGrenade")
+	TNT1 A 2
+    MTCH A 1 Offset(67, 100) Bright
+	MTCH A 1 Offset(32, 69) Bright
+	MTCH A 1 Offset(10, 47) Bright
+	MTCH A 1 Offset(2, 34) Bright
+	Goto Ready
+  Fire:
+    TNT1 A 0 A_JumpIfNoAmmo("DeselectNoGrenade")
+    MTCH I 1 Offset(2, 34) Bright
+	MTCH I 1 Offset(10, 47) Bright
+	MTCH I 1 Offset(32, 69) Bright
+    MTCH I 1 Offset(67, 100) Bright
+	TNT1 A 2
+  Goto Throw
+  Throw:
+    TNT1 A 0 A_Playsound("MOLLIT",4,1,0)
+    GRTH A 1 Offset(67, 100) 
+	GRTH A 1 Offset(32, 69)
+	GRTH A 1 Offset(10, 47) 
+	GRTH A 1 Offset(2, 34)
+	TNT1 A 0 A_Playsound("BLUSWI",1,1,0)
+	GRTH A 1 A_FireCustomMissile("UACMolotov",0,1,0,0)
+	GRTH A 1 Offset(10, 47)
+	GRTH A 1 Offset(32, 69)
+	GRTH A 1 Offset(67, 100)
+	TNT1 A 2 Offset(67, 100)
+	TNT1 A 0 A_JumpIfNoAmmo("ReadyNoGrenade")
+	goto Refocus
+  } 
+}
+
+
+actor Grenade3 : UACWeapon 
+{
+  Game Doom
+  Weapon.Kickback 100
+  Weapon.SelectionOrder 400
+  Weapon.UpSound "GUNDRA"
+  Weapon.SlotNumber 5
+  Tag "CJCB-51 Napalm Grenade"
+  Weapon.AmmoType "GrenadeAmmo"
+  Weapon.AmmoUse 1
+  Scale 0.62
+  +NOALERT
+  +Weapon.CHEATNOTWEAPON
+  Obituary "%o was Napalm naded by %k. "
+  States
+  {
+  Spawn:
+    TNT1 A -1
+    Loop
+  Ready:
+     TNT1 A 0 A_JumpIfInventory("Meleeing",1,"FastMeleeBase")
+    TNT1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
+    NAPG A 1 A_WeaponReady
+    loop
+  ReadyNoGrenade:
+    TNT1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
+    TNT1 A 0 A_JumpIfInventory("GrenadeAmmo",1,"Refocus")
+    TNT1 A 1 A_WeaponReady
+	loop
+  Upgrade:
+	TNT1 A 1 A_Print("THE WEAPON IS ALREADY UPGRADED TO THE MAX LEVEL!",5,"SMALLFONT")
+	TNT1 A 0 A_GiveInventory("UACTOOLZ", 1)
+    TNT1 A 0 A_TakeInventory("UpgradeToken",9)
+	TNT1 A 1
+	Goto Ready
+  Deselect:
+    TNT1 A 0 A_JumpIfNoAmmo("DeSelectNoGrenade")
+    NAPG A 1 Offset(0, 34)
+	NAPG A 1 Offset(0, 47)
+	NAPG A 1 Offset(0, 69)
+    NAPG A 1 Offset(0, 100)
+    NAPG A 1 A_Lower
+    Wait
+  Select:
+    TNT1 A 0 A_JumpIfNoAmmo("SelectNoGrenade")
+    NAPG A 1 Offset(0, 100)
+	NAPG A 1 Offset(0, 69)
+	NAPG A 1 Offset(0, 47)
+	NAPG A 1 Offset(0, 34)
+    NAPG A 1 A_Raise
+    Wait
+  DeselectNoGrenade:
+    TNT1 A 1 A_Lower
+    Wait
+  SelectNoGrenade: 
+    TNT1 A 1 A_Raise
+    Goto ReadyNoGrenade
+  Refocus:
+    TNT1 A 0 A_JumpIfNoAmmo("DeSelectNoGrenade")
+	TNT1 A 2
+    NAPG A 1 Offset(67, 100) 
+	NAPG A 1 Offset(32, 69)
+	NAPG A 1 Offset(10, 47)
+	NAPG A 1 Offset(2, 34)
+	Goto Ready
+  Fire:
+    TNT1 A 0 A_JumpIfNoAmmo("DeselectNoGrenade")
+    NAPG A 1 Offset(2, 34)
+	NAPG A 1 Offset(10, 47)
+	NAPG A 1 Offset(32, 69)
+    NAPG A 1 Offset(67, 100)
+	TNT1 A 2
+  Goto Throw
+  Throw:
+    TNT1 A 0 A_Playsound("GRPUL",4,1,0)
+    GRTH A 1 Offset(67, 100) 
+	GRTH A 1 Offset(32, 69)
+	GRTH A 1 Offset(10, 47) 
+	GRTH A 1 Offset(2, 34)
+	TNT1 A 0 A_Playsound("BLUSWI",1,1,0)
+	GRTH A 1 A_FireCustomMissile("ThrownGrenade3",0,1,0,0)
+	GRTH A 1 Offset(10, 47)
+	GRTH A 1 Offset(32, 69)
+	GRTH A 1 Offset(67, 100)
+	TNT1 A 2 Offset(67, 100)
+	TNT1 A 0 A_JumpIfNoAmmo("ReadyNoGrenade")
+	goto Refocus
+  } 
+}
+

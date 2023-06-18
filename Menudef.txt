@@ -5,7 +5,7 @@ DefaultListMenu
 
 ListMenu "MainMenu"
 {
-	Position 50, 50
+	Position 50, 100
 	TextItem "SLAUGHTER", "m", "SPMenu"
 	TextItem "SLAUGHTER TOGETHER", "m", "ZA_MultiplayerOptions"
 	TextItem "PERSONALIZE", "p", "PlayerMenu"
@@ -56,8 +56,6 @@ OptionMenu "HFEG_Options"
 	Option "Silent Titlemap", "HFEGC_SilentTMap", "OnOff"
 	StaticText "<<  [Silent TMap] For weak platforms (Android  >>"
 	StaticText "<<  very weak PC, etc), No Combats in titlemap >>"
-	StaticText " "
-	StaticText " "
 	Option "Explode Style", "HFEGC_ExplodeStyle", "ExplRender"
 	StaticText " "
 }

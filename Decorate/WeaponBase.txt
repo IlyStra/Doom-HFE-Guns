@@ -25,13 +25,27 @@ ACTOR UACweapon : DoomWeapon
 	 TNT1 A 0 A_JumpIfInventory("Fist2", 1, "FastMelee2")
 	 TNT1 A 0 A_JumpIfInventory("Fist3", 1, "FastMelee3")
 	 FastMelee1:
+    TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"Punch1Berserk")
     TNT1 A 0 A_Playsound("BLUSWI",1,1,0)
-	BK1L ABC 1
+	BK1L B 1
+	BK1L C 1
 	BK1L D 1 A_CustomPunch(15, 1, 0, "UnarmedHit", 65)
-	BK1L EFGH 1
+	BK1L E 2 
+	BK1L F 2 
+	goto RefocusFist1
+  Punch1Berserk:
+    TNT1 A 0 A_Playsound("BLUSWI",1,1,0)
+	BK1L B 1
+	BK1L C 1
+	BK1L D 1 A_CustomPunch(20 * 15, 1, 0, "UnarmedHit", 65)
+	BK1L E 1 
+	BK1L F 1
+	goto RefocusFist1
+	RefocusFist1:
 	BK1L F 1 A_WeaponReady
 	 TNT1 A 0 A_Jump(256,"Ready")
 	 FastMelee2:
+	     TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"AltfireBerserk")
     TNT1 A 0 A_Playsound("SAW3",1,0.75,0)
 	BK2S C 2 A_AlertMonsters
 	BK2S B 2
@@ -45,47 +59,102 @@ ACTOR UACweapon : DoomWeapon
 	TNT1 A 0 A_Quake(2,2,0,90,"")
 	TNT1 A 0 A_Playsound("SAW2",1,0.75,0)
 	TNT1 A 0 A_Quake(2,2,0,90,"")
-	BK2S CDE 1
-	TNT1 A 8
+	BK2S C 1
+	BK2S D 8
 	TNT1 A 0 A_Jump(256,"Ready")
-	 FastMelee3:
-	TNT1 A 0 A_JumpIfInventory("UACFistToken",1,"Peaches")
-	TNT1 A 0 A_GiveInventory("UACFistToken")
+  AltfireBerserk:
     TNT1 A 0 A_Playsound("SAW3",1,0.75,0)
-	BK2S C 4 A_AlertMonsters
-	BK2S B 4
-	BK2S A 4
+	TNT1 A 2 A_AlertMonsters
+	BK2S B 1
+	BK2S A 1
 	TNT1 A 0 A_Quake(2,2,0,90,"")
-	BK2S A 2 A_CustomPunch(35,0,0,"ChainsawHit",50)
+	BK2S A 1 A_CustomPunch(20 * 15,0,0,"ChainsawHit",50)
 	TNT1 A 0 A_Quake(2,2,0,90,"")
-	BK2S A 2 A_CustomPunch(35,0,0,"ChainsawHit",50)
+	BK2S A 1 A_CustomPunch(20 * 15,0,0,"ChainsawHit",50)
 	TNT1 A 0 A_Quake(2,2,0,90,"")
-	BK2S B 2 A_CustomPunch(35,0,0,"ChainsawHit",50)
+	BK2S B 1 A_CustomPunch(20 * 15,0,0,"ChainsawHit",50)
 	TNT1 A 0 A_Quake(2,2,0,90,"")
 	TNT1 A 0 A_Playsound("SAW2",1,0.75,0)
 	TNT1 A 0 A_Quake(2,2,0,90,"")
-	BK2S CDE 1
-	TNT1 A 8
+	BK2S C 1
+	BK2S D 8
+	 TNT1 A 0 A_Jump(256,"Ready")
+	 FastMelee3:
+	   Melons:
+    TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"MelonsBerserk")
+	TNT1 A 0 A_JumpIfInventory("UACFistToken",1,"Peaches")
+	TNT1 A 0 A_GiveInventory("UACFistToken")
+    TNT1 A 0 A_Playsound("SAW3",1,0.75,0)
+	BK2S C 2 A_AlertMonsters
+	BK2S B 2
+	BK2S A 2
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S A 1 A_CustomPunch(35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S A 1 A_CustomPunch(35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S B 1 A_CustomPunch(35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	TNT1 A 0 A_Playsound("SAW2",1,0.75,0)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S C 1
+	BK2S D 8
+	 TNT1 A 0 A_Jump(256,"Ready")
+  MelonsBerserk:	
+    TNT1 A 0 A_GiveInventory("UACFistToken")
+    TNT1 A 0 A_Playsound("SAW3",1,0.75,0)
+	BK2S C 2 A_AlertMonsters
+	BK2S B 1
+	BK2S A 1
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S A 1 A_CustomPunch(20 * 35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S A 1 A_CustomPunch(20 * 35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S B 1 A_CustomPunch(20 * 35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	TNT1 A 0 A_Playsound("SAW2",1,0.75,0)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK2S C 1
+	BK2S D 8
 	 TNT1 A 0 A_Jump(256,"Ready")
   Peaches:
+    TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"PeachesBerserk")
     TNT1 A 0 A_TakeInventory("UACFistToken")
     TNT1 A 0 A_Playsound("SAW3",1,0.75,0)
-	BK3S A 2 A_AlertMonsters
+	BK3S C 2 A_AlertMonsters
 	BK3S B 2
-	BK3S B 2
+	BK3S A 2
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK3S A 1 A_CustomPunch(35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK3S A 1 A_CustomPunch(35,0,0,"ChainsawHit",50)
 	TNT1 A 0 A_Quake(2,2,0,90,"")
 	BK3S B 1 A_CustomPunch(35,0,0,"ChainsawHit",50)
 	TNT1 A 0 A_Quake(2,2,0,90,"")
-	BK3S B 1 A_CustomPunch(35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Playsound("SAW2",1,0.75,0)
 	TNT1 A 0 A_Quake(2,2,0,90,"")
-	BK3S C 1 A_CustomPunch(35,0,0,"ChainsawHit",50)
-	TNT1 A 0 A_Quake(2,2,0,90,"")
-	TNT1 C 0 A_Playsound("SAW2",1,0.75,0)
-	TNT1 A 0 A_Quake(2,2,0,90,"")
-	BK3S CDE 1
-	TNT1 A 8
-	TNT1 A 8
+	BK3S C 1
+	BK3S D 8
 	 TNT1 A 0 A_Jump(256,"Ready")
+  PeachesBerserk:	
+    TNT1 A 0 A_TakeInventory("UACFistToken")
+    TNT1 A 0 A_Playsound("SAW3",1,0.75,0)
+	BK3S C 2 A_AlertMonsters
+	BK3S B 1
+	BK3S A 1
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK3S A 1 A_CustomPunch(20 * 35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK3S A 1 A_CustomPunch(20 * 35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK3S B 1 A_CustomPunch(20 * 35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	TNT1 A 0 A_Playsound("SAW2",1,0.75,0)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK3S C 1
+	BK3S D 8
+ TNT1 A 0 A_Jump(256,"Ready")
 	 FastGrenadeBase:
 	 TNT1 A 0 A_TakeInventory("Grenading",1) 
 	 TNT1 A 0 A_JumpIfInventory("Grenade1", 1, "FastGrenade1")

@@ -207,7 +207,8 @@ Actor Fist2 : UACWeapon
 	TNT1 A 0 A_Quake(2,2,0,90,"")
 	TNT1 A 0 A_Playsound("SAW2",1,0.75,0)
 	TNT1 A 0 A_Quake(2,2,0,90,"")
-	BK2S CDE 1
+	BK2S C 1
+	BK2S D 1
 	TNT1 A 8
 	TNT1 A 4
     BK2I A 1 Offset(0, 100)
@@ -230,7 +231,8 @@ Actor Fist2 : UACWeapon
 	TNT1 A 0 A_Quake(2,2,0,90,"")
 	TNT1 A 0 A_Playsound("SAW2",1,0.75,0)
 	TNT1 A 0 A_Quake(2,2,0,90,"")
-	BK2S CDE 1
+	BK2S C 1
+	BK2S D 1
 	TNT1 A 2
 	TNT1 A 1
     BK2I A 1 Offset(0, 100)
@@ -333,7 +335,7 @@ Actor Fist3 : UACWeapon
 	TNT1 A 0 A_Playsound("SAW2",1,0.75,0)
 	TNT1 A 0 A_Quake(2,2,0,90,"")
 	BK2S C 1
-	BK2S DE 1
+	BK2S D 1
 	TNT1 A 2
 	TNT1 A 1
 	TNT1 A 0 A_Refire
@@ -346,19 +348,20 @@ Actor Fist3 : UACWeapon
     TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"PeachesBerserk")
     TNT1 A 0 A_TakeInventory("UACFistToken")
     TNT1 A 0 A_Playsound("SAW3",1,0.75,0)
-	BK3S A 2 A_AlertMonsters
+	BK3S C 2 A_AlertMonsters
 	BK3S B 2
-	BK3S B 2
+	BK3S A 2
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK3S A 1 A_CustomPunch(35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK3S A 1 A_CustomPunch(35,0,0,"ChainsawHit",50)
 	TNT1 A 0 A_Quake(2,2,0,90,"")
 	BK3S B 1 A_CustomPunch(35,0,0,"ChainsawHit",50)
 	TNT1 A 0 A_Quake(2,2,0,90,"")
-	BK3S B 1 A_CustomPunch(35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Playsound("SAW2",1,0.75,0)
 	TNT1 A 0 A_Quake(2,2,0,90,"")
-	BK3S C 1 A_CustomPunch(35,0,0,"ChainsawHit",50)
-	TNT1 A 0 A_Quake(2,2,0,90,"")
-	TNT1 C 0 A_Playsound("SAW2",1,0.75,0)
-	TNT1 A 0 A_Quake(2,2,0,90,"")
-	BK3S CDE 1
+	BK3S C 1
+	BK3S D 1
 	TNT1 A 8
 	TNT1 A 4
 	TNT1 A 0 A_Refire
@@ -370,19 +373,20 @@ Actor Fist3 : UACWeapon
   PeachesBerserk:	
     TNT1 A 0 A_TakeInventory("UACFistToken")
     TNT1 A 0 A_Playsound("SAW3",1,0.75,0)
-	BK3S A 2 A_AlertMonsters
+	BK3S C 2 A_AlertMonsters
 	BK3S B 1
-	BK3S B 1
+	BK3S A 1
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK3S A 1 A_CustomPunch(20 * 35,0,0,"ChainsawHit",50)
+	TNT1 A 0 A_Quake(2,2,0,90,"")
+	BK3S A 1 A_CustomPunch(20 * 35,0,0,"ChainsawHit",50)
 	TNT1 A 0 A_Quake(2,2,0,90,"")
 	BK3S B 1 A_CustomPunch(20 * 35,0,0,"ChainsawHit",50)
 	TNT1 A 0 A_Quake(2,2,0,90,"")
-	BK3S C 1 A_CustomPunch(20 * 35,0,0,"ChainsawHit",50)
-	TNT1 A 0 A_Quake(2,2,0,90,"")
-	BK3S C 1 A_CustomPunch(20 * 35,0,0,"ChainsawHit",50)
-	TNT1 A 0 A_Quake(2,2,0,90,"")
 	TNT1 A 0 A_Playsound("SAW2",1,0.75,0)
 	TNT1 A 0 A_Quake(2,2,0,90,"")
-	BK3S CDE 1
+	BK3S C 1
+	BK3S D 1
 	TNT1 A 2
 	TNT1 A 1
 	TNT1 A 0 A_Refire

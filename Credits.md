@@ -50,21 +50,13 @@
 							█
 	`Rockets`				█	*Jenoclip*
 							█
-	`Rocket Launcher`		█	*Jenoclip, YukiHerz, Marrub*
+	`Rocket Launcher`		█	*Jenoclip, YukiHerz*
 							█
 	`Titlemap`				█	*Jenoclip*
-							█
-	`Plasmarifle`			█	*Jenoclip*
 							█
 	`Railgun`				█	*Jenoclip, Hellstorm Archon(Sprites), ravage(Sprites)*
 							█
 	`Other Pickups`			█	*BloodyAcid, BigDaveHadSomeToo, Jenoclip*
-							█
-	`Fire SPITTOOOOON!`		█	*Jenoclip, Kathernocide, Valve(TF 2 Developers), Dzierzan, 3D realms, Monolith Productions, Lobotomy Software, fgsfds*
-							█
-	`Footsteps`				█	*The Zombie Killer, Ryan Cordel, Ral22*
-							█
-	`BFG Level 3`			█	*Jenoclip, D4D Development Group*
 							█
 	`Playing`				█	*You*
 ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄

@@ -9,7 +9,7 @@ ACTOR UziSpawner : CustomInventory
 	Inventory.Icon "TNT1A0"
 	Inventory.PickupSound "GUNPI"
 	Inventory.PickupMessage "You got the uzi!"
-	Scale 0.35
+	Scale 0.65
 	States
 	{
 	Spawn:
@@ -64,7 +64,7 @@ ACTOR Uzi1 : UacWeapon
   Weapon.SlotNumber 2
   Weapon.AmmoGive2 30
   Weapon.AmmoType "UZIMAG1"
-  Scale 0.35
+  Scale 0.65
   Weapon.AmmoType2 "BLTClip"
   Obituary "%o was Uzi'd by %k."
   Inventory.Pickupmessage "You got the Uzi!"
@@ -175,7 +175,7 @@ ACTOR Uzi2 : UacWeapon
   Weapon.SlotNumber 2
   Weapon.AmmoGive2 60
   Weapon.AmmoType "UZIMAG2"
-  Scale 0.35
+  Scale 0.65
   Weapon.AmmoType2 "BLTClip"
   Obituary "%o was Uzi'd by %k."
   Inventory.Pickupmessage "You got the Uzi!"
@@ -290,7 +290,7 @@ ACTOR Uzi3 : UacWeapon
   Weapon.SlotNumber 2
   Weapon.AmmoGive2 120
   Weapon.AmmoType "UZIMAG3"
-  Scale 0.35
+  Scale 0.65
   Weapon.AmmoType2 "BLTClip"
   Obituary "%o was Uzi'd by %k."
   Inventory.Pickupmessage "You got the Uzi!"

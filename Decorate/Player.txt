@@ -39,7 +39,8 @@ ACTOR UacPlayer : PlayerPawn replaces DoomPlayer
   Player.WeaponSlot 4, Machinegun1, MachineGun2, Machinegun3, HFEG_MinigunL1,HFEG_MinigunL2,HFEG_MinigunL3,HFEG_SniperRifleL1,HFEG_SniperRifleL2,HFEG_SniperRifleL3
   Player.WeaponSlot 5, Grenade1,Grenade2,Grenade3,HFEG_RkLauncherL1,HFEG_RkLauncherL2,HFEG_RkLauncherL3,HFEG_GNDLauncherL1,HFEG_GNDLauncherL2,HFEG_GNDLauncherL3
   Player.WeaponSlot 6, PlasmaGun1,PlasmaGun2,PlasmaGun3,HFEG_RailGun1,HFEG_RailGun2,HFEG_RailGun3
-  Player.WeaponSlot 7, HFEG_BFG1,HFEG_BFG2,HFEG_BFG3,Flamer1,Flamer2,Flamer3
+  Player.WeaponSlot 7, HFEG_BFG1,HFEG_BFG2,HFEG_BFG3
+  Player.WeaponSlot 8, HFEG_FireSpittoonL1,HFEG_FireSpittoonL2,HFEG_FireSpittoonL3
   Player.ColorRange 112, 127
   Player.ColorSet 0, "Green",         0x70, 0x7F,  0x72
   Player.ColorSet 1, "Gray",          0x60, 0x6F,  0x62 // Called "Indigo" originally so as to have a unique initial

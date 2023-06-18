@@ -31,6 +31,29 @@ ACTOR PISMAG3 : Ammo
   +IGNORESKILL
 }
 
+ACTOR TacPistolSpawner : CustomInventory
+{
+	Inventory.Icon "TNT1A0"
+	Inventory.PickupSound "GUNPI"
+	Inventory.PickupMessage "You got the tactical pistol!"
+	Scale 0.65
+	States
+	{
+	Spawn:
+		PISP A -1
+		Stop
+	Pickup:
+	    TNT1 A 0 A_JumpIfInventory("TacPistol3", 1, "Ammo")
+		TNT1 A 0 A_JumpIfInventory("TacPistol2", 1, "Ammo")
+		TNT1 A 0 A_JumpIfInventory("TacPistol1", 1, "Ammo")
+		TNT1 A 0 A_GiveInventory("TacPistol1")
+		Stop
+	Ammo:
+		TNT1 A 0 A_GiveInventory("BLTClip", 8)
+		Stop
+	}
+}
+
 ACTOR TacPistol1 : UacWeapon 
 {
   +Ammo_Optional

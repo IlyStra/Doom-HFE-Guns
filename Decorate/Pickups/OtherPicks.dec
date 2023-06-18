@@ -53,7 +53,7 @@ Actor ArmoredHelmet : ArmorBonus Replaces ArmorBonus
 	}
 }
 
-Actor SteelArmor : GreenArmor Replaces ArmorBonus
+Actor SteelArmor : GreenArmor Replaces GreenArmor
 {
 	Inventory.Pickupmessage "You got Simple Steel Armor"
 	Inventory.Icon "ARM0B0"

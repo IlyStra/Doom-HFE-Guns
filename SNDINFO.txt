@@ -378,3 +378,5 @@ Plasma_Explode3		PLSMEXP3
 $random Plasma_Explode
 {Plasma_Explode0	Plasma_Explode1
 Plasma_Explode2		Plasma_Explode3}
+
+Flamethrower_Fire	FLTAFIR

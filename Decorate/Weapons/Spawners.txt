@@ -1,28 +1,29 @@
 Actor Slot2Spawner : Randomspawner replaces Pistol
 {
-DropItem "UziSpawner", 255, 80
+DropItem "TacPistolSpawner", 255, 70
 DropItem "RevolverSpawner", 255, 30
+DropItem "UziSpawner", 255, 20
 DropItem "UACToolZ", 64, 1
 }
 
 Actor Slot3Spawner : Randomspawner replaces Shotgun
 {
-DropItem "ShotgunSpawner", 255, 95
+DropItem "ShotgunSpawner", 255, 105
 DropItem "RevolverSpawner", 255, 30
 DropItem "UACToolZ", 96, 1
 }
 
 Actor Slot3XSpawner : Randomspawner replaces SuperShotgun
 {
-DropItem "SuperShotgunSpawner", 255, 70
+DropItem "SuperShotgunSpawner", 255, 90
 DropItem "UACToolZ", 112, 1
 }
 
 
 Actor Slot4Spawner : Randomspawner replaces Chaingun
 {
-DropItem "MachinegunSpawner", 255, 45
-DropItem "UziSpawner", 255, 80
+DropItem "MachinegunSpawner", 255, 55
+DropItem "UziSpawner", 255, 90
 DropItem "HFEG_SniperSpawner", 255, 10
 DropItem "UACToolZ", 192, 1
 }
@@ -31,7 +32,7 @@ Actor Slot5Spawner : Randomspawner replaces RocketLauncher
 {
 DropItem "GrenadeLauncherSpawner", 255, 70
 DropItem "RocketLauncherSpawner", 255, 30
-DropItem "MinigunSpawner", 255, 8//Too powerful weapon for 4 slot
+DropItem "MinigunSpawner", 255, 15//Too powerful weapon for 4 slot
 DropItem "UACToolZ", 224, 1
 }
 
@@ -44,7 +45,7 @@ DropItem "UACToolZ", 255, 1
 
 Actor Slot7Spawner : Randomspawner replaces BFG9000
 {
-DropItem "HFEG_BFGSpawner", 255, 65
-DropItem "FlamerSpawner", 255, 45
-DropItem "UACToolZ", 255, 10
+DropItem "UACToolZ", 255, 35
+DropItem "HFEG_BFGSpawner", 255, 20
+DropItem "HFEG_FireSpittoonSpawner", 255, 8
 }

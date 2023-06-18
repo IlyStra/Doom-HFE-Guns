@@ -428,3 +428,30 @@ Script "HFEG_ExplodeStyle" (Void)
 {
 	SetResultValue(GetCVar("HFEGC_ExplodeStyle"));
 }
+
+Script "GetWaterLocation" (Void) Net
+{
+/*	-4 -	Floor Texture & In 3d water(Full)
+	-3 -	Floor Texture & In 3d water(Half or greater)
+	-2 -	Floor Texture & In 3d water(Less than half)
+	-1 -	Floor Texture
+	0 -		No Water
+	1 -		In 3d water(Less than half)
+	2 -		In 3d water(Half or greater)
+	3 -		In 3d water(Full)*/
+	If(
+		CheckActorFloorTexture(0, "FWATER1")||
+		CheckActorFloorTexture(0, "FWATER2")||
+		CheckActorFloorTexture(0, "FWATER3")||
+		CheckActorFloorTexture(0, "FWATER4")||
+		CheckActorFloorTexture(0, "WFALL1")||
+		CheckActorFloorTexture(0, "WFALL12")||
+		CheckActorFloorTexture(0, "WFALL13")||
+		CheckActorFloorTexture(0, "WFALL14")
+	)
+	{SetResultValue(-(1+GetActorProperty(0, APROP_WaterLevel)));}
+	Else
+	{
+		SetResultValue(GetActorProperty(0, APROP_WaterLevel));
+	}
+}

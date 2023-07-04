@@ -54,12 +54,16 @@ Actor ClipSpawner : Randomspawner Replaces Clip
 {
 DropItem "BLTClip"
 DropItem "RIFClip"
+DropItem "REVClip"
+DropItem "SNPClip"
 }
 
 Actor ClipboxSpawner : Randomspawner Replaces Clipbox
 {
 DropItem "BLTpack"
 DropItem "RIFpack"
+DropItem "REVpack"
+DropItem "SNPpack"
 }
 
 ACTOR BLTClip : Ammo 
@@ -118,6 +122,68 @@ ACTOR RIFpack : RIFClip
   {
   Spawn:
     AMMO A -1
+    Stop
+  }
+}
+
+ACTOR REVClip : Ammo 
+{
+  Inventory.PickupMessage "Picked up a Revolver Ammo." 
+  Inventory.Amount 6
+  Inventory.MaxAmount 70
+  Ammo.BackpackAmount 15
+  Ammo.BackpackMaxAmount 150
+  Inventory.Icon "ARR2A0"
+  Inventory.PickupSound "MEPICK"
+  Scale 0.7
+  States
+  {
+  Spawn:
+    ARR2 A -1
+    Stop
+  }
+}
+
+ACTOR REVpack : REVClip 
+{
+  Inventory.PickupMessage "Picked up a Revolver Ammo Box." 
+  Inventory.Amount 30
+  Inventory.PickupSound "MEPICK"
+  Scale 0.7
+  States
+  {
+  Spawn:
+    ARR2 B -1
+    Stop
+  }
+}
+
+ACTOR SNPClip : Ammo 
+{
+  Inventory.PickupMessage "Picked up a Sniper Rifle Bullet Mag." 
+  Inventory.Amount 5
+  Inventory.MaxAmount 70
+  Ammo.BackpackAmount 30
+  Ammo.BackpackMaxAmount 150
+  Inventory.Icon "ARH1A0"
+  Inventory.PickupSound "MEPICK"
+  States
+  {
+  Spawn:
+    ARH1 A -1
+    Stop
+  }
+}
+
+ACTOR SNPpack : SNPClip 
+{
+  Inventory.PickupMessage "Picked up a Sniper Rifle Bullet Box." 
+  Inventory.Amount 30
+  Inventory.PickupSound "MEPICK"
+  States
+  {
+  Spawn:
+    ARH1 B -1
     Stop
   }
 }

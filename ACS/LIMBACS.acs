@@ -1,9 +1,9 @@
 #library "UACBackPack"
 
 #include "zcommon.acs"
-#define NumAmmoTypes 7
+#define NumAmmoTypes 8
 // This is the position of the ammo to test against for a hard backpack expansion cap.
-#define AMMO_LIMIT_TEST_TYPE 7
+#define AMMO_LIMIT_TEST_TYPE 8
 #define AMMO_LIMIT 9999
 
 int ammotypes[NumAmmoTypes] = {
@@ -14,6 +14,7 @@ int ammotypes[NumAmmoTypes] = {
 "SNPClip",
 "ShotShell",
 "HFEG_OneRocketBox",
+"HFEG_FireBag",
 };
 
 int capexpansion[NumAmmoTypes] = {
@@ -24,6 +25,7 @@ int capexpansion[NumAmmoTypes] = {
 50,
 50,
 20,
+50,
 };
 
 script "HammerspaceBackpack" (void)

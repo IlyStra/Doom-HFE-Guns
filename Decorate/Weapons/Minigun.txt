@@ -33,7 +33,7 @@ Actor HFEG_MinigunL1 : UACweapon
 	Scale 0.375
 	Obituary "%o цas transformed into a sieve by %k`s M61 Vulcan."
 	Inventory.Pickupmessage "You got the slowed M61 Vulcan!"
-	Tag "slowed Vulcan ''M61'' - Good for making a salad"
+	Tag "Vulcan ''M61'' - Portable Assault model"
 	States
 	{
 	Ready:
@@ -167,7 +167,7 @@ Actor HFEG_MinigunL2 : UACweapon
 	Scale 0.375
 	Obituary "%o цas transformed into a burned sieve by %k`s M61 Vulcan."
 	Inventory.Pickupmessage "You got the slowed explosive M61 Vulcan!"
-	Tag "slowed explosive Vulcan ''M61'' - Good for making a salad with BBQ"
+	Tag "Vulcan ''M61'' - BattleMech model"
 	States
 	{
 	Ready:
@@ -301,7 +301,7 @@ Actor HFEG_MinigunL3 : UACweapon
 	Scale 0.375
 	Obituary "%o цas transformed into a sieve by %k`s M61 Vulcan."
 	Inventory.Pickupmessage "You got the M61 Vulcan!"
-	Tag "Default-rated Vulcan ''M61'' - Good for making a town salad"
+	Tag "Vulcan ''M61'' - Gunship model"
 	States
 	{
 	Ready:

@@ -5,7 +5,7 @@ Actor HFEG_BlurSphere : CustomInventory
 	+INVENTORY.BIGPOWERUP
 	+INVENTORY.INVBAR
 	+INVENTORY.PICKUPFLASH
-	Inventory.UseSound 		"UPCONF"
+	Inventory.UseSound 		"BLURON"
 	Inventory.MaxAmount 100
 	Inventory.Icon HDITC0
 	Translation "192:207=[255,255,0]:[128,0,0]",
@@ -51,7 +51,7 @@ Actor HFEG_AcidProofSuit : CustomInventory Replaces RadSuit
 	+INVENTORY.FORCERESPAWNINSURVIVAL
 	+INVENTORY.INVBAR
 	+INVENTORY.PICKUPFLASH
-	Inventory.UseSound 		"UPCONF"
+	Inventory.UseSound 		"RADON"
 	Height 46
 	Inventory.MaxAmount 100
 	Inventory.Icon HDITA0
@@ -80,7 +80,7 @@ ACTOR NightVision : CustomInventory Replaces Infrared
 	+INVENTORY.ALWAYSPICKUP
 	+INVENTORY.INVBAR
 	+INVENTORY.PICKUPFLASH
-	Inventory.UseSound 		"UPCONF"
+	Inventory.UseSound 		"NVGON"
 	Inventory.MaxAmount 100
 	Inventory.Icon HDITB0
 	Inventory.PickupMessage "$GOTVISOR"

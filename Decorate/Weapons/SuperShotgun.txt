@@ -17,7 +17,7 @@ ACTOR SuperShotgunSpawner : CustomInventory
 	Inventory.Icon "TNT1A0"
 	Inventory.PickupSound "GUNPI"
 	Inventory.PickupMessage "You got the super shotgun!"
-	Scale 0.25
+	Scale 0.35
 	States
 	{
 	Spawn:

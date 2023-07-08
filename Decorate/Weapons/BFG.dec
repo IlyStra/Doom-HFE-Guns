@@ -165,8 +165,8 @@ Actor HFEG_BFG2 : UACweapon
 	Weapon.AmmoGive 80
 	+NoAutoFire
 	Obituary "%o was turned into a plasma by %k`s BFG."
-	Inventory.Pickupmessage "You got the BFG Prototype 2!"
-	Tag "UAC ''BFG'' Prototype 2 Tt 1000 [1000 Tonnes of TNT equivalent]"
+	Inventory.Pickupmessage "You got the BFG Mk. 2 Tt 3200!"
+	Tag "UAC ''BFG'' Mk. 2 Tt 3200 [3200 Tonnes of TNT equivalent]"
 	States
 	{
 	Ready:
@@ -237,8 +237,8 @@ Actor HFEG_BFG3 : UACweapon
 	Scale 0.5
 	+NoAutoFire
 	Obituary "%o was turned into a plasma by %k`s BFG."
-	Inventory.Pickupmessage "You got the BFG Prototype 2!"
-	Tag "UAC ''BFG'' Prototype 2 Tt 1000 [1000 Tonnes of TNT equivalent]"
+	Inventory.Pickupmessage "You got the BFG Mk. 6 Tt 9900!"
+	Tag "UAC ''BFG'' Mk. 6 Tt 9900 [9900 Tonnes of TNT equivalent]"
 	States
 	{
 	Ready:

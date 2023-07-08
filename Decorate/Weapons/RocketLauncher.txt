@@ -93,7 +93,7 @@ Actor HFEG_RCL1Smoke0
 	}
 }
 
-Actor RocketLauncherSpawner : CustomInventory Replaces RocketLauncher
+Actor RocketLauncherSpawner : CustomInventory
 {
 	Inventory.Icon "TNT1A0"
 	Inventory.PickupSound "GUNPI"
@@ -296,6 +296,7 @@ Actor HFEG_RkLauncherL3 : UACweapon
 		MRX7 A 1 Offset(9, 40)
 		MRX7 A 1 Offset(12, 43)
 		MRX7 A 1 Offset(13, 45)
+		MRX7 A 0 A_ZoomFactor(1)
 		MRX7 A 1 Offset(12, 43)
 		MRX7 A 1 Offset(9, 40)
 		MRX7 A 1 Offset(5, 38)

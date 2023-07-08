@@ -232,7 +232,7 @@ Actor HFEG_FThrowerBallL1
 	RenderStyle Add
 	Scale 0.375
 	DontHurtShooter
-	Args 128
+	Args 32
 	+Missile
 	+Bright
 	+NoBlockMap

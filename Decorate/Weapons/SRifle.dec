@@ -230,10 +230,10 @@ ACTOR HFEG_SniperRifleL2 : UacWeapon
 		TNT1 A 0 A_FireBullets(0,0,-1,0,"TacPistolLaserSight",FBF_EXPLICITANGLE|FBF_NORANDOMPUFFZ|FBF_NOFLASH,32767)
 		SNP1 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
 		SNP1 A 1 A_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWZOOM)
-		SNIP B 0 A_Jump(256, "Ready")
+		SNIP A 0 A_Jump(256, "Ready")
 		TNT1 A 0 A_FireBullets(0,0,-1,0,"TacPistolLaserSight",FBF_EXPLICITANGLE|FBF_NORANDOMPUFFZ|FBF_NOFLASH,32767)
-		SNIP B 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
-		SNIP B 1 A_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWZOOM)
+		SNIP A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
+		SNIP A 1 A_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWZOOM)
     Loop	
   Upgrade:
     TNT1 A 0 A_PlaySound("WEAPUP",64)
@@ -389,10 +389,10 @@ ACTOR HFEG_SniperRifleL3 : UacWeapon
 		TNT1 A 0 A_FireBullets(0,0,-1,0,"TacPistolLaserSight",FBF_EXPLICITANGLE|FBF_NORANDOMPUFFZ|FBF_NOFLASH,32767)
 		SNP2 A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
 		SNP2 A 1 A_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWZOOM)
-		SNIP B 0 A_Jump(256, "Ready")
+		SNIP A 0 A_Jump(256, "Ready")
 		TNT1 A 0 A_FireBullets(0,0,-1,0,"TacPistolLaserSight",FBF_EXPLICITANGLE|FBF_NORANDOMPUFFZ|FBF_NOFLASH,32767)
-		SNIP B 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
-		SNIP B 1 A_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWZOOM)
+		SNIP A 0 A_JumpIfInventory("UpgradeToken", 1, "Upgrade")
+		SNIP A 1 A_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWZOOM)
     Loop	
 	Upgrade:
 		TNT1 A 1 A_Print("THE WEAPON IS ALREADY UPGRADED TO THE MAX LEVEL!",5,"SMALLFONT")

@@ -1,8 +1,31 @@
+ACTOR GrenadeLauncherSpawner : CustomInventory
+{
+	Inventory.Icon "TNT1A0"
+	Inventory.PickupSound "GUNPI"
+	Inventory.PickupMessage "You got the revolver!"
+	Scale 0.75
+	States
+	{
+	Spawn:
+		M72W K -1
+		Stop
+	Pickup:
+	    TNT1 A 0 A_JumpIfInventory("HFEG_GNDLauncherL3", 1, "Ammo")
+		TNT1 A 0 A_JumpIfInventory("HFEG_GNDLauncherL2", 1, "Ammo")
+		TNT1 A 0 A_JumpIfInventory("HFEG_GNDLauncherL1", 1, "Ammo")
+		TNT1 A 0 A_GiveInventory("HFEG_GNDLauncherL1")
+		Stop
+	Ammo:
+		TNT1 A 0 A_GiveInventory("HFEG_OneRocketBox", 30)
+		Stop
+	}
+}
+
 Actor HFEG_GNDLauncherL1 : UacWeapon
 {
 	Weapon.UpSound "GUNDRA"
 	Weapon.AmmoUse 1
-	Weapon.AmmoType "RocketAmmo"
+	Weapon.AmmoType "HFEG_OneRocketBox"
 	Weapon.SlotNumber 5
 	Weapon.AmmoGive 1
 	Scale 0.75
@@ -89,7 +112,7 @@ Actor HFEG_GNDLauncherL2 : UacWeapon
 {
 	Weapon.UpSound "GUNDRA"
 	Weapon.AmmoUse 1
-	Weapon.AmmoType "RocketAmmo"
+	Weapon.AmmoType "HFEG_OneRocketBox"
 	Weapon.SlotNumber 5
 	Weapon.AmmoGive 6
 	+NoAutoFire
@@ -199,7 +222,7 @@ Actor HFEG_GNDLauncherL3 : UacWeapon
 {
 	Weapon.UpSound "GUNDRA"
 	Weapon.AmmoUse 1
-	Weapon.AmmoType "RocketAmmo"
+	Weapon.AmmoType "HFEG_OneRocketBox"
 	Weapon.SlotNumber 5
 	Weapon.AmmoGive 6
 	+CheatNotWeapon

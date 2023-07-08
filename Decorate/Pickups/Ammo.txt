@@ -276,7 +276,7 @@ Actor HFEG_OneRocketBox : Ammo
 	}
 }
 
-Actor HFEG_RocketBox : Ammo
+Actor HFEG_RocketBox : HFEG_OneRocketBox
 {
 	Radius 28
 	Height 30

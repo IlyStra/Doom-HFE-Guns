@@ -128,6 +128,8 @@ Actor HFEG_RailgunProjL1 : FastProjectile
 	RenderStyle None
 	Radius 1
 	Height 1
+	+ForceRadiusDMG
+	+ForcePain
 	States
 	{
 	Spawn:
@@ -174,6 +176,8 @@ Actor HFEG_RailL1Flame
 	+BounceOnFloors
 	+BounceOnCeilings
 	+BounceOnActors
+	+ForceRadiusDMG
+	+ForcePain
 	States
 	{
 	Spawn://Lots of tabulation on TNT1A0 functions to better distinguish between secondary functions
@@ -363,6 +367,7 @@ Actor HFEG_RailgunProjL2 : FastProjectile
 	RenderStyle None
 	Radius 1
 	Height 1
+	+ForceRadiusDMG
 	+ForcePain
 	States
 	{
@@ -515,6 +520,8 @@ Actor HFEG_RailgunProjL3 : FastProjectile
 	RenderStyle None
 	Radius 1
 	Height 1
+	+ForceRadiusDMG
+	+ForcePain
 	States
 	{
 	Spawn:
@@ -566,6 +573,8 @@ Actor HFEG_RailL3Flame
 	+BounceOnFloors
 	+BounceOnCeilings
 	+BounceOnActors
+	+ForceRadiusDMG
+	+ForcePain
 	States
 	{
 	Spawn://Lots of tabulation on TNT1A0 functions to better distinguish between secondary functions

@@ -1,7 +1,9 @@
-height 32;
+height 0;
 monospacefonts true, "0";
+Completeborder false;
 
-statusbar fullscreen, fullscreenoffsets // ZDoom HUD
+
+statusbar fullscreen, fullscreenoffsets,forcescaled // ZDoom HUD
 {
 	IsSelected MachineGun3
 	{
@@ -38,9 +40,8 @@ statusbar fullscreen, fullscreenoffsets // ZDoom HUD
 	DrawKeyBar 100, horizontal, 9, 95, -16;
 }
 
-statusbar normal 
+statusbar normal,forcescaled  
 {
-drawstring SMALLFONT, white, "Switch to fullscreen hud.", 0, 0;
 }
 
 statusbar inventory // Standard bar overlay (ZDoom Addition)

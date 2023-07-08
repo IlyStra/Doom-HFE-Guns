@@ -59,11 +59,11 @@ ACTOR UACpistolcasing
    Death1:
       PICA BBB 1 
 	  PICA B 15 A_Fadeout(0.1)
-      Wait
+      Loop
    Death2:
       PICA EEE 1 
 	  PICA E 15 A_Fadeout(0.1)
-      Wait
+      Loop
    }
 }
 
@@ -116,11 +116,11 @@ ACTOR UACriflecasing
    Death1:
       RICA AAA 1 
 	  RICA A 15 A_Fadeout(0.1)
-      Wait
+      Loop
    Death2:
       RICA DDD 1 
 	  RICA D 15 A_Fadeout(0.1)
-      Wait
+      Loop
    }
 }
 
@@ -173,11 +173,11 @@ ACTOR UACshotguncasing
    Death1:
       SHCA DDD 1 
 	  SHCA D 15 A_Fadeout(0.1)
-      Wait
+      Loop
    Death2:
       SHCA HHH 1  
 	  SHCA H 15 A_Fadeout(0.1)
-      Wait
+      Loop
    }
 }
 
@@ -230,11 +230,11 @@ ACTOR UACdragonsbreathcasing
    Death1:
       DBCA DDD 1 
 	  DBCA D 15 A_Fadeout(0.1)
-      Wait
+      Loop
    Death2:
       DBCA HHH 1  
 	  DBCA H 15 A_Fadeout(0.1)
-      Wait
+      Loop
    }
 }
 

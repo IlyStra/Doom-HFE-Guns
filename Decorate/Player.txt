@@ -27,6 +27,9 @@ ACTOR UacPlayer : PlayerPawn replaces DoomPlayer
   Player.StartItem "MGMAG1", 30
   Player.StartItem "MGMAG2", 45
   Player.StartItem "MGMAG3", 60
+  Player.StartItem "SNPMAG1", 5
+  Player.StartItem "SNPMAG2", 10
+  Player.StartItem "SNPMAG3", 20  
   Player.StartItem "BLTClip", 60
   Player.StartItem "GrenadeAmmo", 2
   Player.StartItem "Fist1"

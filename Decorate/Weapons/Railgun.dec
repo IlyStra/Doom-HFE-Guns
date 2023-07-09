@@ -306,7 +306,7 @@ Actor HFEG_RailGun2 : UACweapon
 		TNT1 B 0 Bright A_Zoomfactor(0.96)
 		RLG1 D 1 Bright Offset(2, 35)
 		RLG1 E 1 Bright Offset(4, 40)
-		RLG1 G 1 Bright Offset(6, 43)
+		RLG1 F 1 Bright Offset(6, 43)
 		TNT1 A 0 A_Zoomfactor(1.0)
 		RLG1 A 1 Offset(8, 45)
 		RLG1 A 1 Offset(9, 49)

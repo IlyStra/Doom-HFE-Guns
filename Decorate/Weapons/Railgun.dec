@@ -339,7 +339,7 @@ Actor HFEG_RailGun2 : UACweapon
 		SNIP B 0 A_FireCustomMissile("HFEG_RailgunProjL2", FRandom(-1, 1), True, 0, 0, 0, FRandom(-1, 1))
 		SNIP B 0 A_SetPitch(pitch-3)
 		SNIP B 0 A_Zoomfactor(3.96)
-		SNIP D 3
+		SNIP B 3
 		SNIP A 0 A_Zoomfactor(4.0)
 		SNIP A 10
 		SNIP A 1 A_Refire("FireLoopZoomed")
@@ -494,7 +494,7 @@ Actor HFEG_RailGun3 : UACweapon
 		SNIP B 0 A_FireCustomMissile("HFEG_RailgunProjL3", FRandom(-1, 1), True, 0, 0, 0, FRandom(-1, 1))
 		SNIP B 0 A_SetPitch(pitch-3)
 		SNIP B 0 A_Zoomfactor(3.96)
-		SNIP D 3
+		SNIP B 3
 		SNIP A 0 A_Zoomfactor(4.0)
 		SNIP A 10
 		SNIP A 1 A_Refire("FireLoopZoomed")

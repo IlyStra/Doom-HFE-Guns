@@ -222,12 +222,14 @@ Actor RocketBoxSpawner : Randomspawner replaces RocketBox
 {
 	DropItem "HFEG_FireBag", 255, 25
 	DropItem "HFEG_RocketBoxSpawner", 255, 75
+	DropItem "HFEG_GrenadeBox", 255, 75
 }
 
 Actor RocketAmmoSpawner : Randomspawner replaces RocketAmmo 
 {
 	DropItem "HFEG_FireBag", 255, 13
 	DropItem "HFEG_OneRocketBoxSpawner", 255, 87
+	DropItem "HFEG_GrenadeAmmo", 255, 87
 }
 
 Actor HFEG_OneRocketBoxSpawner
@@ -291,6 +293,40 @@ Actor HFEG_RocketBox : HFEG_OneRocketBox
 		CBX1 D Random(-1, 2)
 		CBX1 E Random(-1, 2)
 		CBX1 F -1
+		Stop
+	}
+}
+
+Actor HFEG_GrenadeAmmo : Ammo
+{
+	Radius 16
+	Height 30
+	Inventory.Amount 3
+	Inventory.MaxAmount 50
+	Ammo.BackpackAmount 3
+	Ammo.BackpackMaxAmount 100
+	Inventory.PickupMessage "Picked up a grenade ammo"
+	Inventory.Icon "ARE3A0"
+	Scale 0.4
+	States
+	{
+	Spawn:
+		ARE3 A -1
+		Stop
+	}
+}
+
+Actor HFEG_GrenadeBox : HFEG_GrenadeAmmo
+{
+	Radius 28
+	Height 30
+	Inventory.PickupMessage "Picked up a grenade box"
+	Inventory.Amount 7
+	Scale 0.65
+	States
+	{
+	Spawn:
+		ARE3 B -1
 		Stop
 	}
 }

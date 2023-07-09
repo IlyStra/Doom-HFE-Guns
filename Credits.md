@@ -54,7 +54,7 @@
 							█
 	`Titlemap`				█	*Jenoclip*
 							█
-	`Plasmarifle`			█	*Jenoclip*
+	`Plasmarifle`			█	*Jenoclip, Bethesda, Joblez, Mace*
 							█
 	`Railgun`				█	*Jenoclip, Hellstorm Archon(Sprites), ravage(Sprites)*
 							█

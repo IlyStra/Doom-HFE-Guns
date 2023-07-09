@@ -7,7 +7,7 @@ statusbar fullscreen, fullscreenoffsets,forcescaled // ZDoom HUD
 {
 	IsSelected MachineGun3
 	{
-	drawnumber 3, SMALLFONT, white, "HFEG_OneRocketBox", alignment(right), 173, -22;
+	drawnumber 3, SMALLFONT, white, "HFEG_GrenadeAmmo", alignment(right), 173, -22;
 	}
 	//health	
 	drawimage "HELFA0", 33, -39;

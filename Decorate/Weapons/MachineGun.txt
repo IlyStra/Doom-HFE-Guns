@@ -354,7 +354,7 @@ ACTOR Machinegun3 : UacWeapon
 	MG3G A 1 Offset (3,35) 
     Goto Ready
   AltFire:
-    TNT1 A 0 A_JumpIfInventory("HFEG_OneRocketBox",1,"GLfire")
+    TNT1 A 0 A_JumpIfInventory("HFEG_GrenadeAmmo",1,"GLfire")
     TNT1 A 0 A_PlaySound("DEKLIK", CHAN_WEAPON)
     Goto Ready
    GLFire:
@@ -378,7 +378,7 @@ ACTOR Machinegun3 : UacWeapon
 	TNT1 A 0 A_Zoomfactor(0.98)
 	TNT1 A 0 A_Quake(3,2,0,90,"")
 	TNT1 A 0 A_Zoomfactor(1.0)
-	TNT1 A 0 A_Takeinventory("HFEG_OneRocketBox",1)
+	TNT1 A 0 A_Takeinventory("HFEG_GrenadeAmmo",1)
 	MG3R E 1 Offset(18,62)
 	MG3R E 1 Offset(17,58)
 	MG3R E 1 Offset(16,56)

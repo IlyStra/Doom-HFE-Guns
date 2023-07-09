@@ -258,7 +258,7 @@ Actor HFEG_PlasmaGun3 : UACweapon
 	+CheatNotWeapon
 	Obituary "%o was plasma-burned by %k`s M 389."
 	Inventory.Pickupmessage "You got the UAC M389!"
-	Tag "UAC ''M 389'' Plasma Assault Shotgun"
+	Tag "Skynet ''W-89'' Plasma Assault Shotgun"
 	States
 	{
 	Ready:

@@ -52,9 +52,9 @@ ACTOR UACweapon : DoomWeapon
 	TNT1 A 0 A_JumpIfInventory("UACFistToken",1,"Peaches")
 	TNT1 A 0 A_GiveInventory("UACFistToken")
     TNT1 A 0 A_Playsound("SAW3",1,0.75,0)
-	BK2S C 4 A_AlertMonsters
-	BK2S B 4
-	BK2S A 4
+	BK2S C 2 A_AlertMonsters
+	BK2S B 2
+	BK2S A 2
 	TNT1 A 0 A_Quake(2,2,0,90,"")
 	BK2S A 2 A_CustomPunch(35,0,0,"ChainsawHit",50)
 	TNT1 A 0 A_Quake(2,2,0,90,"")

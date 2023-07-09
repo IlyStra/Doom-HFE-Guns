@@ -16,7 +16,7 @@ ACTOR HFEG_SniperSpawner : CustomInventory
 		TNT1 A 0 A_GiveInventory("HFEG_SniperRifleL1")
 		Stop
 	Ammo:
-		TNT1 A 0 A_GiveInventory("RIFClip", 30)
+		TNT1 A 0 A_GiveInventory("SNPClip", 10)
 		Stop
 	}
 }
@@ -60,7 +60,7 @@ ACTOR HFEG_SniperRifleL1 : UacWeapon
   Weapon.AmmoGive2 5
   Weapon.AmmoType "SNPMAG1"
 	Scale 0.875
-  Weapon.AmmoType2 "RIFClip"
+  Weapon.AmmoType2 "SNPClip"
   Obituary "%o was sniped by %k."
   Inventory.Pickupmessage "You got the Kar 98K!"
   Tag "''Kar98k'' - Mauser 98K Sniper Modification"
@@ -157,7 +157,7 @@ ACTOR HFEG_SniperRifleL1 : UacWeapon
 		Goto Ready
   Reload:
      TNT1 A 0 A_JumpIfInventory("SNPMAG1",5,"Ready")
-	 RV1G A 0 A_JumpIfInventory("RIFClip", 1, "ReloadWork")
+	 RV1G A 0 A_JumpIfInventory("SNPClip", 1, "ReloadWork")
 	 TNT1 A 0 A_PlaySound("DEKLIK", CHAN_WEAPON)
 	 Goto Ready
   ReloadWork:
@@ -196,10 +196,10 @@ ACTOR HFEG_SniperRifleL1 : UacWeapon
 	SNP0 A 1 Offset(4,38)
 	SNP0 A 1 Offset(3,35)
   ReloadLoop:
-     TNT1 A 0 A_TakeInventory("RIFClip", 2)
+     TNT1 A 0 A_TakeInventory("SNPClip", 1)
 	 TNT1 A 0 A_GiveInventory("SNPMAG1", 1)
 	 TNT1 A 0 A_JumpIfInventory("SNPMAG1", 5, "Ready")
-	 TNT1 A 0 A_JumpIfInventory("RIFClip", 1, "ReloadLoop")
+	 TNT1 A 0 A_JumpIfInventory("SNPClip", 1, "ReloadLoop")
 	 Goto Ready	 
   Spawn:
     SNP0 D -1
@@ -219,7 +219,7 @@ ACTOR HFEG_SniperRifleL2 : UacWeapon
   Weapon.AmmoGive2 10
   Weapon.AmmoType "SNPMAG2"
 	Scale 0.875
-  Weapon.AmmoType2 "RIFClip"
+  Weapon.AmmoType2 "SNPClip"
   Obituary "%o was sniped by %k."
   Inventory.Pickupmessage "You got the SCAR-20!"
   Tag "''FN Ballista'' - Semi-Auto Modification"
@@ -318,7 +318,7 @@ ACTOR HFEG_SniperRifleL2 : UacWeapon
 		Goto Ready
   Reload:
      TNT1 A 0 A_JumpIfInventory("SNPMAG2",10,"Ready")
-	 SNP1 A 0 A_JumpIfInventory("RIFClip", 1, "ReloadWork")
+	 SNP1 A 0 A_JumpIfInventory("SNPClip", 1, "ReloadWork")
 	 TNT1 A 0 A_PlaySound("DEKLIK", CHAN_WEAPON)
 	 Goto Ready
   ReloadWork:
@@ -357,10 +357,10 @@ ACTOR HFEG_SniperRifleL2 : UacWeapon
 	SNP1 A 1 Offset(4,38)
 	SNP1 A 1 Offset(3,35)
   ReloadLoop:
-     TNT1 A 0 A_TakeInventory("RIFClip", 2)
+     TNT1 A 0 A_TakeInventory("SNPClip", 1)
 	 TNT1 A 0 A_GiveInventory("SNPMAG2", 1)
 	 TNT1 A 0 A_JumpIfInventory("SNPMAG2", 10, "Ready")
-	 TNT1 A 0 A_JumpIfInventory("RIFClip", 1, "ReloadLoop")
+	 TNT1 A 0 A_JumpIfInventory("SNPClip", 1, "ReloadLoop")
 	 Goto Ready	 
   Spawn:
     SNP1 D -1
@@ -380,7 +380,7 @@ ACTOR HFEG_SniperRifleL3 : UacWeapon
   Weapon.AmmoGive2 20
   Weapon.AmmoType "SNPMAG3"
   Scale 0.25
-  Weapon.AmmoType2 "RIFClip"
+  Weapon.AmmoType2 "SNPClip"
   Obituary "%o was sniped by %k."
   Inventory.Pickupmessage "You got the Anti-Material Rifle!"
   Tag "Semi-Auto Barret Sniper Rifle"
@@ -476,7 +476,7 @@ ACTOR HFEG_SniperRifleL3 : UacWeapon
 		Goto Ready
   Reload:
      TNT1 A 0 A_JumpIfInventory("SNPMAG3",20,"Ready")
-	 RV1G A 0 A_JumpIfInventory("RIFClip", 1, "ReloadWork")
+	 RV1G A 0 A_JumpIfInventory("SNPClip", 1, "ReloadWork")
 	 TNT1 A 0 A_PlaySound("DEKLIK", CHAN_WEAPON)
 	 Goto Ready
   ReloadWork:
@@ -515,10 +515,10 @@ ACTOR HFEG_SniperRifleL3 : UacWeapon
 	SNP2 A 1 Offset(4,38)
 	SNP2 A 1 Offset(3,35)
   ReloadLoop:
-     TNT1 A 0 A_TakeInventory("RIFClip", 2)
+     TNT1 A 0 A_TakeInventory("SNPClip", 2)
 	 TNT1 A 0 A_GiveInventory("SNPMAG3", 1)
 	 TNT1 A 0 A_JumpIfInventory("SNPMAG3", 20, "Ready")
-	 TNT1 A 0 A_JumpIfInventory("RIFClip", 1, "ReloadLoop")
+	 TNT1 A 0 A_JumpIfInventory("SNPClip", 1, "ReloadLoop")
 	 Goto Ready	 
   Spawn:
     SNP2 E -1

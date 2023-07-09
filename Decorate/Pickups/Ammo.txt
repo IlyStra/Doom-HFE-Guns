@@ -103,12 +103,12 @@ ACTOR RIFClip : Ammo
   Inventory.MaxAmount 150
   Ammo.BackpackAmount 30
   Ammo.BackpackMaxAmount 300
-  Inventory.Icon "CLIPA0"
+  Inventory.Icon "ARH1A0"
   Inventory.PickupSound "MEPICK"
   States
   {
   Spawn:
-    CLIP A -1
+    ARH1 A -1
     Stop
   }
 }
@@ -165,12 +165,12 @@ ACTOR SNPClip : Ammo
   Inventory.MaxAmount 70
   Ammo.BackpackAmount 30
   Ammo.BackpackMaxAmount 150
-  Inventory.Icon "ARH1A0"
+  Inventory.Icon "CLIPA0"
   Inventory.PickupSound "MEPICK"
   States
   {
   Spawn:
-    ARH1 A -1
+    CLIP A -1
     Stop
   }
 }

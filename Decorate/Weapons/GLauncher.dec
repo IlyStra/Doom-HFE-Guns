@@ -16,7 +16,7 @@ ACTOR GrenadeLauncherSpawner : CustomInventory
 		TNT1 A 0 A_GiveInventory("HFEG_GNDLauncherL1")
 		Stop
 	Ammo:
-		TNT1 A 0 A_GiveInventory("HFEG_OneRocketBox", 30)
+		TNT1 A 0 A_GiveInventory("HFEG_GrenadeAmmo", 3)
 		Stop
 	}
 }
@@ -25,7 +25,7 @@ Actor HFEG_GNDLauncherL1 : UacWeapon
 {
 	Weapon.UpSound "GUNDRA"
 	Weapon.AmmoUse 1
-	Weapon.AmmoType "HFEG_OneRocketBox"
+	Weapon.AmmoType "HFEG_GrenadeAmmo"
 	Weapon.SlotNumber 5
 	Weapon.AmmoGive 1
 	Scale 0.75
@@ -112,7 +112,7 @@ Actor HFEG_GNDLauncherL2 : UacWeapon
 {
 	Weapon.UpSound "GUNDRA"
 	Weapon.AmmoUse 1
-	Weapon.AmmoType "HFEG_OneRocketBox"
+	Weapon.AmmoType "HFEG_GrenadeAmmo"
 	Weapon.SlotNumber 5
 	Weapon.AmmoGive 6
 	+NoAutoFire
@@ -222,7 +222,7 @@ Actor HFEG_GNDLauncherL3 : UacWeapon
 {
 	Weapon.UpSound "GUNDRA"
 	Weapon.AmmoUse 1
-	Weapon.AmmoType "HFEG_OneRocketBox"
+	Weapon.AmmoType "HFEG_GrenadeAmmo"
 	Weapon.SlotNumber 5
 	Weapon.AmmoGive 6
 	+CheatNotWeapon

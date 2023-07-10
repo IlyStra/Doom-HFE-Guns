@@ -29,8 +29,8 @@ statusbar fullscreen, fullscreenoffsets,forcescaled // ZDoom HUD
 	drawimage ammoicon2, 180, -30;
 	drawnumber 4,SMALLFONT, teal, ammo2capacity, alignment(left), 183, -28;
 	
-	drawnumber 3, SMALLFONT, green, "Grenadeammo", 122, -36;
-	drawstring SMALLFONT, darkgreen, "NADES", 142, -36;
+	drawnumber 3, SMALLFONT, green, "Grenadeammo", 184, -20;
+	drawstring SMALLFONT, darkgreen, "NADES", 202, -10;
 	
 	inventorybarnotvisible
 			{

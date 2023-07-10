@@ -22,12 +22,12 @@ statusbar fullscreen, fullscreenoffsets,forcescaled // ZDoom HUD
 	//ammo 'n' weppins
 	drawnumber 4, SMALLFONT, lightblue, ammo1, alignment(right), 114, -28;
 	drawstring SMALLFONT, white, "/", 123, -28;
-	drawnumber 4,SMALLFONT, sapphire, ammo1capacity, alignment(left), 124, -28;	
+	drawnumber 4,SMALLFONT, lightblue, ammo1capacity, alignment(left), 124, -28;	
 	drawnumber 4, SMALLFONT, cyan, ammo2, alignment(right), 173, -28;
 	drawstring SMALLFONT, white, "/", 182, -28;
 	drawimage ammoicon1, 180, -30;
 	drawimage ammoicon2, 180, -30;
-	drawnumber 4,SMALLFONT, teal, ammo2capacity, alignment(left), 183, -28;
+	drawnumber 4,SMALLFONT, cyan, ammo2capacity, alignment(left), 183, -28;
 	
 	drawnumber 3, SMALLFONT, green, "Grenadeammo", 184, -20;
 	drawstring SMALLFONT, darkgreen, "NADES", 202, -10;

@@ -1,9 +1,13 @@
+//UAC-Skynet plasma weaponry
+//imagine skynet not being idiots who make military ai, but making energy weaponry and robots for uac.
+//that's the effect.
+
 Actor HFEG_PlasmaSpawner : CustomInventory Replaces Railgun
 {
 	Inventory.Icon "TNT1A0"
 	Inventory.PickupSound "GUNPI"
 	Inventory.PickupMessage "You got the plasma-gun!"
-	Scale 0.75
+	Scale 0.95
 	States
 	{
 	Spawn:
@@ -16,7 +20,7 @@ Actor HFEG_PlasmaSpawner : CustomInventory Replaces Railgun
 		TNT1 A 0 A_GiveInventory("HFEG_PlasmaGun1")
 		Stop
 	Ammo:
-		TNT1 A 0 A_GiveInventory("UACPlasmaAmmo", 1)
+		TNT1 A 0 A_GiveInventory("UACPlasmaAmmo", 60)
 		Stop
 	}
 }
@@ -28,11 +32,11 @@ Actor HFEG_PlasmaGun1 : UACweapon
 	Weapon.AmmoType "UACPlasmaAmmo"
 	Weapon.SlotNumber 6
 	Weapon.AmmoGive 6
-	Scale 0.75
+	Scale 0.95
 	+NoAutoFire
 	Obituary "%o was plasma-burned by %k`s IM-16."
 	Inventory.Pickupmessage "You got the UAC IM-16!"
-	Tag "UAC ''IM-16'' Submachine gun"
+	Tag "UAC-Skynet ''IM-16'' Submachine gun"
 	States
 	{
 	Ready:
@@ -166,11 +170,11 @@ Actor HFEG_PlasmaGun2 : UACweapon
 	Weapon.AmmoType "UACPlasmaAmmo"
 	Weapon.SlotNumber 6
 	Weapon.AmmoGive 6
-	Scale 0.75
+	Scale 0.95
 	+CheatNotWeapon
 	Obituary "%o was plasma-burned by %k`s M 254."
 	Inventory.Pickupmessage "You got the UAC M254!"
-	Tag "UAC ''M 254'' Plasma Assault Rifle"
+	Tag "UAC-Skynet ''M 254'' Plasma Assault Rifle"
 	States
 	{
 	Ready:
@@ -254,11 +258,11 @@ Actor HFEG_PlasmaGun3 : UACweapon
 	Weapon.AmmoType "UACPlasmaAmmo"
 	Weapon.SlotNumber 6
 	Weapon.AmmoGive 6
-	Scale 0.75
+	Scale 0.95
 	+CheatNotWeapon
-	Obituary "%o was plasma-burned by %k`s M 389."
-	Inventory.Pickupmessage "You got the UAC M389!"
-	Tag "Skynet ''W-89'' Plasma Assault Shotgun"
+	Obituary "%o was plasma-burned by %k`s W-89."
+	Inventory.Pickupmessage "You got the W-89!"
+	Tag "UAC-Skynet ''W-89'' Plasma Assault Shotgun"
 	States
 	{
 	Ready:

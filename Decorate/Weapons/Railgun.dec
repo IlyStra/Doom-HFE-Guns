@@ -1,3 +1,7 @@
+//Railguns
+//point, charge it, shoot.
+//warcrimes 100% guaranteed.
+
 Actor HFEG_RailGunSpawner : CustomInventory Replaces Railgun
 {
 	Inventory.Icon "TNT1A0"
@@ -16,7 +20,7 @@ Actor HFEG_RailGunSpawner : CustomInventory Replaces Railgun
 		TNT1 A 0 A_GiveInventory("HFEG_RailGun1")
 		Stop
 	Ammo:
-		TNT1 A 0 A_GiveInventory("UACPlasmaAmmo", 1)
+		TNT1 A 0 A_GiveInventory("UACPlasmaAmmo", 60)
 		Stop
 	}
 }

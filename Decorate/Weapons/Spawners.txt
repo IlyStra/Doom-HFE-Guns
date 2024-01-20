@@ -49,3 +49,101 @@ DropItem "UACToolZ", 255, 35
 DropItem "HFEG_BFGSpawner", 255, 20
 DropItem "HFEG_FireSpittoonSpawner", 255, 8
 }
+
+actor PistolAndAmmo2Spawner : RandomSpawner
+{
+dropitem TacPistolSpawner
+dropitem BLTClip
+dropitem BLTClip
+}
+
+actor HPistolAndAmmo2Spawner : RandomSpawner 
+{
+dropitem RevolverSpawner
+dropitem REVClip
+dropitem REVClip
+}
+
+actor PshotAndAmmo2Spawner : RandomSpawner 
+{
+dropitem ShotgunSpawner
+dropitem ShotShell
+dropitem ShotShell
+}
+
+actor DBshottyAndAmmo2Spawner : RandomSpawner
+{
+dropitem SuperShotgunSpawner
+dropitem SuperShotShell
+dropitem SuperShotShell
+}
+
+actor SmgAndAmmo2Spawner : RandomSpawner  
+{
+dropitem UziSpawner
+dropitem SMGClip
+dropitem SMGClip
+}
+
+actor RifleAndAmmo2Spawner : RandomSpawner
+{
+dropitem MachineGunSpawner
+dropitem RIFClip
+dropitem RIFClip
+}
+
+actor riffyAndAmmo2Spawner : RandomSpawner 
+{
+dropitem HFEG_SniperSpawner
+dropitem SNPClip
+dropitem SNPClip
+}
+
+actor GrenadelauncherAndAmmoSpawner3 : RandomSpawner 
+{
+dropitem GrenadeLauncherSpawner
+dropitem HFEG_GrenadeAmmo
+dropitem HFEG_GrenadeAmmo
+}
+
+actor RocketlauncherAndAmmoSpawner3 : RandomSpawner 
+{
+dropitem RocketLauncherSpawner
+dropitem HFEG_OneRocketBox
+dropitem HFEG_OneRocketBox
+}
+
+actor MinigunAndAmmo2Spawner : RandomSpawner
+{
+dropitem MinigunSpawner
+dropitem MINClip
+dropitem MINClip
+}
+
+actor PlasmaAndAmmo2Spawner : RandomSpawner
+{
+dropitem HFEG_PlasmaSpawner
+dropitem UACPlasmaAmmo
+dropitem UACPlasmaAmmo
+}
+
+actor RailgunAndAmmo2Spawner : RandomSpawner
+{
+dropitem HFEG_RailGunSpawner
+dropitem UACPlasmaAmmo
+dropitem UACPlasmaAmmo
+}
+
+actor BFGAndAmmo2Spawner : RandomSpawner
+{
+dropitem HFEG_BFGSpawner
+dropitem UACPlasmaAmmo
+dropitem UACPlasmaAmmo
+}
+
+actor FlameAndAmmo2Spawner : RandomSpawner
+{
+dropitem HFEG_FireSpittoonSpawner
+dropitem HFEG_FireBag
+dropitem HFEG_FireBag
+}

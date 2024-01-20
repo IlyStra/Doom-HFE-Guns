@@ -16,7 +16,7 @@ ACTOR MinigunSpawner : CustomInventory
 		TNT1 A 0 A_GiveInventory("HFEG_MinigunL1")
 		Stop
 	Ammo:
-		TNT1 A 0 A_GiveInventory("RIFClip", 60)
+		TNT1 A 0 A_GiveInventory("MINClip", 60)
 		Stop
 	}
 }
@@ -27,7 +27,7 @@ Actor HFEG_MinigunL1 : UACweapon
 {
 	Weapon.UpSound "GUNDRA"
 	Weapon.AmmoUse 1
-	Weapon.AmmoType "RIFClip"
+	Weapon.AmmoType "MINClip"
 	Weapon.SlotNumber 4
 	Weapon.AmmoGive 200
 	Scale 0.375
@@ -162,7 +162,7 @@ Actor HFEG_MinigunL2 : UACweapon
 	+CheatNotWeapon
 	Weapon.UpSound "GUNDRA"
 	Weapon.AmmoUse 1
-	Weapon.AmmoType "RIFClip"
+	Weapon.AmmoType "MINClip"
 	Weapon.SlotNumber 4
 	Weapon.AmmoGive 200
 	Scale 0.375
@@ -297,7 +297,7 @@ Actor HFEG_MinigunL3 : UACweapon
 	+CheatNotWeapon
 	Weapon.UpSound "GUNDRA"
 	Weapon.AmmoUse 1
-	Weapon.AmmoType "RIFClip"
+	Weapon.AmmoType "MINClip"
 	Weapon.SlotNumber 4
 	Weapon.AmmoGive 200
 	Scale 0.375

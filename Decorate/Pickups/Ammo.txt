@@ -56,6 +56,8 @@ DropItem "BLTClip"
 DropItem "RIFClip"
 DropItem "REVClip"
 DropItem "SNPClip"
+DropItem "SMGClip"
+DropItem "MINClip"
 }
 
 Actor ClipboxSpawner : Randomspawner Replaces Clipbox
@@ -64,6 +66,8 @@ DropItem "BLTpack"
 DropItem "RIFpack"
 DropItem "REVpack"
 DropItem "SNPpack"
+DropItem "SMGpack"
+DropItem "MINpack"
 }
 
 ACTOR BLTClip : Ammo 
@@ -91,7 +95,37 @@ ACTOR BLTpack : BLTClip
   States
   {
   Spawn:
-    HGBO A -1
+    AMMO H -1
+    Stop
+  }
+}
+
+ACTOR SMGClip : Ammo 
+{
+  Inventory.PickupMessage "Picked up a SMG Bullet Mag." 
+  Inventory.Amount 30
+  Inventory.MaxAmount 150
+  Ammo.BackpackAmount 40
+  Ammo.BackpackMaxAmount 300
+  Inventory.Icon "HGCLB0"
+  Inventory.PickupSound "MEPICK"
+  States
+  {
+  Spawn:
+    HGCL B -1
+    Stop
+  }
+}
+
+ACTOR SMGpack : SMGClip 
+{
+  Inventory.PickupMessage "Picked up a SMG Bullet Box." 
+  Inventory.Amount 80
+  Inventory.PickupSound "MEPICK"
+  States
+  {
+  Spawn:
+    AMMO E -1
     Stop
   }
 }
@@ -103,12 +137,12 @@ ACTOR RIFClip : Ammo
   Inventory.MaxAmount 150
   Ammo.BackpackAmount 30
   Ammo.BackpackMaxAmount 300
-  Inventory.Icon "ARH1A0"
+  Inventory.Icon "HGCLC0"
   Inventory.PickupSound "MEPICK"
   States
   {
   Spawn:
-    ARH1 A -1
+    HGCL C-1
     Stop
   }
 }
@@ -121,7 +155,37 @@ ACTOR RIFpack : RIFClip
   States
   {
   Spawn:
-    AMMO A -1
+    AMMO B -1
+    Stop
+  }
+}
+
+ACTOR MINClip : Ammo 
+{
+  Inventory.PickupMessage "Picked up a Minigun Bullet Mag." 
+  Inventory.Amount 30
+  Inventory.MaxAmount 150
+  Ammo.BackpackAmount 50
+  Ammo.BackpackMaxAmount 300
+  Inventory.Icon "BOOLA0"
+  Inventory.PickupSound "MEPICK"
+  States
+  {
+  Spawn:
+    BOOL A -1
+    Stop
+  }
+}
+
+ACTOR MINpack : MINClip 
+{
+  Inventory.PickupMessage "Picked up a Minigun Bullet Box." 
+  Inventory.Amount 90
+  Inventory.PickupSound "MEPICK"
+  States
+  {
+  Spawn:
+    AMMO D -1
     Stop
   }
 }
@@ -153,7 +217,7 @@ ACTOR REVpack : REVClip
   States
   {
   Spawn:
-    ARR2 B -1
+    AMMO G -1
     Stop
   }
 }
@@ -165,12 +229,12 @@ ACTOR SNPClip : Ammo
   Inventory.MaxAmount 70
   Ammo.BackpackAmount 30
   Ammo.BackpackMaxAmount 150
-  Inventory.Icon "CLIPA0"
+  Inventory.Icon "HGCLD0"
   Inventory.PickupSound "MEPICK"
   States
   {
   Spawn:
-    CLIP A -1
+    HGCL D -1
     Stop
   }
 }
@@ -183,12 +247,24 @@ ACTOR SNPpack : SNPClip
   States
   {
   Spawn:
-    ARH1 B -1
+    AMMO C -1
     Stop
   }
 }
 
-ACTOR ShotShell : Ammo replaces Shell
+Actor ShotSpawner : Randomspawner Replaces Shell
+{
+DropItem "ShotShell"
+DropItem "SuperShotShell"
+}
+
+Actor ShotboxSpawner : Randomspawner Replaces Shellbox
+{
+DropItem "ShellPac"
+DropItem "SuperShellPac"
+}
+
+ACTOR ShotShell : Ammo 
 {
   Inventory.PickupMessage "Picked up four 12 Gauge shells." 
   Inventory.Amount 4
@@ -205,7 +281,7 @@ ACTOR ShotShell : Ammo replaces Shell
   }
 }
 
-ACTOR ShellPac : ShotShell replaces Shellbox
+ACTOR ShellPac : ShotShell 
 {
   Inventory.PickupMessage "Picked up a 12 Gauge shell box." 
   Inventory.Amount 12
@@ -214,6 +290,36 @@ ACTOR ShellPac : ShotShell replaces Shellbox
   {
   Spawn:
     SBOX A -1
+    Stop
+  }
+}
+
+ACTOR SuperShotShell : Ammo 
+{
+  Inventory.PickupMessage "Picked up four 12 Gauge super shells." 
+  Inventory.Amount 4
+  Inventory.MaxAmount 50
+  Ammo.BackpackAmount 8
+  Ammo.BackpackMaxAmount 100
+  Inventory.Icon "SSELA0"
+  Inventory.PickupSound "MEPICK"
+  States
+  {
+  Spawn:
+    SSEL A -1
+    Stop
+  }
+}
+
+ACTOR SuperShellPac : ShotShell 
+{
+  Inventory.PickupMessage "Picked up a 12 Gauge super shell box." 
+  Inventory.Amount 12
+  Inventory.PickupSound "MEPICK"
+  States
+  {
+  Spawn:
+    SSOX A -1
     Stop
   }
 }

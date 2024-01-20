@@ -54,3 +54,56 @@ statusbar inventoryfullscreen, fullscreenoffsets // ZDoom HUD overlay.
 {
 	drawinventorybar Doom, translucent, 7, INDEXFONT, -106+center, -31;
 }
+
+Statusbar Automap
+{	
+	
+	DrawImage "HGCLA0", 45, 125, CenterBottom;
+	DrawNumber 3, SmallFont, Untranslated, Ammo("BLTClip"), Alignment(Center), FillZeros, 45, 126;
+	DrawBar "UpBrmFul","UpBrmEmp",Ammo("BLTClip"),vertical,60, 95;
+	
+	DrawImage "HGCLB0", 85, 125, CenterBottom;
+	DrawNumber 3, SmallFont, Untranslated, Ammo("SMGClip"), Alignment(Center), FillZeros, 85, 126;
+	DrawBar "UpBrmFul","UpBrmEmp",Ammo("SMGClip"),vertical,100, 95;
+	
+	DrawImage "HGCLC0", 125, 125, CenterBottom;
+	DrawNumber 3, SmallFont, Untranslated, Ammo("RIFClip"), Alignment(Center), FillZeros, 125, 126;
+	DrawBar "UpBrmFul","UpBrmEmp",Ammo("RIFClip"),vertical,140, 95;
+	
+	DrawImage "SHELA0", 45, 170, CenterBottom;
+	DrawNumber 3, SmallFont, Untranslated, Ammo("ShotShell"), Alignment(Center), FillZeros, 45, 171;
+	DrawBar "UpBrmFul","UpBrmEmp",Ammo("ShotShell"),vertical,60, 140;
+	
+	DrawImage "SSELA0", 85, 170, CenterBottom;
+	DrawNumber 3, SmallFont, Untranslated, Ammo("SuperShotShell"), Alignment(Center), FillZeros, 85, 171;
+	DrawBar "UpBrmFul","UpBrmEmp",Ammo("SuperShotShell"),vertical,100, 140;
+	
+	DrawImage "ROCKA0", 125, 170, CenterBottom;
+	DrawNumber 3, SmallFont, Untranslated, Ammo("HFEG_OneRocketBox"), Alignment(Center), FillZeros, 125, 171;
+	DrawBar "UpBrmFul","UpBrmEmp",Ammo("HFEG_OneRocketBox"),vertical,140, 140;
+	
+	DrawImage "CELLA0", 165, 125, CenterBottom;
+	DrawNumber 3, SmallFont, Untranslated, Ammo("UACPlasmaAmmo"), Alignment(Center), FillZeros, 165, 126;
+	DrawBar "UpBrmFul","UpBrmEmp",Ammo("UACPlasmaAmmo"),vertical,180, 95;
+	
+	DrawImage "BOOLA0", 205, 125, CenterBottom;
+	DrawNumber 3, SmallFont, Untranslated, Ammo("MINClip"), Alignment(Center), FillZeros, 205, 126;
+	DrawBar "UpBrmFul","UpBrmEmp",Ammo("MINClip"),vertical,220, 95;
+	
+	DrawImage "ARR2A0", 245, 125, CenterBottom;
+	DrawNumber 3, SmallFont, Untranslated, Ammo("REVClip"), Alignment(Center), FillZeros, 245, 126;
+	DrawBar "UpBrmFul","UpBrmEmp",Ammo("REVClip"),vertical,260, 95;
+	
+	DrawImage "FRBGA0", 165, 170, CenterBottom;
+	DrawNumber 3, SmallFont, Untranslated, Ammo("HFEG_FireBag"), Alignment(Center), FillZeros, 165, 171;
+	DrawBar "UpBrmFul","UpBrmEmp",Ammo("HFEG_FireBag"),vertical,180, 140;
+	
+	DrawImage "HGCLD0", 205, 170, CenterBottom;
+	DrawNumber 3, SmallFont, Untranslated, Ammo("SNPClip"), Alignment(Center), FillZeros, 205, 171;
+	DrawBar "UpBrmFul","UpBrmEmp",Ammo("SNPClip"),vertical,220, 140;
+	
+	DrawImage "ARE3A0", 245, 170, CenterBottom;
+	DrawNumber 3, SmallFont, Untranslated, Ammo("HFEG_GrenadeAmmo"), Alignment(Center), FillZeros, 245, 171;
+	DrawBar "UpBrmFul","UpBrmEmp",Ammo("HFEG_GrenadeAmmo"),vertical,260, 140;
+	
+}

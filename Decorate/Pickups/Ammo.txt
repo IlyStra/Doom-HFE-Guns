@@ -199,7 +199,7 @@ ACTOR REVClip : Ammo
   Ammo.BackpackMaxAmount 150
   Inventory.Icon "ARR2A0"
   Inventory.PickupSound "MEPICK"
-  Scale 0.7
+  Scale 0.5
   States
   {
   Spawn:
@@ -213,7 +213,7 @@ ACTOR REVpack : REVClip
   Inventory.PickupMessage "Picked up a Revolver Ammo Box." 
   Inventory.Amount 30
   Inventory.PickupSound "MEPICK"
-  Scale 0.7
+  Scale 1.0
   States
   {
   Spawn:

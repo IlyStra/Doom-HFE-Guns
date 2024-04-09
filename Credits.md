@@ -48,6 +48,8 @@
 							█
 	`UAC Buddies`			█	*Jenoclip*
 							█
+	`UAC Buddies sprites`	█	*DeeDeeOZ*
+							█	
 	`Rockets`				█	*Jenoclip*
 							█
 	`Rocket Launcher`		█	*Jenoclip, YukiHerz, Marrub*

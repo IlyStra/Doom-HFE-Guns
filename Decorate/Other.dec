@@ -108,6 +108,7 @@ Actor HFEG_UACMarine
 	ReactionTime 0
 	Speed 6
 	PushFactor 0.3
+	Translation "112:127=96:111", "192:207=80:95"
 	Species "UACGuard"
 	Var Int User_WeapType;
 	Var Int User_Class;
